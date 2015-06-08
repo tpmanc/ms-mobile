@@ -1,0 +1,557 @@
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+.clearfix {
+  display: inline-block;
+}
+@font-face {
+  font-family: 'PTSans';
+  src: url('../fonts/segoe_font/SegoeUI.eot');
+  src: url('../fonts/segoe_font/SegoeUI.eot?#iefix') format('embedded-opentype'), url('../fonts/segoe_font/SegoeUI.woff') format('woff'), url('../fonts/segoe_font/SegoeUI.ttf') format('truetype'), url('../fonts/segoe_font/SegoeUI.svg#PTSans-Regular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+.page .blockTitle {
+  text-align: center;
+}
+.page .blockTitle .text {
+  display: inline-block;
+  background: #fff;
+  padding: 0 2px;
+  font-family: Segoe UI;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+}
+.page .blockTitle .dottedLine {
+  border-bottom: 2px dotted #e1e3e3;
+  margin-top: -8px;
+}
+.page .fullVersion {
+  position: relative;
+  display: block;
+  width: 100%;
+  background: #ff7e00;
+  text-align: center;
+  font-size: 12px;
+  font-family: Segoe UI;
+  padding: 4px 0 8px 0;
+  text-decoration: underline;
+  word-spacing: 1px;
+}
+.page .fullVersion .fullLink {
+  color: #fff;
+  padding: 5px 10px;
+}
+.page .fullVersion .closeFullBtn {
+  position: absolute;
+  top: 3px;
+  right: 1.11%;
+  float: right;
+  width: 18px;
+  height: 18px;
+  background: url('../img/sprite.png') 0 0px no-repeat;
+}
+.page .topLine {
+  width: 100%;
+  height: 25px;
+  background: #72af20;
+  font-family: Segoe UI;
+  font-size: 12px;
+  box-sizing: border-box;
+  padding: 5px 6px 0 5px;
+}
+.page .topLine .yourCity {
+  float: left;
+  font-size: 12px;
+  color: #D3FF98;
+}
+.page .topLine .yourCity .cityName {
+  color: #FFF;
+}
+.page .topLine .yourCity .selectBtn {
+  display: inline-block;
+  height: 8px;
+  width: 9px;
+  background: url('../img/sprite.png') -2px -23px no-repeat;
+  cursor: pointer;
+}
+.page .topLine .phone {
+  float: right;
+  font-size: 14px;
+  color: #FFF;
+  font-weight: bold;
+}
+.page header {
+  height: 46px;
+  box-shadow: 0px 16px 26px -7px #cdcdcd;
+}
+.page header .leftCol {
+  float: left;
+  height: 100%;
+}
+.page header .leftCol .menuBtn {
+  float: left;
+  height: 100%;
+  width: 31px;
+  cursor: pointer;
+  background: url('../img/sprite.png') -26px 10px no-repeat;
+}
+.page header .leftCol .logo {
+  float: left;
+  height: 100%;
+}
+.page header .leftCol .logo img {
+  margin-top: 8px;
+  margin-left: 2px;
+}
+.page header .rightCol {
+  float: right;
+  height: 100%;
+}
+.page header .rightCol .price {
+  float: left;
+  height: 100%;
+  font-family: Segoe UI;
+  font-weight: bold;
+  font-size: 14px;
+  color: #494C51;
+  padding: 15px 16px 0 5px;
+}
+.page header .rightCol .basketBtn {
+  position: relative;
+  float: left;
+  height: 100%;
+  width: 36px;
+  background: url('../img/sprite.png') 0px -65px no-repeat;
+  margin: 0 3px;
+}
+.page header .rightCol .basketBtn .productCount {
+  position: absolute;
+  top: 6px;
+  right: 5px;
+  width: 15px;
+  height: 15px;
+  padding-top: 2px;
+  box-sizing: border-box;
+  text-align: center;
+  border-radius: 22px;
+  font-family: Segoe UI;
+  font-size: 10px;
+  background: #f52539;
+  color: #FFF;
+}
+.page header .rightCol .favoriteBtn {
+  float: right;
+  height: 100%;
+  width: 34px;
+  background: url('../img/sprite.png') 3px -26px no-repeat;
+}
+.page .content {
+  padding: 0 1.5%;
+  padding-top: 16px;
+}
+.page .content .searchHolder {
+  position: relative;
+  width: 100%;
+  height: 29px;
+  box-sizing: border-box;
+}
+.page .content .searchHolder .search {
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 1px 67px 1px 7px;
+  word-spacing: 2px;
+  border: 1px solid #cecdcd;
+  border-radius: 6px;
+}
+.page .content .searchHolder .searchBtn {
+  position: absolute;
+  height: 100%;
+  top: 0;
+  right: 0;
+  float: right;
+  font-family: Segoe UI;
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+  background: #ff7e00;
+  border: none;
+  color: #FFF;
+  padding: 5px 8px;
+  border-radius: 4px;
+}
+.page .content .categoriesHolder {
+  margin-top: 23px;
+}
+.page .content .categoriesHolder .categories {
+  list-style: none;
+  margin-top: 32px;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 4px;
+  box-shadow: 0px 0px 10px #cecece;
+}
+.page .content .categoriesHolder .categories li {
+  padding: 9px 11px 8px 11px;
+  font-family: Segoe UI;
+  font-size: 14px;
+  text-decoration: underline;
+  height: 30px;
+  box-sizing: border-box;
+  cursor: pointer;
+  border-bottom: 1px solid #eaeaea;
+}
+.page .content .categoriesHolder .categories li:first-child {
+  border-radius: 4px 4px 0 0;
+}
+.page .content .categoriesHolder .categories li:after {
+  content: " ";
+  background: url('../img/sprite.png') -32px -39px no-repeat;
+  float: right;
+  width: 8px;
+  height: 100%;
+}
+.page .content .categoriesHolder .categories li:hover {
+  background: #72af20;
+  color: #FFF;
+  text-decoration: none;
+}
+.page .content .categoriesHolder .categories li:last-child {
+  border-bottom: none;
+  border-radius: 0 0 4px 4px;
+}
+.page .content .categoriesHolder .moreBtnHolder {
+  text-align: center;
+}
+.page .content .categoriesHolder .moreBtnHolder .moreBtn {
+  text-align: center;
+  padding: 6px 18px 9px 23px;
+  display: inline-block;
+  background: #72af20;
+  font-family: Segoe UI;
+  font-weight: bold;
+  font-size: 14px;
+  color: #FFF;
+  border-radius: 0 0 5px 5px;
+  cursor: pointer;
+}
+.page .content .categoriesHolder .moreBtnHolder .moreBtn:after {
+  content: " ";
+  display: inline-block;
+  width: 10px;
+  height: 7px;
+  background: url('../img/sprite.png') -35px -57px no-repeat;
+  margin-left: 9px;
+}
+.page .content .service {
+  margin-top: 31px;
+}
+.page .content .service .leftCol {
+  float: left;
+  width: 50%;
+}
+.page .content .service .rightCol {
+  float: right;
+  width: 50%;
+}
+.page .content .service .blockContent {
+  padding-top: 28px;
+}
+.page .content .service .blockContent .serviceBlock {
+  display: inline-block;
+  width: 147px;
+  margin-bottom: 31px;
+}
+.page .content .service .blockContent .imgCol {
+  float: left;
+  padding-top: 2px;
+}
+.page .content .service .blockContent .textCol {
+  float: right;
+  width: 108px;
+  margin-left: 5px;
+}
+.page .content .service .blockContent .textCol .title {
+  font-family: Segoe UI;
+  font-size: 10px;
+  font-weight: bold;
+  text-transform: uppercase;
+  word-spacing: -1px;
+}
+.page .content .service .blockContent .textCol .text {
+  padding-top: 6px;
+  font-family: Segoe UI;
+  font-size: 10px;
+}
+.page .bottomBlock .pagesHolder {
+  background: #5e9e09;
+}
+.page .bottomBlock .pagesHolder li {
+  display: inline;
+}
+.page .bottomBlock .pagesHolder li a {
+  display: inline-block;
+  background: #72af20;
+  font-family: Segoe UI;
+  font-size: 12px;
+  color: #FFF;
+  padding: 9px 0;
+  text-decoration: none;
+  text-align: center;
+  border-right: 1px solid #5e9e09;
+  box-sizing: border-box;
+}
+.page .bottomBlock .pagesHolder li a:hover {
+  background: #5e9e09;
+}
+.page .bottomBlock .pagesHolder li a.delivery {
+  width: 20%;
+}
+.page .bottomBlock .pagesHolder li a.payment {
+  width: 20%;
+}
+.page .bottomBlock .pagesHolder li a.pickupPoints {
+  width: 40%;
+}
+.page .bottomBlock .pagesHolder li a.contacts {
+  width: 20%;
+}
+.page .bottomBlock .offset {
+  padding: 0 1.5%;
+  padding-top: 24px;
+  text-align: center;
+}
+.page .bottomBlock .offset .bottomText {
+  display: inline-block;
+}
+.page .bottomBlock .offset .bottomText .imgCol {
+  float: left;
+}
+.page .bottomBlock .offset .bottomText .textCol {
+  float: right;
+  height: 80px;
+  width: 194px;
+  padding-left: 15px;
+  background: #FAFAFA;
+  border-radius: 3px;
+  text-align: left;
+}
+.page .bottomBlock .offset .bottomText .textCol .title {
+  font-family: Segoe UI;
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding-top: 8px;
+  word-spacing: 1px;
+}
+.page .bottomBlock .offset .bottomText .textCol .text {
+  font-family: Segoe UI;
+  font-size: 12px;
+  padding-top: 6px;
+  line-height: 13px;
+}
+.page .bottomBlock .offset .bottomText.compensation {
+  margin-top: 11px;
+}
+.page .bottomBlock .offset .bottomText.compensation .textCol {
+  padding-left: 1px;
+  width: 222px;
+}
+.page .paymentTypes {
+  margin-top: 19px;
+  margin-bottom: 55px;
+  text-align: center;
+}
+.page .paymentTypes .paymentHolder {
+  display: inline-block;
+  margin-top: 17px;
+}
+.page .paymentTypes .paymentHolder .imgHolder {
+  display: inline-block;
+}
+.page .paymentTypes .paymentHolder .imgHolder img {
+  float: left;
+  margin: 0 11px;
+}
+.page .paymentTypes .paymentHolder .imgHolder img.visa {
+  margin-top: 7px;
+}
+.page footer {
+  width: 100%;
+  padding-bottom: 20px;
+  background: #5e9e09;
+}
+.page footer .links {
+  padding: 0px 10px 9px 9px;
+  text-align: center;
+  border-bottom: 1px solid #375f01;
+}
+.page footer .links a {
+  font-family: Segoe UI;
+  font-size: 12px;
+  color: #FFF;
+  text-decoration: underline;
+  padding: 0 7px;
+  white-space: nowrap;
+  line-height: 29px;
+}
+.page footer .text {
+  padding-top: 16px;
+  color: #FFF;
+  font-size: 12px;
+  font-family: Segoe UI;
+  text-align: center;
+}
+.page footer .text .copyright {
+  word-spacing: 2px;
+}
+.page footer .text .info {
+  padding: 12px 27px 0 27px;
+  line-height: 14px;
+}
+.page footer .fullBtnHolder {
+  text-align: center;
+  margin-top: 22px;
+}
+.page footer .fullBtnHolder .fullVersionBottom {
+  font-family: Segoe UI;
+  font-size: 12px;
+  font-weight: bold;
+  color: #FFF;
+  text-decoration: none;
+  padding: 4px 16px 7px 16px;
+  border-radius: 20px;
+  background: #2F5100;
+}
