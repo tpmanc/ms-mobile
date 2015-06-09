@@ -2,12 +2,29 @@
 <html lang="ru">
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="width=device-width initial-scale=1.0 maximum-scale=1.0 user-scalable=yes" />
 	<title>Document</title>
 	<link rel="stylesheet" href="theme/mobile/css/style.css">
 </head>
 <body>
-	<div class="page">
+	<nav id="leftMenu" class="leftMenu">
+		<ul>
+			<li class="title">Каталог товаров</li>
+			<li>
+				<span>Кнопка 1</span>
+				<ul class="submenu">
+					<li class="back">Обратно в каталог товаров</li>
+					<li class="title">Кнопка 1</li>
+					<li>History</li>
+					<li>The team</li>
+					<li>Our address</li>
+				</ul>
+			</li>
+			<li>Кнопка 2</li>
+		</ul>
+	</nav>
+
+	<div class="page" id="page">
 
 		<div href="#" class="fullVersion">
 			<a href="" class="fullLink">Полная версия сайта</a>
@@ -18,12 +35,12 @@
 			<div class="yourCity">
 				Ваш город: <span class="cityName">Москва</span> <div class="selectBtn"></div>
 			</div>
-			<div class="phone">8 (800) 555-62-50</div>
+			<div class="phone"><a href="tel:8-800-555-62-50">8 (800) 555-62-50</a></div>
 		</div>
 
 		<header>
 			<div class="leftCol">
-				<div class="menuBtn"></div>
+				<div class="menuBtn" id="menuBtn"></div>
 				<div class="logo">
 					<a href=""><img src="theme/mobile/img/logo.jpg" alt="Интернет магазин Сердце"></a>
 				</div>
@@ -47,7 +64,7 @@
 					<div class="dottedLine"></div>
 				</div>
 
-				<ul class="categories">
+				<ul class="categories" id="categories">
 					<li>Медтехника</li>
 					<li>Аксессуары к медицинским кроватям</li>
 					<li>Медицинская мебель</li>
@@ -58,9 +75,19 @@
 					<li>Оборудование для инвалидов</li>
 					<li>Уход за больными</li>
 					<li>Профилактика и лечение</li>
+					<li class="hiddenCategories">
+						<ul>
+							<li>Другое</li>
+							<li>Другое</li>
+							<li>Другое</li>
+							<li>Другое</li>
+							<li>Другое</li>
+							<li>Другое</li>
+						</ul>
+					</li>
 				</ul>
 				<div class="moreBtnHolder">
-					<div class="moreBtn">Еще</div>
+					<div class="moreBtn" id="moreCategories">Еще</div>
 				</div>
 			</div>
 
@@ -71,66 +98,63 @@
 				</div>
 
 				<div class="blockContent">
-					<div class="leftCol">
-						<div class="serviceBlock">
-							<div class="imgCol">
-								<img src="theme/mobile/img/index/delivery.jpg" alt="">
-							</div>
-							<div class="textCol">
-								<div class="title">Экспресс доставка</div>
-								<div class="text">Быстрая доставка за 2 часа<br />По Москве и области</div>
-							</div>
+					<div class="serviceBlock">
+						<div class="imgCol">
+							<img src="theme/mobile/img/index/delivery.jpg" alt="">
 						</div>
-
-						<div class="serviceBlock">
-							<div class="imgCol">
-								<img src="theme/mobile/img/index/call-center.jpg" alt="">
-							</div>
-							<div class="textCol">
-								<div class="title">Call center</div>
-								<div class="text">Грамотное консультирование по всем вопросам</div>
-							</div>
-						</div>
-
-						<div class="serviceBlock">
-							<div class="imgCol">
-								<img src="theme/mobile/img/index/market.jpg" alt="">
-							</div>
-							<div class="textCol">
-								<div class="title">Яндекс маркет</div>
-								<div class="text">Качество<br>обслуживания проверенное<br>Яндекс-Маркетом</div>
-							</div>
+						<div class="textCol">
+							<div class="title">Экспресс доставка</div>
+							<div class="text">Быстрая доставка за 2 часа<br />По Москве и области</div>
 						</div>
 					</div>
-					<div class="rightCol">
-						<div class="serviceBlock">
-							<div class="imgCol">
-								<img src="theme/mobile/img/index/credit.jpg" alt="">
-							</div>
-							<div class="textCol">
-								<div class="title">Кредит от 3000 р.</div>
-								<div class="text">Не выходя из дома. 95% случаев одобряется за 2 минуты</div>
-							</div>
-						</div>
 
-						<div class="serviceBlock">
-							<div class="imgCol">
-								<img src="theme/mobile/img/index/return.jpg" alt="">
-							</div>
-							<div class="textCol">
-								<div class="title">Обмен и возврат</div>
-								<div class="text">В течение 21 дня после покупки</div>
-							</div>
+					<div class="serviceBlock">
+						<div class="imgCol">
+							<img src="theme/mobile/img/index/credit.jpg" alt="">
 						</div>
+						<div class="textCol">
+							<div class="title">Кредит от 3000 р.</div>
+							<div class="text">Не выходя из дома. 95% случаев одобряется за 2 минуты</div>
+						</div>
+					</div>
 
-						<div class="serviceBlock">
-							<div class="imgCol">
-								<img src="theme/mobile/img/index/help.jpg" alt="">
-							</div>
-							<div class="textCol">
-								<div class="title">Помощь</div>
-								<div class="text">Наши специалисты ответят на все ваши вопросы</div>
-							</div>
+					<div class="serviceBlock">
+						<div class="imgCol">
+							<img src="theme/mobile/img/index/call-center.jpg" alt="">
+						</div>
+						<div class="textCol">
+							<div class="title">Call center</div>
+							<div class="text">Грамотное консультирование по всем вопросам</div>
+						</div>
+					</div>
+
+					<div class="serviceBlock">
+						<div class="imgCol">
+							<img src="theme/mobile/img/index/return.jpg" alt="">
+						</div>
+						<div class="textCol">
+							<div class="title">Обмен и возврат</div>
+							<div class="text">В течение 21 дня после покупки</div>
+						</div>
+					</div>
+
+					<div class="serviceBlock">
+						<div class="imgCol">
+							<img src="theme/mobile/img/index/market.jpg" alt="">
+						</div>
+						<div class="textCol">
+							<div class="title">Яндекс маркет</div>
+							<div class="text">Качество<br>обслуживания проверенное<br>Яндекс-Маркетом</div>
+						</div>
+					</div>
+
+					<div class="serviceBlock">
+						<div class="imgCol">
+							<img src="theme/mobile/img/index/help.jpg" alt="">
+						</div>
+						<div class="textCol">
+							<div class="title">Помощь</div>
+							<div class="text">Наши специалисты ответят на все ваши вопросы</div>
 						</div>
 					</div>
 					<div class="clearfix"></div>
@@ -201,5 +225,9 @@
 			</div>
 		</footer>
 	</div>
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script src="theme/mobile/js/index.js"></script>
+
 </body>
 </html>

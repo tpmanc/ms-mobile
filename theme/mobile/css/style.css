@@ -134,11 +134,81 @@ table {
   display: inline-block;
 }
 @font-face {
-  font-family: 'PTSans';
-  src: url('../fonts/segoe_font/SegoeUI.eot');
-  src: url('../fonts/segoe_font/SegoeUI.eot?#iefix') format('embedded-opentype'), url('../fonts/segoe_font/SegoeUI.woff') format('woff'), url('../fonts/segoe_font/SegoeUI.ttf') format('truetype'), url('../fonts/segoe_font/SegoeUI.svg#PTSans-Regular') format('svg');
+  font-family: 'rouble';
+  src: url('../fonts/rouble/rouble-webfont.eot');
+  src: url('../fonts/rouble/rouble-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/rouble/rouble-webfont.woff2') format('woff2'), url('../fonts/rouble/rouble-webfont.woff') format('woff'), url('../fonts/rouble/rouble-webfont.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
+}
+@font-face {
+  font-family: 'Segoe UI';
+  src: url('../fonts/segoe_font/segoeui.eot');
+  src: local('☺'), url('../fonts/segoe_font/segoeui.eot?#iefix') format('embedded-opentype'), url('../fonts/segoe_font/segoeui.svg') format('svg'), url('../fonts/segoe_font/segoeui.woff') format('woff'), url('../fonts/segoe_font/segoeui.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Segoe UI';
+  src: url('../fonts/segoe_font/segoeuib.eot');
+  src: local('☺'), url('../fonts/segoe_font/segoeuib.eot?#iefix') format('embedded-opentype'), url('../fonts/segoe_font/segoeuib.svg') format('svg'), url('../fonts/segoe_font/segoeuib.woff') format('woff'), url('../fonts/segoe_font/segoeuib.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+body {
+  overflow-x: hidden;
+  background-color: #fff;
+}
+body.menuActive .page {
+  transform: translate(80%);
+}
+body.menuActive .leftMenu {
+  transform: translate(0%);
+}
+.leftMenu {
+  position: fixed;
+  background: #fff;
+  width: 80%;
+  height: 100%;
+  overflow: hidden;
+  transform: translate(-100%);
+  -webkit-transition: transform 0.3s ease-out 0s;
+  -moz-transition: transform 0.3s ease-out 0s;
+  -o-transition: transform 0.3s ease-out 0s;
+  transition: transform 0.3s ease-out 0s;
+}
+.leftMenu .title {
+  font-family: Segoe UI, PT Sans;
+  font-size: 14px;
+  font-weight: bold;
+  background: #E5E5E5;
+}
+.leftMenu li {
+  background: #FFF;
+  font-family: Segoe UI, PT Sans;
+  font-size: 14px;
+  padding: 7px 10px;
+  box-sizing: border-box;
+}
+.leftMenu li span {
+  font-family: Segoe UI, PT Sans;
+  font-size: 14px;
+}
+.leftMenu li .submenu {
+  width: 100%;
+  position: absolute;
+  z-index: 5;
+  left: 100%;
+  top: 0px;
+  transition: left 0.5s ease-out 0s;
+}
+.leftMenu li .submenu.showSubmenu {
+  left: 0;
+}
+.page {
+  -webkit-transition: transform 0.3s ease-out 0s;
+  -moz-transition: transform 0.3s ease-out 0s;
+  -o-transition: transform 0.3s ease-out 0s;
+  transition: transform 0.3s ease-out 0s;
 }
 .page .blockTitle {
   text-align: center;
@@ -147,7 +217,7 @@ table {
   display: inline-block;
   background: #fff;
   padding: 0 2px;
-  font-family: Segoe UI;
+  font-family: Segoe UI, PT Sans;
   font-size: 14px;
   font-weight: bold;
   text-align: center;
@@ -164,7 +234,7 @@ table {
   background: #ff7e00;
   text-align: center;
   font-size: 12px;
-  font-family: Segoe UI;
+  font-family: Segoe UI, PT Sans;
   padding: 4px 0 8px 0;
   text-decoration: underline;
   word-spacing: 1px;
@@ -186,7 +256,7 @@ table {
   width: 100%;
   height: 25px;
   background: #72af20;
-  font-family: Segoe UI;
+  font-family: Segoe UI, PT Sans;
   font-size: 12px;
   box-sizing: border-box;
   padding: 5px 6px 0 5px;
@@ -211,6 +281,10 @@ table {
   font-size: 14px;
   color: #FFF;
   font-weight: bold;
+}
+.page .topLine .phone a {
+  color: #FFF;
+  text-decoration: none;
 }
 .page header {
   height: 46px;
@@ -242,11 +316,16 @@ table {
 .page header .rightCol .price {
   float: left;
   height: 100%;
-  font-family: Segoe UI;
+  font-family: Segoe UI, PT Sans;
   font-weight: bold;
   font-size: 14px;
   color: #494C51;
-  padding: 15px 16px 0 5px;
+  padding: 15px 2px 0 5px;
+}
+.page header .rightCol .price:after {
+  content: "q";
+  padding-left: 5px;
+  font-family: rouble;
 }
 .page header .rightCol .basketBtn {
   position: relative;
@@ -262,11 +341,11 @@ table {
   right: 5px;
   width: 15px;
   height: 15px;
-  padding-top: 2px;
+  line-height: 15px;
   box-sizing: border-box;
   text-align: center;
   border-radius: 22px;
-  font-family: Segoe UI;
+  font-family: Segoe UI, PT Sans;
   font-size: 10px;
   background: #f52539;
   color: #FFF;
@@ -291,10 +370,10 @@ table {
   height: 100%;
   width: 100%;
   box-sizing: border-box;
-  padding: 1px 67px 1px 7px;
+  padding: 1px 74px 1px 7px;
   word-spacing: 2px;
   border: 1px solid #cecdcd;
-  border-radius: 6px;
+  border-radius: 4px;
 }
 .page .content .searchHolder .searchBtn {
   position: absolute;
@@ -302,7 +381,7 @@ table {
   top: 0;
   right: 0;
   float: right;
-  font-family: Segoe UI;
+  font-family: Segoe UI, PT Sans;
   font-size: 14px;
   font-weight: bold;
   text-transform: uppercase;
@@ -311,6 +390,7 @@ table {
   color: #FFF;
   padding: 5px 8px;
   border-radius: 4px;
+  cursor: pointer;
 }
 .page .content .categoriesHolder {
   margin-top: 23px;
@@ -323,9 +403,9 @@ table {
   border-radius: 4px;
   box-shadow: 0px 0px 10px #cecece;
 }
-.page .content .categoriesHolder .categories li {
+.page .content .categoriesHolder .categories li:not(.hiddenCategories) {
   padding: 9px 11px 8px 11px;
-  font-family: Segoe UI;
+  font-family: Segoe UI, PT Sans;
   font-size: 14px;
   text-decoration: underline;
   height: 30px;
@@ -333,24 +413,30 @@ table {
   cursor: pointer;
   border-bottom: 1px solid #eaeaea;
 }
-.page .content .categoriesHolder .categories li:first-child {
+.page .content .categoriesHolder .categories li:not(.hiddenCategories):first-child {
   border-radius: 4px 4px 0 0;
 }
-.page .content .categoriesHolder .categories li:after {
+.page .content .categoriesHolder .categories li:not(.hiddenCategories):after {
   content: " ";
   background: url('../img/sprite.png') -32px -39px no-repeat;
   float: right;
   width: 8px;
   height: 100%;
 }
-.page .content .categoriesHolder .categories li:hover {
+.page .content .categoriesHolder .categories li:not(.hiddenCategories):hover {
   background: #72af20;
   color: #FFF;
   text-decoration: none;
 }
-.page .content .categoriesHolder .categories li:last-child {
+.page .content .categoriesHolder .categories li:not(.hiddenCategories):last-child {
   border-bottom: none;
   border-radius: 0 0 4px 4px;
+}
+.page .content .categoriesHolder .categories li.hiddenCategories {
+  display: none;
+}
+.page .content .categoriesHolder .categories li.hiddenCategories li:first-child {
+  border-radius: 0;
 }
 .page .content .categoriesHolder .moreBtnHolder {
   text-align: center;
@@ -375,6 +461,9 @@ table {
   background: url('../img/sprite.png') -35px -57px no-repeat;
   margin-left: 9px;
 }
+.page .content .categoriesHolder .moreBtnHolder .moreBtn.opened:after {
+  transform: rotate(180deg);
+}
 .page .content .service {
   margin-top: 31px;
 }
@@ -388,11 +477,13 @@ table {
 }
 .page .content .service .blockContent {
   padding-top: 28px;
+  text-align: center;
 }
 .page .content .service .blockContent .serviceBlock {
   display: inline-block;
   width: 147px;
-  margin-bottom: 31px;
+  height: 77px;
+  margin: 0 3px;
 }
 .page .content .service .blockContent .imgCol {
   float: left;
@@ -402,9 +493,10 @@ table {
   float: right;
   width: 108px;
   margin-left: 5px;
+  text-align: left;
 }
 .page .content .service .blockContent .textCol .title {
-  font-family: Segoe UI;
+  font-family: Segoe UI, PT Sans;
   font-size: 10px;
   font-weight: bold;
   text-transform: uppercase;
@@ -412,8 +504,11 @@ table {
 }
 .page .content .service .blockContent .textCol .text {
   padding-top: 6px;
-  font-family: Segoe UI;
+  font-family: Segoe UI, PT Sans;
   font-size: 10px;
+}
+.page .bottomBlock {
+  margin-top: 17px;
 }
 .page .bottomBlock .pagesHolder {
   background: #5e9e09;
@@ -424,7 +519,7 @@ table {
 .page .bottomBlock .pagesHolder li a {
   display: inline-block;
   background: #72af20;
-  font-family: Segoe UI;
+  font-family: Segoe UI, PT Sans;
   font-size: 12px;
   color: #FFF;
   padding: 9px 0;
@@ -469,7 +564,7 @@ table {
   text-align: left;
 }
 .page .bottomBlock .offset .bottomText .textCol .title {
-  font-family: Segoe UI;
+  font-family: Segoe UI, PT Sans;
   font-size: 14px;
   font-weight: bold;
   text-transform: uppercase;
@@ -477,7 +572,7 @@ table {
   word-spacing: 1px;
 }
 .page .bottomBlock .offset .bottomText .textCol .text {
-  font-family: Segoe UI;
+  font-family: Segoe UI, PT Sans;
   font-size: 12px;
   padding-top: 6px;
   line-height: 13px;
@@ -519,7 +614,7 @@ table {
   border-bottom: 1px solid #375f01;
 }
 .page footer .links a {
-  font-family: Segoe UI;
+  font-family: Segoe UI, PT Sans;
   font-size: 12px;
   color: #FFF;
   text-decoration: underline;
@@ -531,7 +626,7 @@ table {
   padding-top: 16px;
   color: #FFF;
   font-size: 12px;
-  font-family: Segoe UI;
+  font-family: Segoe UI, PT Sans;
   text-align: center;
 }
 .page footer .text .copyright {
@@ -546,7 +641,7 @@ table {
   margin-top: 22px;
 }
 .page footer .fullBtnHolder .fullVersionBottom {
-  font-family: Segoe UI;
+  font-family: Segoe UI, PT Sans;
   font-size: 12px;
   font-weight: bold;
   color: #FFF;

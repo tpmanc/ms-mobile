@@ -34,10 +34,6 @@ table {
 	border-spacing: 0;
 }
 
-// body {
-// 	width: 320px;
-// }
-
 .clearfix:after {
 	visibility: hidden;
 	display: block;
@@ -50,25 +46,87 @@ table {
 .clearfix { display: inline-block; }
 
 
-@font-face {
-    font-family: 'PTSans';
-    src: url('../fonts/segoe_font/SegoeUI.eot');
-    src: url('../fonts/segoe_font/SegoeUI.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/segoe_font/SegoeUI.woff') format('woff'),
-         url('../fonts/segoe_font/SegoeUI.ttf') format('truetype'),
-         url('../fonts/segoe_font/SegoeUI.svg#PTSans-Regular') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
+@import "fonts.less";
 
 
-@segoe: Segoe UI;
+@segoe: Segoe UI, PT Sans;
+@rouble: rouble;
 @orange: #ff7e00;
 @green: #72af20;
 @darkGreen: #5e9e09;
 @lrOffset: 1.5%;
 
+@menuAnimTime: 0.3s;
+@menuAnimDelay: 0s;
+@menuAnimProperty: transform;
+@menuAnimPropertyMenu: transform;
+@menuAnimFunction: ease-out;
+
+body {
+	// width: 320px;
+	overflow-x: hidden;
+	background-color: #fff; // fix для меню
+	
+	&.menuActive {
+		.page {
+			transform: translate(80%);
+		}
+		.leftMenu {
+			transform: translate(0%);
+		}
+	}
+}
+
+.leftMenu {
+	position: fixed;
+	background: #fff;
+	width: 80%;
+	height: 100%;
+	overflow: hidden;
+	transform: translate(-100%);
+	-webkit-transition: @menuAnimPropertyMenu @menuAnimTime @menuAnimFunction @menuAnimDelay;
+	-moz-transition: @menuAnimPropertyMenu @menuAnimTime @menuAnimFunction @menuAnimDelay;
+	-o-transition: @menuAnimPropertyMenu @menuAnimTime @menuAnimFunction @menuAnimDelay;
+	transition: @menuAnimPropertyMenu @menuAnimTime @menuAnimFunction @menuAnimDelay;
+	
+	.title {
+		font-family: @segoe;
+		font-size: 14px;
+		font-weight: bold;
+		background: #E5E5E5;
+	}
+	li {
+		background: #FFF;
+		font-family: @segoe;
+		font-size: 14px;
+		padding: 7px 10px;
+		box-sizing: border-box;
+		
+		span {
+			font-family: @segoe;
+			font-size: 14px;
+		}
+		.submenu {
+			width: 100%;
+			position: absolute;
+			z-index: 5;
+			left: 100%;
+			top: 0px;
+			transition: left 0.5s ease-out 0s;
+			
+			&.showSubmenu {
+				left: 0;
+			}
+		}
+	}
+}
+
 .page {
+	-webkit-transition: @menuAnimProperty @menuAnimTime @menuAnimFunction @menuAnimDelay;
+	-moz-transition: @menuAnimProperty @menuAnimTime @menuAnimFunction @menuAnimDelay;
+	-o-transition: @menuAnimProperty @menuAnimTime @menuAnimFunction @menuAnimDelay;
+	transition: @menuAnimProperty @menuAnimTime @menuAnimFunction @menuAnimDelay;
+		
 	.blockTitle {
 		text-align: center;
 		
@@ -146,6 +204,11 @@ table {
 			font-size: 14px;
 			color: #FFF;
 			font-weight: bold;
+			
+			a {
+				color: #FFF;
+				text-decoration: none;
+			}
 		}
 	}
 
@@ -185,7 +248,13 @@ table {
 				font-weight: bold;
 				font-size: 14px;
 				color: #494C51;
-				padding: 15px 16px 0 5px;
+				padding: 15px 2px 0 5px;
+				
+				&:after {
+					content: "q";
+					padding-left: 5px;
+					font-family: @rouble;
+				}
 			}
 			.basketBtn {
 				position: relative;
@@ -201,7 +270,7 @@ table {
 					right: 5px;
 					width: 15px;
 					height: 15px;
-					padding-top: 2px;
+					line-height: 15px;
 					box-sizing: border-box;
 					text-align: center;
 					border-radius: 22px;
@@ -234,10 +303,10 @@ table {
 				height: 100%;
 				width: 100%;
 				box-sizing: border-box;
-				padding: 1px 67px 1px 7px;
+				padding: 1px 74px 1px 7px;
 				word-spacing: 2px;
 				border: 1px solid #cecdcd;
-				border-radius: 6px;
+				border-radius: 4px;
 			}
 			.searchBtn {
 				position: absolute;
@@ -254,6 +323,7 @@ table {
 				color: #FFF;
 				padding: 5px 8px;
 				border-radius: 4px;
+				cursor: pointer;
 			}
 		}
 
@@ -267,8 +337,8 @@ table {
 				box-sizing: border-box;
 				border-radius: 4px;
 				box-shadow: 0px 0px 10px #cecece;
-				
-				li {
+
+				li:not(.hiddenCategories) {
 					padding: 9px 11px 8px 11px;
 					font-family: @segoe;
 					font-size: 14px;
@@ -277,7 +347,7 @@ table {
 					box-sizing: border-box;
 					cursor: pointer;
 					border-bottom: 1px solid #eaeaea;
-					
+
 					&:first-child {
 						border-radius: 4px 4px 0 0;
 					}
@@ -296,6 +366,14 @@ table {
 					&:last-child {
 						border-bottom: none;
 						border-radius: 0 0 4px 4px;
+					}
+				}
+
+				li.hiddenCategories {
+					display: none;
+					
+					li:first-child {
+						border-radius: 0;
 					}
 				}
 			}
@@ -323,6 +401,9 @@ table {
 						background: url('../img/sprite.png') -35px -57px no-repeat;
 						margin-left: 9px;
 					}
+					&.opened:after {
+						transform: rotate(180deg);
+					}
 				}
 			}
 		}
@@ -340,11 +421,13 @@ table {
 			}
 			.blockContent {
 				padding-top: 28px;
+				text-align: center;
 				
 				.serviceBlock {
 					display: inline-block;
 					width: 147px;
-					margin-bottom: 31px;
+					height: 77px;
+					margin: 0 3px;
 				}
 				.imgCol {
 					float: left;
@@ -354,6 +437,7 @@ table {
 					float: right;
 					width: 108px;
 					margin-left: 5px;
+					text-align: left;
 					
 					.title {
 						font-family: @segoe;
@@ -373,6 +457,8 @@ table {
 	}
 
 	.bottomBlock {
+		margin-top: 17px;
+		  
 		.pagesHolder {
 			background: @darkGreen;
 			li{
