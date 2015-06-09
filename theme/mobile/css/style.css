@@ -234,6 +234,11 @@ table {
 .leftMenu li .submenu li {
   cursor: pointer;
 }
+.leftMenu li .submenu li a {
+  display: block;
+  text-decoration: none;
+  color: #000;
+}
 .leftMenu li .submenu li.back {
   cursor: pointer;
   line-height: 48px;
@@ -511,8 +516,9 @@ table {
   text-align: center;
 }
 .page .main .content .categoriesHolder .moreBtnHolder .moreBtn {
+  position: relative;
   text-align: center;
-  padding: 6px 18px 9px 23px;
+  padding: 6px 37px 9px 22px;
   display: inline-block;
   background: #72af20;
   font-family: Segoe UI;
@@ -524,16 +530,22 @@ table {
 }
 .page .main .content .categoriesHolder .moreBtnHolder .moreBtn:after {
   content: " ";
-  display: inline-block;
-  width: 10px;
-  height: 7px;
-  background: url('../img/sprite.png') -35px -57px no-repeat;
-  margin-left: 9px;
+  position: absolute;
+  display: block;
+  right: 18px;
+  top: 10px;
+  width: 4px;
+  height: 4px;
+  border-bottom: 3px solid #fff;
+  border-right: 3px solid #fff;
+  -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+          transform: rotate(45deg);
 }
 .page .main .content .categoriesHolder .moreBtnHolder .moreBtn.opened:after {
-  -webkit-transform: rotate(180deg);
-      -ms-transform: rotate(180deg);
-          transform: rotate(180deg);
+  -webkit-transform: rotate(225deg);
+      -ms-transform: rotate(225deg);
+          transform: rotate(225deg);
 }
 .page .main .content .service {
   margin-top: 31px;
