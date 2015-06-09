@@ -1,14 +1,17 @@
 $(function(){
+	var html = $('html');
 	var body = $('body');
 	var page = $('#page');
 	var menu = $('#leftMenu');
 	var menuBtn = $('#menuBtn');
 
 	$(menuBtn).on('click', function(){
-		if( body.hasClass('menuActive') ){
-			$(body).removeClass('menuActive');
+		if( html.hasClass('menuActive') ){
+			$(html).removeClass('menuActive');
+			setTimeout(function(){$(menu).removeClass('menuActive');}, 250);
 		}else{
-			$(body).addClass('menuActive');
+			$(html).addClass('menuActive');
+			$(menu).addClass('menuActive');
 		}
 	});
 

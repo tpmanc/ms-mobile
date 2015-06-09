@@ -56,55 +56,86 @@ table {
 @darkGreen: #5e9e09;
 @lrOffset: 1.5%;
 
+@leftMenuGray: #E5E5E5;
+
 @menuAnimTime: 0.3s;
 @menuAnimDelay: 0s;
-@menuAnimProperty: transform;
-@menuAnimPropertyMenu: transform;
+@menuAnimProperty: left;
+@menuAnimPropertyMenu: left;
 @menuAnimFunction: ease-out;
 
 body {
 	// width: 320px;
-	overflow-x: hidden;
-	background-color: #fff; // fix для меню
-	
-	&.menuActive {
-		.page {
-			transform: translate(80%);
-		}
-		.leftMenu {
-			transform: translate(0%);
-		}
-	}
 }
 
 .leftMenu {
+	display: none;
 	position: fixed;
+	left: 0;
+	top: 0;
 	background: #fff;
 	width: 80%;
 	height: 100%;
 	overflow: hidden;
-	transform: translate(-100%);
+	z-index: 0;
 	-webkit-transition: @menuAnimPropertyMenu @menuAnimTime @menuAnimFunction @menuAnimDelay;
 	-moz-transition: @menuAnimPropertyMenu @menuAnimTime @menuAnimFunction @menuAnimDelay;
 	-o-transition: @menuAnimPropertyMenu @menuAnimTime @menuAnimFunction @menuAnimDelay;
 	transition: @menuAnimPropertyMenu @menuAnimTime @menuAnimFunction @menuAnimDelay;
 	
+	&.menuActive{
+		display: block;
+	}
+
 	.title {
+		position: relative;
 		font-family: @segoe;
 		font-size: 14px;
 		font-weight: bold;
-		background: #E5E5E5;
+		background: @leftMenuGray;
+		
+		&:before {
+			content: " ";
+			position: absolute;
+			display: block;
+			left: 7px;
+			top: 38px;
+			height: 5px;
+			width: 5px;
+			background: @leftMenuGray;
+			transform: rotate(45deg);
+		}
 	}
 	li {
+		width: 100%;
+		height: 40px;
+		line-height: 40px;
 		background: #FFF;
 		font-family: @segoe;
 		font-size: 14px;
-		padding: 7px 10px;
 		box-sizing: border-box;
+		padding-left: 5px;
+		border-bottom: 1px solid @leftMenuGray;
 		
 		span {
+			position: relative;
 			font-family: @segoe;
 			font-size: 14px;
+			display: block;
+			cursor: pointer;
+			
+			&:after {
+				content: " ";
+				position: absolute;
+				display: block;
+				right: 2.75%;
+				top: 17px;
+				width: 5px;
+				height: 5px;
+				border-top: 2px solid #808080;
+				border-right: 2px solid #808080;
+				transform: rotate(45deg);
+			}
 		}
 		.submenu {
 			width: 100%;
@@ -112,8 +143,32 @@ body {
 			z-index: 5;
 			left: 100%;
 			top: 0px;
-			transition: left 0.5s ease-out 0s;
+			transition: left 0.3s ease-out 0s;
 			
+			li {
+				cursor: pointer;
+				
+				&.back {
+					cursor: pointer;
+					line-height: 48px;
+					height: 50px;
+					padding-left: 19px;
+					
+					&:before {
+						content: " ";
+						position: absolute;
+						display: block;
+						left: 6px;
+						top: 20px;
+						width: 5px;
+						height: 5px;
+						border-bottom: 2px solid #808080;
+						border-left: 2px solid #808080;
+						transform: rotate(45deg);
+					}
+				}
+			}
+
 			&.showSubmenu {
 				left: 0;
 			}
@@ -122,6 +177,10 @@ body {
 }
 
 .page {
+	position: relative;
+	background: #FFF;
+	left: 0%;
+	top: 0%;
 	-webkit-transition: @menuAnimProperty @menuAnimTime @menuAnimFunction @menuAnimDelay;
 	-moz-transition: @menuAnimProperty @menuAnimTime @menuAnimFunction @menuAnimDelay;
 	-o-transition: @menuAnimProperty @menuAnimTime @menuAnimFunction @menuAnimDelay;
@@ -289,9 +348,9 @@ body {
 		}
 	}
 
-	.content {
+	.searchBlock {
+		margin-top: 16px;
 		padding: 0 @lrOffset;
-		padding-top: 16px;
 		
 		.searchHolder {
 			position: relative;
@@ -326,240 +385,256 @@ body {
 				cursor: pointer;
 			}
 		}
-
-		.categoriesHolder {
-			margin-top: 23px;
-			
-			.categories {
-				list-style: none;
-				margin-top: 32px;
-				width: 100%;
-				box-sizing: border-box;
-				border-radius: 4px;
-				box-shadow: 0px 0px 10px #cecece;
-
-				li:not(.hiddenCategories) {
-					padding: 9px 11px 8px 11px;
-					font-family: @segoe;
-					font-size: 14px;
-					text-decoration: underline;
-					height: 30px;
-					box-sizing: border-box;
-					cursor: pointer;
-					border-bottom: 1px solid #eaeaea;
-
-					&:first-child {
-						border-radius: 4px 4px 0 0;
-					}
-					&:after {
-						content: " ";
-						background: url('../img/sprite.png') -32px -39px no-repeat;
-						float: right;
-						width: 8px;
-						height: 100%;
-					}
-					&:hover {
-						background: @green;
-						color: #FFF;
-						text-decoration: none;
-					}
-					&:last-child {
-						border-bottom: none;
-						border-radius: 0 0 4px 4px;
-					}
-				}
-
-				li.hiddenCategories {
-					display: none;
-					
-					li:first-child {
-						border-radius: 0;
-					}
-				}
-			}
-
-			.moreBtnHolder{
-				text-align: center;
-
-				.moreBtn {
-					text-align: center;
-					padding: 6px 18px 9px 23px;
-					display: inline-block;
-					background: #72af20;
-					font-family: Segoe UI;
-					font-weight: bold;
-					font-size: 14px;
-					color: #FFF;
-					border-radius: 0 0 5px 5px;
-					cursor: pointer;
-					
-					&:after {
-						content: " ";
-						display: inline-block;
-						width: 10px;
-						height: 7px;
-						background: url('../img/sprite.png') -35px -57px no-repeat;
-						margin-left: 9px;
-					}
-					&.opened:after {
-						transform: rotate(180deg);
-					}
-				}
-			}
-		}
-
-		.service {
-			margin-top: 31px;
-			
-			.leftCol {
-				float: left;
-				width: 50%;
-			}
-			.rightCol {
-				float: right;
-				width: 50%;
-			}
-			.blockContent {
-				padding-top: 28px;
-				text-align: center;
-				
-				.serviceBlock {
-					display: inline-block;
-					width: 147px;
-					height: 77px;
-					margin: 0 3px;
-				}
-				.imgCol {
-					float: left;
-					padding-top: 2px;
-				}
-				.textCol {
-					float: right;
-					width: 108px;
-					margin-left: 5px;
-					text-align: left;
-					
-					.title {
-						font-family: @segoe;
-						font-size: 10px;
-						font-weight: bold;
-						text-transform: uppercase;
-						word-spacing: -1px;
-					}
-					.text {
-						padding-top: 6px;
-						font-family: @segoe;
-						font-size: 10px;
-					}
-				}
-			}
-		}
 	}
 
-	.bottomBlock {
-		margin-top: 17px;
-		  
-		.pagesHolder {
-			background: @darkGreen;
-			li{
-				display: inline;
-				
-				a {
-					display: inline-block;
-					background: @green;
-					font-family: @segoe;
-					font-size: 12px;
-					color: #FFF;
-					padding: 9px 0;
-					text-decoration: none;
-					text-align: center;
-					border-right: 1px solid @darkGreen;
-					box-sizing: border-box;
-					
-					&:hover {
-						background: @darkGreen;
-					}
-					&.delivery{
-						width: 20%;
-					}
-					&.payment{
-						width: 20%;
-					}
-					&.pickupPoints{
-						width: 40%;
-					}
-					&.contacts{
-						width: 20%;
-					}
-				}
-			}
-		}
-
-		.offset {
+	.main {
+		.content {
 			padding: 0 @lrOffset;
-			padding-top: 24px;
-			text-align: center;
+			padding-top: 16px;
 			
-			.bottomText {
-				display: inline-block;
-		
-				.imgCol {
-					float: left;
-				}
-				.textCol {
-					float: right;
-					height: 80px;
-					width: 194px;
-					padding-left: 15px;
-					background: #FAFAFA;
-					border-radius: 3px;
-					text-align: left;
-					
-					.title {
+			.categoriesHolder {
+				margin-top: 7px;
+				
+				.categories {
+					list-style: none;
+					margin-top: 32px;
+					width: 100%;
+					box-sizing: border-box;
+					border-radius: 4px;
+					box-shadow: 0px 0px 10px #cecece;
+
+					li:not(.hiddenCategories) {
+						position: relative;
+						padding: 9px 11px 8px 11px;
 						font-family: @segoe;
 						font-size: 14px;
-						font-weight: bold;
-						text-transform: uppercase;
-						padding-top: 8px;
-						word-spacing: 1px;
+						text-decoration: underline;
+						height: 30px;
+						box-sizing: border-box;
+						cursor: pointer;
+						border-bottom: 1px solid #eaeaea;
+
+						&:first-child {
+							border-radius: 4px 4px 0 0;
+						}
+						&:after {
+							content: " ";
+							position: absolute;
+							right: 13px;
+							top: 11px;
+							width: 5px;
+							height: 5px;
+							border-top:2px solid #cdcdcd;
+							border-right:2px solid #cdcdcd;
+							transform: rotate(45deg);
+						}
+						&:hover {
+							background: @green;
+							color: #FFF;
+							text-decoration: none;
+							
+							&:after {
+								border-color: #fff;
+							}
+						}
+						&:last-child {
+							border-bottom: none;
+							border-radius: 0 0 4px 4px;
+						}
 					}
-					.text {
-						font-family: @segoe;
-						font-size: 12px;
-						padding-top: 6px;
-						line-height: 13px;
+
+					li.hiddenCategories {
+						display: none;
+						
+						li:first-child {
+							border-radius: 0;
+						}
 					}
 				}
-				&.compensation {
-					margin-top: 11px;
-					  
+
+				.moreBtnHolder{
+					text-align: center;
+
+					.moreBtn {
+						text-align: center;
+						padding: 6px 18px 9px 23px;
+						display: inline-block;
+						background: #72af20;
+						font-family: Segoe UI;
+						font-weight: bold;
+						font-size: 14px;
+						color: #FFF;
+						border-radius: 0 0 5px 5px;
+						cursor: pointer;
+						
+						&:after {
+							content: " ";
+							display: inline-block;
+							width: 10px;
+							height: 7px;
+							background: url('../img/sprite.png') -35px -57px no-repeat;
+							margin-left: 9px;
+						}
+						&.opened:after {
+							transform: rotate(180deg);
+						}
+					}
+				}
+			}
+
+			.service {
+				margin-top: 31px;
+				
+				.leftCol {
+					float: left;
+					width: 50%;
+				}
+				.rightCol {
+					float: right;
+					width: 50%;
+				}
+				.blockContent {
+					padding-top: 28px;
+					text-align: center;
+					
+					.serviceBlock {
+						display: inline-block;
+						width: 147px;
+						height: 77px;
+						margin: 0 3px;
+					}
+					.imgCol {
+						float: left;
+						padding-top: 2px;
+					}
 					.textCol {
-						padding-left: 1px;
-						width: 222px;
+						float: right;
+						width: 108px;
+						margin-left: 5px;
+						text-align: left;
+						
+						.title {
+							font-family: @segoe;
+							font-size: 10px;
+							font-weight: bold;
+							text-transform: uppercase;
+							word-spacing: -1px;
+						}
+						.text {
+							padding-top: 6px;
+							font-family: @segoe;
+							font-size: 10px;
+						}
 					}
 				}
 			}
 		}
-	}
 
-	.paymentTypes {
-		margin-top: 19px;
-		margin-bottom: 55px;
-		text-align: center;
-		
-		.paymentHolder {
-			display: inline-block;
+		.bottomBlock {
 			margin-top: 17px;
-			
-			.imgHolder {
-				display: inline-block;
-				
-				img {
-					float: left;
-					margin: 0 11px;
+			  
+			.pagesHolder {
+				background: @darkGreen;
+				li{
+					display: inline;
 					
-					&.visa {
-						margin-top: 7px;
+					a {
+						display: inline-block;
+						background: @green;
+						font-family: @segoe;
+						font-size: 12px;
+						color: #FFF;
+						padding: 9px 0;
+						text-decoration: none;
+						text-align: center;
+						border-right: 1px solid @darkGreen;
+						box-sizing: border-box;
+						
+						&:hover {
+							background: @darkGreen;
+						}
+						&.delivery{
+							width: 20%;
+						}
+						&.payment{
+							width: 20%;
+						}
+						&.pickupPoints{
+							width: 40%;
+						}
+						&.contacts{
+							width: 20%;
+						}
+					}
+				}
+			}
+
+			.offset {
+				padding: 0 @lrOffset;
+				padding-top: 24px;
+				text-align: center;
+				
+				.bottomText {
+					display: inline-block;
+			
+					.imgCol {
+						float: left;
+					}
+					.textCol {
+						float: right;
+						height: 80px;
+						width: 194px;
+						padding-left: 15px;
+						background: #FAFAFA;
+						border-radius: 3px;
+						text-align: left;
+						
+						.title {
+							font-family: @segoe;
+							font-size: 14px;
+							font-weight: bold;
+							text-transform: uppercase;
+							padding-top: 8px;
+							word-spacing: 1px;
+						}
+						.text {
+							font-family: @segoe;
+							font-size: 12px;
+							padding-top: 6px;
+							line-height: 13px;
+						}
+					}
+					&.compensation {
+						margin-top: 11px;
+						  
+						.textCol {
+							padding-left: 1px;
+							width: 222px;
+						}
+					}
+				}
+			}
+		}
+
+		.paymentTypes {
+			margin-top: 19px;
+			margin-bottom: 55px;
+			text-align: center;
+			
+			.paymentHolder {
+				display: inline-block;
+				margin-top: 17px;
+				
+				.imgHolder {
+					display: inline-block;
+					
+					img {
+						float: left;
+						margin: 0 11px;
+						
+						&.visa {
+							margin-top: 7px;
+						}
 					}
 				}
 			}
@@ -616,6 +691,27 @@ body {
 				border-radius: 20px;
 				background: #2F5100;
 			}
+		}
+	}
+}
+
+
+html {
+	&.menuActive {
+		position: relative;
+		overflow: hidden;
+		
+		body {
+			overflow-x: hidden;
+			background-color: #fff;
+			
+			.page {
+				left: 80%;
+			}
+		}
+
+		header .leftCol .menuBtn {
+			background: url('../img/sprite.png') -26px -22px no-repeat;
 		}
 	}
 }
