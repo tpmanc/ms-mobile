@@ -1,0 +1,115 @@
+.breadcrumbs {
+  background: #e0e0e0;
+  width: 100%;
+  font-size: 12px;
+  padding: 16px 30px 16px 30px;
+  box-sizing: border-box;
+}
+.breadcrumbs li {
+  display: inline;
+}
+.breadcrumbs li:not(.mainPage) a {
+  color: #000;
+}
+.breadcrumbs li:not(.mainPage) a:after {
+  content: " ";
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  margin: 0 1px;
+  border-top: 2px solid #000;
+  border-right: 2px solid #000;
+  -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+.breadcrumbs li.mainPage a {
+  position: relative;
+}
+.breadcrumbs li.mainPage a:before {
+  content: " ";
+  position: absolute;
+  top: 3px;
+  left: -25px;
+  display: inline-block;
+  width: 15px;
+  height: 16px;
+  background: url('../img/sprite.png') -6px -163px no-repeat;
+}
+.categories {
+  font-size: 14px;
+  margin-bottom: 26px;
+}
+.categories .title {
+  text-transform: uppercase;
+  font-weight: bold;
+  padding: 16px 4px 20px 4px;
+  border-bottom: 1px solid #e5e5e5;
+}
+.categories .subCategories li {
+  position: relative;
+  border-bottom: 1px solid #e5e5e5;
+}
+.categories .subCategories li:after {
+  content: " ";
+  position: absolute;
+  display: block;
+  right: 6px;
+  top: 43%;
+  width: 5px;
+  height: 5px;
+  border-top: 2px solid #808080;
+  border-right: 2px solid #808080;
+  -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+.categories .subCategories li a {
+  display: block;
+  height: 100%;
+  color: #000;
+  text-decoration: none;
+  padding: 13px 45px 12px 4px;
+  box-sizing: border-box;
+}
+.callBtnHolder {
+  padding: 0 1.5%;
+  margin-bottom: 41px;
+}
+.callBtnHolder .callBtn {
+  display: block;
+  height: 67px;
+  color: #FFF;
+  background: #72af20;
+  border-radius: 6px;
+  border-bottom: 3px solid #487d01;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+}
+.callBtnHolder .callBtn .btnContent {
+  display: inline-block;
+  width: 240px;
+  height: 100%;
+}
+.callBtnHolder .callBtn .btnContent:before {
+  content: " ";
+  display: inline-block;
+  background: url('../img/sprite.png') 0px -94px no-repeat;
+  height: 100%;
+  width: 30px;
+  float: left;
+  padding-right: 25px;
+}
+.callBtnHolder .callBtn .btnContent .phone {
+  font-size: 18px;
+  font-weight: bold;
+  padding-top: 16px;
+  float: left;
+}
+.callBtnHolder .callBtn .btnContent .text {
+  font-size: 12px;
+  padding-top: 3px;
+  word-spacing: -2px;
+  float: left;
+}

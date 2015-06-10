@@ -49,7 +49,8 @@ table {
 @import "fonts.less";
 
 
-@segoe: Segoe UI, PT Sans;
+@segoe: Segoe UI, Arial;
+// @segoe: 'Helvetica Neue', Helvetica, sans-serif;
 @rouble: rouble;
 @orange: #ff7e00;
 @green: #72af20;
@@ -69,6 +70,7 @@ body {
 }
 
 .leftMenu {
+	will-change: transform;
 	display: none;
 	position: fixed;
 	left: 0;
@@ -128,7 +130,7 @@ body {
 				content: " ";
 				position: absolute;
 				display: block;
-				right: 2.75%;
+				right: 8px;
 				top: 17px;
 				width: 5px;
 				height: 5px;
@@ -183,10 +185,13 @@ body {
 }
 
 .page {
+	
 	position: relative;
 	background: #FFF;
 	left: 0%;
 	top: 0%;
+	box-shadow: 6px 0px 40px #ABABAB;
+	will-change: transform;
 	-webkit-transition: @menuAnimProperty @menuAnimTime @menuAnimFunction @menuAnimDelay;
 	-moz-transition: @menuAnimProperty @menuAnimTime @menuAnimFunction @menuAnimDelay;
 	-o-transition: @menuAnimProperty @menuAnimTime @menuAnimFunction @menuAnimDelay;
@@ -394,9 +399,11 @@ body {
 	}
 
 	.main {
+		padding: 16px 0 0 0;
+		font-family: @segoe;
+
 		.content {
 			padding: 0 @lrOffset;
-			padding-top: 16px;
 			
 			.categoriesHolder {
 				margin-top: 7px;
@@ -467,7 +474,7 @@ body {
 						padding: 6px 37px 9px 22px;
 						display: inline-block;
 						background: #72af20;
-						font-family: Segoe UI;
+						font-family: @segoe;
 						font-weight: bold;
 						font-size: 14px;
 						color: #FFF;
@@ -510,9 +517,9 @@ body {
 					
 					.serviceBlock {
 						display: inline-block;
-						width: 147px;
+						width: 150px;
 						height: 77px;
-						margin: 0 3px;
+						// margin: 0 3px;
 					}
 					.imgCol {
 						float: left;
@@ -542,7 +549,7 @@ body {
 		}
 
 		.bottomBlock {
-			margin-top: 17px;
+			margin-top: 4px;
 			  
 			.pagesHolder {
 				background: @darkGreen;
@@ -626,26 +633,26 @@ body {
 				}
 			}
 		}
+	}
 
-		.paymentTypes {
-			margin-top: 19px;
-			margin-bottom: 55px;
-			text-align: center;
+	.paymentTypes {
+		margin-top: 22px;
+		margin-bottom: 57px;
+		text-align: center;
+		
+		.paymentHolder {
+			display: inline-block;
+			margin-top: 17px;
 			
-			.paymentHolder {
+			.imgHolder {
 				display: inline-block;
-				margin-top: 17px;
 				
-				.imgHolder {
-					display: inline-block;
+				img {
+					float: left;
+					margin: 0 11px;
 					
-					img {
-						float: left;
-						margin: 0 11px;
-						
-						&.visa {
-							margin-top: 7px;
-						}
+					&.visa {
+						margin-top: 7px;
 					}
 				}
 			}
@@ -658,7 +665,7 @@ body {
 		background: @darkGreen;
 		
 		.links {
-			padding: 0px 10px 9px 9px;
+			padding: 0px 6px 9px 6px;
 			text-align: center;
 			border-bottom: 1px solid #375f01;
 			
@@ -704,6 +711,8 @@ body {
 			}
 		}
 	}
+
+	@import "category.less";
 }
 
 
@@ -726,3 +735,4 @@ html {
 		}
 	}
 }
+

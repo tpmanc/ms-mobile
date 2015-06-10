@@ -155,6 +155,7 @@ table {
   font-style: normal;
 }
 .leftMenu {
+  will-change: transform;
   display: none;
   position: fixed;
   left: 0;
@@ -172,7 +173,7 @@ table {
 }
 .leftMenu .title {
   position: relative;
-  font-family: Segoe UI, PT Sans;
+  font-family: Segoe UI, Arial;
   font-size: 14px;
   font-weight: bold;
   background: #e5e5e5;
@@ -195,7 +196,7 @@ table {
   height: 40px;
   line-height: 40px;
   background: #FFF;
-  font-family: Segoe UI, PT Sans;
+  font-family: Segoe UI, Arial;
   font-size: 14px;
   box-sizing: border-box;
   padding-left: 5px;
@@ -203,7 +204,7 @@ table {
 }
 .leftMenu li span {
   position: relative;
-  font-family: Segoe UI, PT Sans;
+  font-family: Segoe UI, Arial;
   font-size: 14px;
   display: block;
   cursor: pointer;
@@ -212,7 +213,7 @@ table {
   content: " ";
   position: absolute;
   display: block;
-  right: 2.75%;
+  right: 8px;
   top: 17px;
   width: 5px;
   height: 5px;
@@ -267,6 +268,8 @@ table {
   background: #FFF;
   left: 0%;
   top: 0%;
+  box-shadow: 6px 0px 40px #ABABAB;
+  will-change: transform;
   -webkit-transition: left 0.3s ease-out 0s;
   transition: left 0.3s ease-out 0s;
 }
@@ -277,7 +280,7 @@ table {
   display: inline-block;
   background: #fff;
   padding: 0 2px;
-  font-family: Segoe UI, PT Sans;
+  font-family: Segoe UI, Arial;
   font-size: 14px;
   font-weight: bold;
   text-align: center;
@@ -294,7 +297,7 @@ table {
   background: #ff7e00;
   text-align: center;
   font-size: 12px;
-  font-family: Segoe UI, PT Sans;
+  font-family: Segoe UI, Arial;
   padding: 4px 0 8px 0;
   text-decoration: underline;
   word-spacing: 1px;
@@ -316,7 +319,7 @@ table {
   width: 100%;
   height: 25px;
   background: #72af20;
-  font-family: Segoe UI, PT Sans;
+  font-family: Segoe UI, Arial;
   font-size: 12px;
   box-sizing: border-box;
   padding: 5px 6px 0 5px;
@@ -376,7 +379,7 @@ table {
 .page header .rightCol .price {
   float: left;
   height: 100%;
-  font-family: Segoe UI, PT Sans;
+  font-family: Segoe UI, Arial;
   font-weight: bold;
   font-size: 14px;
   color: #494C51;
@@ -405,7 +408,7 @@ table {
   box-sizing: border-box;
   text-align: center;
   border-radius: 22px;
-  font-family: Segoe UI, PT Sans;
+  font-family: Segoe UI, Arial;
   font-size: 10px;
   background: #f52539;
   color: #FFF;
@@ -441,7 +444,7 @@ table {
   top: 0;
   right: 0;
   float: right;
-  font-family: Segoe UI, PT Sans;
+  font-family: Segoe UI, Arial;
   font-size: 14px;
   font-weight: bold;
   text-transform: uppercase;
@@ -452,9 +455,12 @@ table {
   border-radius: 4px;
   cursor: pointer;
 }
+.page .main {
+  padding: 16px 0 0 0;
+  font-family: Segoe UI, Arial;
+}
 .page .main .content {
   padding: 0 1.5%;
-  padding-top: 16px;
 }
 .page .main .content .categoriesHolder {
   margin-top: 7px;
@@ -470,7 +476,7 @@ table {
 .page .main .content .categoriesHolder .categories li:not(.hiddenCategories) {
   position: relative;
   padding: 9px 11px 8px 11px;
-  font-family: Segoe UI, PT Sans;
+  font-family: Segoe UI, Arial;
   font-size: 14px;
   text-decoration: underline;
   height: 30px;
@@ -521,7 +527,7 @@ table {
   padding: 6px 37px 9px 22px;
   display: inline-block;
   background: #72af20;
-  font-family: Segoe UI;
+  font-family: Segoe UI, Arial;
   font-weight: bold;
   font-size: 14px;
   color: #FFF;
@@ -564,9 +570,8 @@ table {
 }
 .page .main .content .service .blockContent .serviceBlock {
   display: inline-block;
-  width: 147px;
+  width: 150px;
   height: 77px;
-  margin: 0 3px;
 }
 .page .main .content .service .blockContent .imgCol {
   float: left;
@@ -579,7 +584,7 @@ table {
   text-align: left;
 }
 .page .main .content .service .blockContent .textCol .title {
-  font-family: Segoe UI, PT Sans;
+  font-family: Segoe UI, Arial;
   font-size: 10px;
   font-weight: bold;
   text-transform: uppercase;
@@ -587,11 +592,11 @@ table {
 }
 .page .main .content .service .blockContent .textCol .text {
   padding-top: 6px;
-  font-family: Segoe UI, PT Sans;
+  font-family: Segoe UI, Arial;
   font-size: 10px;
 }
 .page .main .bottomBlock {
-  margin-top: 17px;
+  margin-top: 4px;
 }
 .page .main .bottomBlock .pagesHolder {
   background: #5e9e09;
@@ -602,7 +607,7 @@ table {
 .page .main .bottomBlock .pagesHolder li a {
   display: inline-block;
   background: #72af20;
-  font-family: Segoe UI, PT Sans;
+  font-family: Segoe UI, Arial;
   font-size: 12px;
   color: #FFF;
   padding: 9px 0;
@@ -647,7 +652,7 @@ table {
   text-align: left;
 }
 .page .main .bottomBlock .offset .bottomText .textCol .title {
-  font-family: Segoe UI, PT Sans;
+  font-family: Segoe UI, Arial;
   font-size: 14px;
   font-weight: bold;
   text-transform: uppercase;
@@ -655,7 +660,7 @@ table {
   word-spacing: 1px;
 }
 .page .main .bottomBlock .offset .bottomText .textCol .text {
-  font-family: Segoe UI, PT Sans;
+  font-family: Segoe UI, Arial;
   font-size: 12px;
   padding-top: 6px;
   line-height: 13px;
@@ -667,23 +672,23 @@ table {
   padding-left: 1px;
   width: 222px;
 }
-.page .main .paymentTypes {
-  margin-top: 19px;
-  margin-bottom: 55px;
+.page .paymentTypes {
+  margin-top: 22px;
+  margin-bottom: 57px;
   text-align: center;
 }
-.page .main .paymentTypes .paymentHolder {
+.page .paymentTypes .paymentHolder {
   display: inline-block;
   margin-top: 17px;
 }
-.page .main .paymentTypes .paymentHolder .imgHolder {
+.page .paymentTypes .paymentHolder .imgHolder {
   display: inline-block;
 }
-.page .main .paymentTypes .paymentHolder .imgHolder img {
+.page .paymentTypes .paymentHolder .imgHolder img {
   float: left;
   margin: 0 11px;
 }
-.page .main .paymentTypes .paymentHolder .imgHolder img.visa {
+.page .paymentTypes .paymentHolder .imgHolder img.visa {
   margin-top: 7px;
 }
 .page footer {
@@ -692,12 +697,12 @@ table {
   background: #5e9e09;
 }
 .page footer .links {
-  padding: 0px 10px 9px 9px;
+  padding: 0px 6px 9px 6px;
   text-align: center;
   border-bottom: 1px solid #375f01;
 }
 .page footer .links a {
-  font-family: Segoe UI, PT Sans;
+  font-family: Segoe UI, Arial;
   font-size: 12px;
   color: #FFF;
   text-decoration: underline;
@@ -709,7 +714,7 @@ table {
   padding-top: 16px;
   color: #FFF;
   font-size: 12px;
-  font-family: Segoe UI, PT Sans;
+  font-family: Segoe UI, Arial;
   text-align: center;
 }
 .page footer .text .copyright {
@@ -724,7 +729,7 @@ table {
   margin-top: 22px;
 }
 .page footer .fullBtnHolder .fullVersionBottom {
-  font-family: Segoe UI, PT Sans;
+  font-family: Segoe UI, Arial;
   font-size: 12px;
   font-weight: bold;
   color: #FFF;
@@ -732,6 +737,121 @@ table {
   padding: 4px 16px 7px 16px;
   border-radius: 20px;
   background: #2F5100;
+}
+.page .breadcrumbs {
+  background: #e0e0e0;
+  width: 100%;
+  font-size: 12px;
+  padding: 16px 30px 16px 30px;
+  box-sizing: border-box;
+}
+.page .breadcrumbs li {
+  display: inline;
+}
+.page .breadcrumbs li:not(.mainPage) a {
+  color: #000;
+}
+.page .breadcrumbs li:not(.mainPage) a:after {
+  content: " ";
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  margin: 0 1px;
+  border-top: 2px solid #000;
+  border-right: 2px solid #000;
+  -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+.page .breadcrumbs li.mainPage a {
+  position: relative;
+}
+.page .breadcrumbs li.mainPage a:before {
+  content: " ";
+  position: absolute;
+  top: 3px;
+  left: -25px;
+  display: inline-block;
+  width: 15px;
+  height: 16px;
+  background: url('../img/sprite.png') -6px -163px no-repeat;
+}
+.page .categories {
+  font-size: 14px;
+  margin-bottom: 26px;
+}
+.page .categories .title {
+  text-transform: uppercase;
+  font-weight: bold;
+  padding: 16px 4px 20px 4px;
+  border-bottom: 1px solid #e5e5e5;
+}
+.page .categories .subCategories li {
+  position: relative;
+  border-bottom: 1px solid #e5e5e5;
+}
+.page .categories .subCategories li:after {
+  content: " ";
+  position: absolute;
+  display: block;
+  right: 6px;
+  top: 43%;
+  width: 5px;
+  height: 5px;
+  border-top: 2px solid #808080;
+  border-right: 2px solid #808080;
+  -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+.page .categories .subCategories li a {
+  display: block;
+  height: 100%;
+  color: #000;
+  text-decoration: none;
+  padding: 13px 45px 12px 4px;
+  box-sizing: border-box;
+}
+.page .callBtnHolder {
+  padding: 0 1.5%;
+  margin-bottom: 41px;
+}
+.page .callBtnHolder .callBtn {
+  display: block;
+  height: 67px;
+  color: #FFF;
+  background: #72af20;
+  border-radius: 6px;
+  border-bottom: 3px solid #487d01;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+}
+.page .callBtnHolder .callBtn .btnContent {
+  display: inline-block;
+  width: 240px;
+  height: 100%;
+}
+.page .callBtnHolder .callBtn .btnContent:before {
+  content: " ";
+  display: inline-block;
+  background: url('../img/sprite.png') 0px -94px no-repeat;
+  height: 100%;
+  width: 30px;
+  float: left;
+  padding-right: 25px;
+}
+.page .callBtnHolder .callBtn .btnContent .phone {
+  font-size: 18px;
+  font-weight: bold;
+  padding-top: 16px;
+  float: left;
+}
+.page .callBtnHolder .callBtn .btnContent .text {
+  font-size: 12px;
+  padding-top: 3px;
+  word-spacing: -2px;
+  float: left;
 }
 html.menuActive {
   position: relative;
