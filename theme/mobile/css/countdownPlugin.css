@@ -1,0 +1,54 @@
+.countdown .cnt-dwn-d,
+.countdown .cnt-dwn-h,
+.countdown .cnt-dwn-m,
+.countdown .cnt-dwn-s {
+  width: 14px;
+  height: 40px;
+  float: left;
+  text-align: center;
+  line-height: 7px;
+}
+.countdown .cnt-dwn-digit {
+  background: url(../img/countdown.png) 0 0 no-repeat;
+  background-size: cover;
+  width: 22px;
+  height: 22px;
+}
+.countdown .cnt-dwn-d .cnt-dwn-digit span,
+.countdown .cnt-dwn-h .cnt-dwn-digit span,
+.countdown .cnt-dwn-m .cnt-dwn-digit span,
+.countdown .cnt-dwn-s .cnt-dwn-digit span {
+  color: #95999f;
+  font-size: 10px;
+  font-weight: bold;
+  display: block;
+  line-height: 22px;
+}
+.countdown .cnt-dwn-d span,
+.countdown .cnt-dwn-h span,
+.countdown .cnt-dwn-m span,
+.countdown .cnt-dwn-s span {
+  color: #9f9f9f;
+  font-size: 8px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.countdown .cnt-dwn-d span.bottomText,
+.countdown .cnt-dwn-h span.bottomText,
+.countdown .cnt-dwn-m span.bottomText,
+.countdown .cnt-dwn-s span.bottomText {
+  margin-left: -3px;
+}
+.countdown .cnt-dwn-d span.bottomText.days,
+.countdown .cnt-dwn-h span.bottomText.days,
+.countdown .cnt-dwn-m span.bottomText.days,
+.countdown .cnt-dwn-s span.bottomText.days {
+  margin-left: -1px;
+}
+.countdown .cnt-dwn-sep {
+  color: #8a8f96;
+  font-size: 18px;
+  font-weight: bold;
+  float: left;
+  margin: 0px 4px 0 14px;
+}

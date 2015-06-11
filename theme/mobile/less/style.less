@@ -48,22 +48,7 @@ table {
 
 @import "fonts.less";
 
-
-@segoe: Segoe UI, Arial;
-// @segoe: 'Helvetica Neue', Helvetica, sans-serif;
-@rouble: rouble;
-@orange: #ff7e00;
-@green: #72af20;
-@darkGreen: #5e9e09;
-@lrOffset: 1.5%;
-
-@leftMenuGray: #E5E5E5;
-
-@menuAnimTime: 0.3s;
-@menuAnimDelay: 0s;
-@menuAnimProperty: left;
-@menuAnimPropertyMenu: left;
-@menuAnimFunction: ease-out;
+@import "variables.less";
 
 body {
 	// width: 320px;
@@ -240,7 +225,7 @@ body {
 			float: right;
 			width: 18px;
 			height: 18px;
-			background: url('../img/sprite.png') 0 0px no-repeat;
+			background: url(@pathToSprite) 0 0px no-repeat;
 		}
 	}
 
@@ -265,7 +250,7 @@ body {
 				display: inline-block;
 				height: 8px;
 				width: 9px;
-				background: url('../img/sprite.png') -2px -23px no-repeat;
+				background: url(@pathToSprite) -2px -23px no-repeat;
 				cursor: pointer;
 			}
 		}
@@ -295,7 +280,7 @@ body {
 				height: 100%;
 				width: 31px;
 				cursor: pointer;
-				background: url('../img/sprite.png') -26px 10px no-repeat;
+				background: url(@pathToSprite) -26px 10px no-repeat;
 			}
 			.logo {
 				float: left;
@@ -331,7 +316,7 @@ body {
 				float: left;
 				height: 100%;
 				width: 36px;
-				background: url('../img/sprite.png') 0px -65px no-repeat;
+				background: url(@pathToSprite) 0px -65px no-repeat;
 				margin: 0 3px;
 
 				.productCount {
@@ -354,7 +339,7 @@ body {
 				float: right;
 				height: 100%;
 				width: 34px;
-				background: url('../img/sprite.png') 3px -26px no-repeat;
+				background: url(@pathToSprite) 3px -26px no-repeat;
 			}
 		}
 	}
@@ -408,7 +393,7 @@ body {
 			.categoriesHolder {
 				margin-top: 7px;
 				
-				.categories {
+				.categoriesList {
 					list-style: none;
 					margin-top: 32px;
 					width: 100%;
@@ -473,7 +458,7 @@ body {
 						text-align: center;
 						padding: 6px 37px 9px 22px;
 						display: inline-block;
-						background: #72af20;
+						background: @green;
 						font-family: @segoe;
 						font-weight: bold;
 						font-size: 14px;
@@ -712,7 +697,62 @@ body {
 		}
 	}
 
+	.breadcrumbs {
+		background: @breadcrumbsBg;
+		width: 100%;
+		font-size: 12px;
+		padding: 10px 30px 20px 30px;
+		box-sizing: border-box;
+		color: #494c51;
+		
+		li {
+			display: inline;
+
+			&:not(.mainPage){
+				a {
+					line-height: 24px;
+					color: #494c51;
+					
+					&:after {
+						content: " ";
+						display: inline-block;
+						width: 4px;
+						height: 4px;
+						margin: 0 1px;
+						border-top: 2px solid #494c51;
+						border-right: 2px solid #494c51;
+						transform: rotate(45deg);
+					}
+				}
+			}
+
+			&.mainPage {
+				a {
+					position: relative;
+					
+					&:before {
+						content: " ";
+						position: absolute;
+						top: 3px;
+						left: -25px;
+						display: inline-block;
+						width: 15px;
+						height: 16px;
+						background: url(@pathToSprite) -6px -163px no-repeat;
+					}
+				}
+			}
+		}
+	}
+
+	h1.title {
+		text-transform: uppercase;
+		font-weight: bold;
+		padding: 16px 4px 5px 4px;
+	}
+
 	@import "category.less";
+	@import "catalog.less";
 }
 
 
@@ -731,8 +771,9 @@ html {
 		}
 
 		header .leftCol .menuBtn {
-			background: url('../img/sprite.png') -26px -22px no-repeat;
+			background: url(@pathToSprite) -26px -22px no-repeat;
 		}
 	}
 }
 
+@import "countdownPlugin.less";

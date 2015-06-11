@@ -465,7 +465,7 @@ table {
 .page .main .content .categoriesHolder {
   margin-top: 7px;
 }
-.page .main .content .categoriesHolder .categories {
+.page .main .content .categoriesHolder .categoriesList {
   list-style: none;
   margin-top: 32px;
   width: 100%;
@@ -473,7 +473,7 @@ table {
   border-radius: 4px;
   box-shadow: 0px 0px 10px #cecece;
 }
-.page .main .content .categoriesHolder .categories li:not(.hiddenCategories) {
+.page .main .content .categoriesHolder .categoriesList li:not(.hiddenCategories) {
   position: relative;
   padding: 9px 11px 8px 11px;
   font-family: Segoe UI, Arial;
@@ -484,10 +484,10 @@ table {
   cursor: pointer;
   border-bottom: 1px solid #eaeaea;
 }
-.page .main .content .categoriesHolder .categories li:not(.hiddenCategories):first-child {
+.page .main .content .categoriesHolder .categoriesList li:not(.hiddenCategories):first-child {
   border-radius: 4px 4px 0 0;
 }
-.page .main .content .categoriesHolder .categories li:not(.hiddenCategories):after {
+.page .main .content .categoriesHolder .categoriesList li:not(.hiddenCategories):after {
   content: " ";
   position: absolute;
   right: 13px;
@@ -500,22 +500,22 @@ table {
       -ms-transform: rotate(45deg);
           transform: rotate(45deg);
 }
-.page .main .content .categoriesHolder .categories li:not(.hiddenCategories):hover {
+.page .main .content .categoriesHolder .categoriesList li:not(.hiddenCategories):hover {
   background: #72af20;
   color: #FFF;
   text-decoration: none;
 }
-.page .main .content .categoriesHolder .categories li:not(.hiddenCategories):hover:after {
+.page .main .content .categoriesHolder .categoriesList li:not(.hiddenCategories):hover:after {
   border-color: #fff;
 }
-.page .main .content .categoriesHolder .categories li:not(.hiddenCategories):last-child {
+.page .main .content .categoriesHolder .categoriesList li:not(.hiddenCategories):last-child {
   border-bottom: none;
   border-radius: 0 0 4px 4px;
 }
-.page .main .content .categoriesHolder .categories li.hiddenCategories {
+.page .main .content .categoriesHolder .categoriesList li.hiddenCategories {
   display: none;
 }
-.page .main .content .categoriesHolder .categories li.hiddenCategories li:first-child {
+.page .main .content .categoriesHolder .categoriesList li.hiddenCategories li:first-child {
   border-radius: 0;
 }
 .page .main .content .categoriesHolder .moreBtnHolder {
@@ -742,14 +742,16 @@ table {
   background: #e0e0e0;
   width: 100%;
   font-size: 12px;
-  padding: 16px 30px 16px 30px;
+  padding: 10px 30px 20px 30px;
   box-sizing: border-box;
+  color: #494c51;
 }
 .page .breadcrumbs li {
   display: inline;
 }
 .page .breadcrumbs li:not(.mainPage) a {
-  color: #000;
+  line-height: 24px;
+  color: #494c51;
 }
 .page .breadcrumbs li:not(.mainPage) a:after {
   content: " ";
@@ -757,8 +759,8 @@ table {
   width: 4px;
   height: 4px;
   margin: 0 1px;
-  border-top: 2px solid #000;
-  border-right: 2px solid #000;
+  border-top: 2px solid #494c51;
+  border-right: 2px solid #494c51;
   -webkit-transform: rotate(45deg);
       -ms-transform: rotate(45deg);
           transform: rotate(45deg);
@@ -776,14 +778,17 @@ table {
   height: 16px;
   background: url('../img/sprite.png') -6px -163px no-repeat;
 }
+.page h1.title {
+  text-transform: uppercase;
+  font-weight: bold;
+  padding: 16px 4px 5px 4px;
+}
 .page .categories {
   font-size: 14px;
   margin-bottom: 26px;
 }
-.page .categories .title {
-  text-transform: uppercase;
-  font-weight: bold;
-  padding: 16px 4px 20px 4px;
+.page .categories h1.title {
+  padding-bottom: 20px;
   border-bottom: 1px solid #e5e5e5;
 }
 .page .categories .subCategories li {
@@ -853,6 +858,230 @@ table {
   word-spacing: -2px;
   float: left;
 }
+.page .catalog .subCategoriesHoler {
+  padding: 0 5px;
+  margin-top: 4px;
+}
+.page .catalog .subCategoriesHoler .subCategories {
+  border: 1px solid #e1e1e1;
+  border-radius: 5px;
+  padding: 0px 4px 3px 4px;
+}
+.page .catalog .subCategoriesHoler .subCategories li {
+  display: inline;
+  font-size: 12px;
+  margin-right: 2px;
+  line-height: 24px;
+  color: #6E6E6E;
+}
+.page .catalog .subCategoriesHoler .subCategories li.hiddenCategories {
+  display: none;
+}
+.page .catalog .subCategoriesHoler .subCategories li a {
+  color: #6E6E6E;
+}
+.page .catalog .subCategoriesHoler .moreBtnHolder {
+  text-align: center;
+}
+.page .catalog .subCategoriesHoler .moreBtnHolder .moreBtn {
+  position: relative;
+  text-align: center;
+  padding: 6px 37px 9px 22px;
+  display: inline-block;
+  background: #72af20;
+  font-weight: bold;
+  font-size: 14px;
+  color: #FFF;
+  border-radius: 0 0 5px 5px;
+  cursor: pointer;
+}
+.page .catalog .subCategoriesHoler .moreBtnHolder .moreBtn:after {
+  content: " ";
+  position: absolute;
+  display: block;
+  right: 18px;
+  top: 10px;
+  width: 4px;
+  height: 4px;
+  border-bottom: 3px solid #fff;
+  border-right: 3px solid #fff;
+  -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+.page .catalog .subCategoriesHoler .moreBtnHolder .moreBtn.opened:after {
+  -webkit-transform: rotate(225deg);
+      -ms-transform: rotate(225deg);
+          transform: rotate(225deg);
+}
+.page .catalog .sorting {
+  text-align: center;
+  margin-top: 26px;
+}
+.page .catalog .sorting a {
+  font-size: 10px;
+  text-decoration: none;
+  color: #2d3e50;
+  border: 1px solid #bec3c7;
+  border-radius: 10px;
+  margin: 0 0px;
+  padding: 0px 9px 2px 9px;
+}
+.page .catalog .sorting a.active {
+  color: #FFF;
+  background: #72af20;
+  border-color: #72af20;
+}
+.page .catalog .filter {
+  margin-bottom: 21px;
+}
+.page .catalog .filter .openBtn {
+  position: relative;
+  width: 97%;
+  font-size: 14px;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 23px;
+  padding: 8px 0;
+  background: #f1f1f1;
+  color: #636363;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.page .catalog .filter .openBtn:after {
+  content: " ";
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 12px;
+  border-top: 6px solid #636363;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+}
+.page .catalog .listing {
+  border-top: 1px solid #e1e1e1;
+}
+.page .catalog .listing li {
+  display: inline-block;
+  width: 100%;
+  max-height: 200px;
+  padding: 6px 0px 6px 10px;
+  box-sizing: border-box;
+  border-bottom: 1px solid #e1e1e1;
+}
+.page .catalog .listing li .imageCol {
+  float: left;
+  height: 100%;
+  width: 30%;
+  max-width: 120px;
+}
+.page .catalog .listing li .imageCol img {
+  max-width: 100%;
+  max-height: 150px;
+}
+.page .catalog .listing li .textCol {
+  width: 65%;
+  float: left;
+  font-size: 12px;
+  padding: 4px 0px 0px 12px;
+}
+.page .catalog .listing li .textCol .title {
+  margin-bottom: 13px;
+}
+.page .catalog .listing li .textCol .title a {
+  color: #000;
+  font-weight: bold;
+}
+.page .catalog .listing li .textCol .line .rests {
+  position: relative;
+  font-size: 10px;
+  color: #68a01e;
+}
+.page .catalog .listing li .textCol .line .rests:before {
+  content: " ";
+  position: relative;
+  top: 3px;
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  margin-right: 4px;
+  background: url('../img/sprite.png') -27px -163px no-repeat;
+}
+.page .catalog .listing li .textCol .line .delivery {
+  position: relative;
+  font-size: 10px;
+  color: #68a01e;
+}
+.page .catalog .listing li .textCol .line .delivery:before {
+  content: " ";
+  position: relative;
+  top: 4px;
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  margin-right: 8px;
+  margin-left: 15px;
+  background: url('../img/sprite.png') -44px -163px no-repeat;
+}
+.page .catalog .listing li .textCol .line .oldPrice {
+  height: 13px;
+  text-decoration: line-through;
+  margin-top: 8px;
+  color: #c4c4c4;
+}
+.page .catalog .listing li .textCol .line .oldPrice:after {
+  content: "q";
+  font-family: rouble;
+  margin-left: 7px;
+}
+.page .catalog .listing li .textCol .line .priceLine {
+  position: relative;
+}
+.page .catalog .listing li .textCol .line .priceLine .price {
+  font-size: 18px;
+  font-weight: bold;
+  color: #494c51;
+  display: inline-block;
+}
+.page .catalog .listing li .textCol .line .priceLine .price:after {
+  content: "q";
+  font-family: rouble;
+  margin-left: 5px;
+  font-size: 17px;
+}
+.page .catalog .listing li .textCol .line .priceLine .buyBtn {
+  position: relative;
+  background: #72af20;
+  padding: 1px 21px 3px 21px;
+  margin-left: 12px;
+  color: #FFF;
+  font-weight: bold;
+  top: -4px;
+  border-radius: 5px;
+  border-bottom: 2px solid #487d01;
+  cursor: pointer;
+}
+.page .catalog .listing li .textCol .timers {
+  margin-top: 14px;
+}
+.page .catalog .listing li .textCol .timers .timerText {
+  font-size: 12px;
+}
+.page .catalog .listing li .textCol .timers .countdown {
+  margin-left: 3px;
+  margin-top: 4px;
+}
+.page .catalog .moreProducts {
+  width: 45.4%;
+  color: #5C5C5C;
+  font-size: 14px;
+  background: #E3E3E3;
+  margin: 14px auto 0 auto;
+  text-align: center;
+  padding: 8px 0 9px 0;
+  border-radius: 4px;
+  cursor: pointer;
+}
 html.menuActive {
   position: relative;
   overflow: hidden;
@@ -866,4 +1095,58 @@ html.menuActive body .page {
 }
 html.menuActive header .leftCol .menuBtn {
   background: url('../img/sprite.png') -26px -22px no-repeat;
+}
+.countdown .cnt-dwn-d,
+.countdown .cnt-dwn-h,
+.countdown .cnt-dwn-m,
+.countdown .cnt-dwn-s {
+  width: 14px;
+  height: 40px;
+  float: left;
+  text-align: center;
+  line-height: 7px;
+}
+.countdown .cnt-dwn-digit {
+  background: url(../img/countdown.png) 0 0 no-repeat;
+  background-size: cover;
+  width: 22px;
+  height: 22px;
+}
+.countdown .cnt-dwn-d .cnt-dwn-digit span,
+.countdown .cnt-dwn-h .cnt-dwn-digit span,
+.countdown .cnt-dwn-m .cnt-dwn-digit span,
+.countdown .cnt-dwn-s .cnt-dwn-digit span {
+  color: #95999f;
+  font-size: 10px;
+  font-weight: bold;
+  display: block;
+  line-height: 22px;
+}
+.countdown .cnt-dwn-d span,
+.countdown .cnt-dwn-h span,
+.countdown .cnt-dwn-m span,
+.countdown .cnt-dwn-s span {
+  color: #9f9f9f;
+  font-size: 8px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.countdown .cnt-dwn-d span.bottomText,
+.countdown .cnt-dwn-h span.bottomText,
+.countdown .cnt-dwn-m span.bottomText,
+.countdown .cnt-dwn-s span.bottomText {
+  margin-left: -3px;
+}
+.countdown .cnt-dwn-d span.bottomText.days,
+.countdown .cnt-dwn-h span.bottomText.days,
+.countdown .cnt-dwn-m span.bottomText.days,
+.countdown .cnt-dwn-s span.bottomText.days {
+  margin-left: -1px;
+}
+.countdown .cnt-dwn-sep {
+  color: #8a8f96;
+  font-size: 18px;
+  font-weight: bold;
+  float: left;
+  margin: 0px 4px 0 14px;
 }

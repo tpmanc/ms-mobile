@@ -22,15 +22,34 @@ $(function(){
 		$(this).closest('.submenu').removeClass('showSubmenu');
 	});
 
+	// кнопка еще на главной
 	$('#moreCategories').on('click', function(){
 		$this = $(this);
 		if( $this.hasClass('opened') ){
-			$('#categories .hiddenCategories').slideUp(400);
+			$('#categoriesList .hiddenCategories').slideUp(400);
 			$this.removeClass('opened');
 		}else{
-			$('#categories .hiddenCategories').slideDown(400);
+			$('#categoriesList .hiddenCategories').slideDown(400);
 			$this.addClass('opened');
 		}
-		
+	});
+
+	// кнопка еще в листинге
+	$('#moreSub').on('click', function(){
+		$this = $(this);
+		if( $this.hasClass('opened') ){
+			$(this).closest('.subCategoriesHoler').find('.hiddenCategories').slideUp(400);
+			$this.removeClass('opened');
+		}else{
+			$(this).closest('.subCategoriesHoler').find('.hiddenCategories').slideDown(400);
+			$this.addClass('opened');
+		}
+	});
+
+
+	$('#countdown14088').devouCountdown({
+		id: 'countdown14088',
+		end_date: new Date("30 Jun 2015, 23:59:59"), // format 00 Jule 0000, 00:00:00
+		digit_height: '22'
 	});
 });

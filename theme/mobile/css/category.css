@@ -1,49 +1,9 @@
-.breadcrumbs {
-  background: #e0e0e0;
-  width: 100%;
-  font-size: 12px;
-  padding: 16px 30px 16px 30px;
-  box-sizing: border-box;
-}
-.breadcrumbs li {
-  display: inline;
-}
-.breadcrumbs li:not(.mainPage) a {
-  color: #000;
-}
-.breadcrumbs li:not(.mainPage) a:after {
-  content: " ";
-  display: inline-block;
-  width: 4px;
-  height: 4px;
-  margin: 0 1px;
-  border-top: 2px solid #000;
-  border-right: 2px solid #000;
-  -webkit-transform: rotate(45deg);
-      -ms-transform: rotate(45deg);
-          transform: rotate(45deg);
-}
-.breadcrumbs li.mainPage a {
-  position: relative;
-}
-.breadcrumbs li.mainPage a:before {
-  content: " ";
-  position: absolute;
-  top: 3px;
-  left: -25px;
-  display: inline-block;
-  width: 15px;
-  height: 16px;
-  background: url('../img/sprite.png') -6px -163px no-repeat;
-}
 .categories {
   font-size: 14px;
   margin-bottom: 26px;
 }
-.categories .title {
-  text-transform: uppercase;
-  font-weight: bold;
-  padding: 16px 4px 20px 4px;
+.categories h1.title {
+  padding-bottom: 20px;
   border-bottom: 1px solid #e5e5e5;
 }
 .categories .subCategories li {
