@@ -1,0 +1,235 @@
+@import "variables.less";
+
+.indexPage {
+	padding: 0 @lrOffset;
+	
+	.categoriesHolder {
+		margin-top: 7px;
+		
+		.categoriesList {
+			list-style: none;
+			margin-top: 32px;
+			width: 100%;
+			box-sizing: border-box;
+			border-radius: 4px;
+			box-shadow: 0px 0px 10px #cecece;
+
+			li:not(.hiddenCategories) {
+				position: relative;
+				padding: 9px 11px 8px 11px;
+				font-family: @segoe;
+				font-size: 14px;
+				text-decoration: underline;
+				height: 30px;
+				box-sizing: border-box;
+				cursor: pointer;
+				border-bottom: 1px solid #eaeaea;
+
+				&:first-child {
+					border-radius: 4px 4px 0 0;
+				}
+				&:after {
+					content: " ";
+					position: absolute;
+					right: 13px;
+					top: 11px;
+					width: 5px;
+					height: 5px;
+					border-top:2px solid #cdcdcd;
+					border-right:2px solid #cdcdcd;
+					transform: rotate(45deg);
+				}
+				&:hover {
+					background: @green;
+					color: #FFF;
+					text-decoration: none;
+					
+					&:after {
+						border-color: #fff;
+					}
+				}
+				&:last-child {
+					border-bottom: none;
+					border-radius: 0 0 4px 4px;
+				}
+			}
+
+			li.hiddenCategories {
+				display: none;
+				
+				li:first-child {
+					border-radius: 0;
+				}
+			}
+		}
+
+		.moreBtnHolder{
+			text-align: center;
+
+			.moreBtn {
+				position: relative;
+				text-align: center;
+				padding: 6px 37px 9px 22px;
+				display: inline-block;
+				background: @green;
+				font-family: @segoe;
+				font-weight: bold;
+				font-size: 14px;
+				color: #FFF;
+				border-radius: 0 0 5px 5px;
+				cursor: pointer;
+				
+				&:after {
+					content: " ";
+					position: absolute;
+					display: block;
+					right: 18px;
+					top: 10px;
+					width: 4px;
+					height: 4px;
+					border-bottom: 3px solid #fff;
+					border-right: 3px solid #fff;
+					transform: rotate(45deg);							
+				}
+				&.opened:after {
+					transform: rotate(225deg);
+				}
+			}
+		}
+	}
+
+	.service {
+		margin-top: 31px;
+		
+		.leftCol {
+			float: left;
+			width: 50%;
+		}
+		.rightCol {
+			float: right;
+			width: 50%;
+		}
+		.blockContent {
+			padding-top: 28px;
+			text-align: center;
+			
+			.serviceBlock {
+				display: inline-block;
+				width: 150px;
+				height: 77px;
+				// margin: 0 3px;
+			}
+			.imgCol {
+				float: left;
+				padding-top: 2px;
+			}
+			.textCol {
+				float: right;
+				width: 108px;
+				margin-left: 5px;
+				text-align: left;
+				
+				.title {
+					font-family: @segoe;
+					font-size: 10px;
+					font-weight: bold;
+					text-transform: uppercase;
+					word-spacing: -1px;
+				}
+				.text {
+					padding-top: 6px;
+					font-family: @segoe;
+					font-size: 10px;
+				}
+			}
+		}
+	}
+}
+
+// block on index page
+.bottomBlock {
+	margin-top: 4px;
+
+	.pagesHolder {
+		background: @darkGreen;
+
+		li {
+			display: inline;
+			
+			a {
+				display: inline-block;
+				background: @green;
+				font-family: @segoe;
+				font-size: 12px;
+				color: #FFF;
+				padding: 9px 0;
+				text-decoration: none;
+				text-align: center;
+				border-right: 1px solid @darkGreen;
+				box-sizing: border-box;
+				
+				&:hover {
+					background: @darkGreen;
+				}
+				&.delivery{
+					width: 20%;
+				}
+				&.payment{
+					width: 20%;
+				}
+				&.pickupPoints{
+					width: 40%;
+				}
+				&.contacts{
+					width: 20%;
+				}
+			}
+		}
+	}
+
+	.offset {
+		padding: 0 @lrOffset;
+		padding-top: 24px;
+		text-align: center;
+		
+		.bottomText {
+			display: inline-block;
+	
+			.imgCol {
+				float: left;
+			}
+			.textCol {
+				float: right;
+				height: 80px;
+				width: 194px;
+				padding-left: 15px;
+				background: #FAFAFA;
+				border-radius: 3px;
+				text-align: left;
+				
+				.title {
+					font-family: @segoe;
+					font-size: 14px;
+					font-weight: bold;
+					text-transform: uppercase;
+					padding-top: 8px;
+					word-spacing: 1px;
+				}
+				.text {
+					font-family: @segoe;
+					font-size: 12px;
+					padding-top: 6px;
+					line-height: 13px;
+				}
+			}
+			&.compensation {
+				margin-top: 11px;
+				  
+				.textCol {
+					padding-left: 1px;
+					width: 222px;
+				}
+			}
+		}
+	}
+}
