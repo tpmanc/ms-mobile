@@ -1038,6 +1038,7 @@ table {
   position: relative;
 }
 .page .catalog .listing li .textCol .line .priceLine .price {
+  width: 83px;
   font-size: 18px;
   font-weight: bold;
   color: #494c51;
