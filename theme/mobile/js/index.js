@@ -47,9 +47,50 @@ $(function(){
 	});
 
 
-	$('#countdown14088').devouCountdown({
-		id: 'countdown14088',
-		end_date: new Date("30 Jun 2015, 23:59:59"), // format 00 Jule 0000, 00:00:00
-		digit_height: '22'
-	});
+	if ($.fn.devouCountdown != undefined){
+		$('#countdown14088').devouCountdown({
+			id: 'countdown14088',
+			end_date: new Date("30 Jun 2015, 23:59:59"), // format 00 Jule 0000, 00:00:00
+			digit_height: '22'
+		});
+	}
+
+	if ($.fn.slick != undefined){
+		var slider = $('#activePhotoSlider');
+		var sliderNav = $('#previewsSlider');
+		// product cart slider
+		slider.slick({
+			slidesToShow: 1,
+			slidesToScroll: 1,
+			infinite: false,
+			arrows: false,
+			fade: false,
+			// asNavFor: '#previewsSlider'
+		});
+		sliderNav.slick({
+			slidesToShow: 5,
+			slidesToScroll: 5,
+			infinite: false,
+			dots: false,
+			centerMode: false
+		});
+		sliderNav.find('.slick-slide').on('click', function(){
+			var slideNum = $(this).data('slick-index');
+			slider.slick('slickGoTo', slideNum);
+		});
+		// sliderNav.on('beforeChange', function(event, slick, currentSlide, nextSlide){
+			// console.log(nextSlide);
+		// });
+		slider.on('beforeChange', function(event, slick, currentSlide, nextSlide){
+			if (nextSlide % 5 == 0 && currentSlide % 5 == 4) {
+				sliderNav.slick('slickNext');
+			} else if (currentSlide % 5 == 0 && nextSlide % 5 == 4) {
+				sliderNav.slick('slickPrev');
+			} else {
+				sliderNav.slick('slickGoTo', nextSlide);
+			}
+			sliderNav.find('.slick-slide').eq(currentSlide).removeClass('activeSlide');
+			sliderNav.find('.slick-slide').eq(nextSlide).addClass('activeSlide');
+		});
+	}
 });

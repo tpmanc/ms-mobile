@@ -195,16 +195,48 @@ body {
 			float: left;
 			font-size: 12px;
 			color: #D3FF98;
+			overflow: hidden;
 			
-			.cityName {
-				color: #FFF;
-			}
-			.selectBtn {
+			.selectHolder {
+				position: relative;
 				display: inline-block;
-				height: 8px;
-				width: 9px;
-				background: url(@pathToSprite) -2px -23px no-repeat;
-				cursor: pointer;
+				width: 75px;
+
+				.citySelect {
+					-webkit-align-items: center;
+    -webkit-appearance: menulist-button;
+    -webkit-rtl-ordering: logical;
+    -webkit-writing-mode: horizontal-tb;
+    background-color: rgb(255, 255, 255);
+    border-radius: 0px;
+    border: 0px solid rgb(204, 204, 204);
+    border-image-outset: 0px;
+    border-image-repeat: stretch;
+    border-image-slice: 100%;
+    border-image-source: none;
+    border-image-width: 0;
+    box-sizing: border-box;
+					font-size: 12px;
+					width: 90px;
+					color: #FFF;
+					border: none;
+					background: @green;
+					outline-style: none;
+					
+					option {
+						background: @green;
+					}
+				}
+				.selectBtn {
+					position: absolute;
+					top: 4px;
+					right: 0;
+					display: inline-block;
+					height: 8px;
+					width: 9px;
+					background: url(@pathToSprite) -2px -23px no-repeat;
+					cursor: pointer;
+				}
 			}
 		}
 		.phone {
@@ -343,6 +375,9 @@ body {
 		@import "index-page.less";
 		@import "category.less";
 		@import "catalog.less";
+		@import "productCart.less";
+		@import "deliveryWidget.less";
+		@import "callBtn.less";
 
 		
 	}
@@ -383,6 +418,7 @@ body {
 		
 		li {
 			display: inline;
+			font-size: 12px;
 
 			&:not(.mainPage){
 				a {
@@ -450,3 +486,5 @@ html {
 }
 
 @import "countdownPlugin.less";
+@import "slick.less";
+@import "slick-theme.less";

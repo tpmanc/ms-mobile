@@ -1,0 +1,46 @@
+.callBtnHolder {
+	padding: 0 1.5%;
+	margin-bottom: 41px;
+	
+	.callBtn {
+		display: block;
+		height: 67px;
+		color: #FFF;
+		background: @green;
+		border-radius: 6px;
+		border-bottom: 3px solid @buttonColorBorder;
+		cursor: pointer;
+		text-decoration: none;
+		text-align: center;
+		
+		
+		.btnContent {
+			display: inline-block;
+			width: 240px;
+			height: 100%;
+
+			&:before {
+				content: " ";
+				display: inline-block;
+				background: url(@pathToSprite) 0px -94px no-repeat;
+				height: 100%;
+				width: 30px;
+				float: left;
+				padding-right: 25px;
+			}
+			.phone {
+				font-size: 18px;
+				font-weight: bold;
+				padding-top: 16px;
+				float: left;
+			}
+
+			.text {
+				font-size: 12px;
+				padding-top: 3px;
+				word-spacing: -2px;
+				float: left;
+			}
+		}
+	}
+}

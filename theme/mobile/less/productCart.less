@@ -1,0 +1,223 @@
+.productCart {
+	.topInfo {
+		.art {
+			margin-left: 4px;
+			margin-top: -1px;
+			color: @cartLightGray;
+			font-size: 12px;
+			float: left;
+		}
+		.rests {
+			float: right;
+			font-size: 10px;
+			color: @catalogGreenText;
+			position: relative;
+			top: -7px;
+			margin-right: 6px;
+			
+			&:before {
+				content: " ";
+				position: relative;
+				top: 3px;
+				display: inline-block;
+				width: 15px;
+				height: 15px;
+				margin-right: 4px;
+				background: url(@pathToSprite) -27px -163px no-repeat;
+			}
+		}
+		.delivery {
+			float: right;
+			font-size: 10px;
+			color: @catalogGreenText;
+			position: relative;
+			top: -7px;
+			margin-right: 6px;
+
+			&:before {
+				content: " ";
+				position: relative;
+				top: 4px;
+				display: inline-block;
+				width: 15px;
+				height: 15px;
+				margin-right: 8px;
+				margin-left: 15px;
+				background: url(@pathToSprite) -44px -163px no-repeat;
+			}
+		}
+	}
+
+	.images {
+		height: 228px;
+		text-align: center;
+		
+		.activePhotoSlider {
+			width: 42%;
+			height: 175px;
+			line-height: 175px;
+			margin: 0 auto;
+			margin-top: 9px;
+			
+			.slick-list {
+				height: 100%;
+				
+				.slick-track {
+					height: 100%;
+				}
+			}
+
+			img {
+				max-height: 100%;
+				max-width: 100%;
+				display: inline;
+				vertical-align: middle;
+			}
+		}
+
+		.previewsSlider {
+			width: 219px;
+			height: 50px;
+			margin: 0 auto;
+			margin-top: 3px;
+			
+			.slick-slide {
+				height: 40px;
+				width: 40px!important;
+				border: 1px solid @cartPreveiwBorder;
+				border-radius: 4px;
+				margin: 0 2px;
+				box-sizing: border-box;
+				
+				&.activeSlide {
+					border: 1px solid @green;
+				}
+			}
+			
+			img {
+				width: 100%;
+				height: 100%;
+			}
+		}
+	}
+
+	.buyInfo {
+		display: inline-block;
+		width: 100%;
+		margin-top: 12px;
+		padding-top: 21px;
+		border-top: 1px solid @catalogBorderColor;
+
+		.leftCol {
+			float: left;
+		}
+		.rightCol {
+			float: right;
+			padding-right: 3px;
+		}
+
+		.priceHolder {
+			font-size: 14px;
+			color: @cartPriceColor;
+			padding-left: 4px;
+			
+			.price {
+				font-size: 24px;
+				font-weight: bold;
+				
+				&:after {
+					content: "q";
+					padding-left: 5px;
+					font-family: rouble;
+				}
+			}
+		}
+
+		.credit {
+			width: 116px;
+			font-size: 10px;
+			font-weight: 400;
+			color: #2D3E50;
+			margin-top: 2px;
+			padding-left: 23px;
+			background: url(@pathToSprite) -2px -308px no-repeat;
+			
+			span {
+				text-decoration: underline;
+				font-weight: bold;
+			}
+		}
+
+		.return {
+			width: 90px;
+			font-size: 10px;
+			font-weight: 400;
+			color: #888b90;
+			margin-left: 3px;
+			margin-top: 21px;
+			padding-left: 23px;
+			background: url(@pathToSprite) -2px -363px no-repeat;
+			
+			span {
+				text-decoration: underline;
+				font-weight: bold;
+			}
+		}
+
+		.compensaion {
+			width: 100px;
+			height: 24px;
+			font-size: 10px;
+			font-weight: 400;
+			color: #f39c11;
+			margin-top: 25px;
+			padding-left: 23px;
+			background: url(@pathToSprite) -2px -336px no-repeat;
+			
+			span {
+				text-decoration: underline;
+				font-weight: bold;
+			}
+		}
+	}
+
+	.buyBtnHolder {
+		padding: 0 1.5%;
+		margin-top: 35px;
+		
+		.buyBtn {
+			display: block;
+			height: 30px;
+			line-height: 30px;
+			color: #FFF;
+			font-size: 14px;
+			font-weight: bold;
+			text-transform: uppercase;
+			text-align: center;
+			background: @green;
+			border-bottom: 3px solid @buttonColorBorder;
+			border-radius: 6px;
+			cursor: pointer;
+		}
+	}
+
+	.fastBuyBtnHolder {
+		padding: 0 1.5%;
+		margin-top: 7px;
+		
+		.fastBuyBtn {
+			display: block;
+			height: 30px;
+			line-height: 30px;
+			color: #FFF;
+			font-size: 14px;
+			font-weight: bold;
+			text-transform: uppercase;
+			text-align: center;
+			background: @orange;
+			border-bottom: 3px solid @buttonOrangeColorBorder;
+			border-radius: 6px;
+			cursor: pointer;
+		}
+	}
+}

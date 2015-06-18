@@ -1,0 +1,81 @@
+.deliveryWidget {
+	margin-top: 31px;
+	padding: 11px 5px 14px 5px;
+	color: @catalogGrayText;
+	font-size: 11px;
+	font-weight: bold;
+	border-top: 1px solid @catalogBorderColor;
+	border-bottom: 1px solid @catalogBorderColor;
+	
+	.city {
+		color: #000;
+		font-size: 13px;
+		font-weight: normal;
+		word-spacing: 3px;
+
+		.cityName {
+			text-decoration: underline;
+			color: @catalogGreenText;
+			cursor: pointer;
+		}
+	}
+
+	.deliveryPrice {
+		margin-top: 18px;
+		padding-left: 45px;
+		word-spacing: 2px;
+		line-height: 25px;
+		height: 25px;
+		background: url(@pathToSprite) -1px -197px no-repeat;
+	}
+
+	.pickupPoints {
+		height: 30px;
+		margin-top: 23px;
+		padding-left: 45px;
+		word-spacing: 2px;
+		line-height: 14px;
+		background: url(@pathToSprite) 4px -235px no-repeat;
+		
+		.price {
+			display: inline-block;
+			width: 140px;
+			height: 100%;
+		}
+
+		.showPointsBtn {
+			display: inline-block;
+			vertical-align: top;
+			background: #72af20;
+			color: #FFF;
+			font-weight: normal;
+			font-size: 10px;
+			margin-top: 7px;
+			margin-left: 9px;
+			padding: 1px 17px 3px 18px;
+			border-radius: 10px;
+			cursor: pointer;
+		}
+	}
+
+	.deliveryTime {
+		margin-top: 22px;
+		padding-left: 45px;
+		word-spacing: 2px;
+		line-height: 25px;
+		height: 25px;
+		background: url(@pathToSprite) 4px -274px no-repeat;
+	}
+
+	.blackText {
+		color: @catalogPriceColor;
+	}
+
+	.deliveryNote {
+		font-weight: normal;
+		margin-top: 12px;
+		line-height: 13px;
+		padding-left: 7px;
+		word-spacing: 2px;
+	}
+}
