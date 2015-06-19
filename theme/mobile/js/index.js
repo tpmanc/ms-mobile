@@ -93,4 +93,13 @@ $(function(){
 			sliderNav.find('.slick-slide').eq(nextSlide).addClass('activeSlide');
 		});
 	}
+
+	// табы в карточке товара
+	var tabs = $('#tabs');
+	tabs.find('.tabsNav li').on('click', function(){
+		tabs.find('.tabsNav li').removeClass('active');
+		$(this).addClass('active');
+		tabs.find('.tabsContent > div').removeClass('active');
+		tabs.find('.tabsContent > div').eq($(this).index()).addClass('active');
+	});
 });

@@ -192,30 +192,21 @@ body {
 		padding: 5px 6px 0 5px;
 		
 		.yourCity {
+			width: 138px;
 			float: left;
 			font-size: 12px;
 			color: #D3FF98;
 			overflow: hidden;
 			
 			.selectHolder {
-				position: relative;
+				position: absolute;
 				display: inline-block;
 				width: 75px;
 
 				.citySelect {
-					-webkit-align-items: center;
-    -webkit-appearance: menulist-button;
-    -webkit-rtl-ordering: logical;
-    -webkit-writing-mode: horizontal-tb;
-    background-color: rgb(255, 255, 255);
-    border-radius: 0px;
-    border: 0px solid rgb(204, 204, 204);
-    border-image-outset: 0px;
-    border-image-repeat: stretch;
-    border-image-slice: 100%;
-    border-image-source: none;
-    border-image-width: 0;
-    box-sizing: border-box;
+					-webkit-appearance: none;
+					   -moz-appearance: none;
+					        appearance: none;
 					font-size: 12px;
 					width: 90px;
 					color: #FFF;
@@ -378,6 +369,8 @@ body {
 		@import "productCart.less";
 		@import "deliveryWidget.less";
 		@import "callBtn.less";
+		@import "listing.less";
+		@import "moreProductsBtn.less";
 
 		
 	}
