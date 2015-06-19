@@ -82,8 +82,8 @@
 
 			<div class="productCart">
 				<div class="nearProducts">
-					<a href="#" class="prevProduct">Предыдущий товар</a>
-					<a href="#" class="nextProduct">Следующий товар</a>
+					<a href="" class="prevProduct" id="prevProduct">Предыдущий товар</a>
+					<a href="" class="nextProduct" id="nextProduct">Следующий товар</a>
 					<div class="clearfix"></div>
 				</div>
 
@@ -96,7 +96,7 @@
 				</div>
 				<div class="clearfix"></div>
 
-				<div class="images">
+				<div class="images noSwipe">
 					<div class="activePhotoSlider" id="activePhotoSlider">
 						<div><img src="images/product1.jpg" alt=""></div>
 						<div><img src="images/product2.jpg" alt=""></div>
@@ -181,7 +181,30 @@
 						<div class="tabsContent">
 							<div class="active">tab 1</div>
 							<div>tab 2</div>
-							<div>tab 3</div>
+							<div>
+								<div class="feedbacks">
+									<div class="feedback">
+										<div class="name">Надежда</div>
+										<div class="comment">
+											ЛДМт ш цут цушт д уоат цудм ыва ук цутдли ыва дукт мшо цу тцуатд
+										</div>
+									</div>
+									<div class="feedback">
+										<div class="name">Надежда</div>
+										<div class="comment">
+											ЛДМт ш цут цушт д уоат цудм ыва ук цутдли ыва дукт мшо цу тцуатд
+										</div>
+									</div>
+									<div class="newFeedback">
+										<div class="backBtn" id="closeNewFeedback">Вернуться к отзывам</div>
+										<input type="text" placeholder="Ваше имя:">
+										<input type="text" placeholder="Ваше email:">
+										<textarea placeholder="Выш отзыв:"></textarea>
+									</div>
+
+									<div class="newFeedbackBtn" id="newFeedbackBtn">Оставить отзыв</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -378,6 +401,7 @@
 	<script type="text/javascript" src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 	<script src="theme/mobile/js/devou-countdown.js"></script>
 	<script src="theme/mobile/js/slick.min.js"></script>
+	<script src="theme/mobile/js/jquery.touchSwipe.min.js"></script>
 	<script src="theme/mobile/js/index.js"></script>
 </body>
 </html>
