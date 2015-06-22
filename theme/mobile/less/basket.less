@@ -1,0 +1,249 @@
+.basket {
+	font-family: @segoe;
+	
+	.productList {
+		border-top: 1px solid @catalogBorderColor;
+		margin-top: 11px;
+		margin-bottom: 25px;
+		
+		.elem {
+			display: table;
+			width: 100%;
+			padding: 10px 10px 10px 9px;
+			border-bottom: 1px solid @catalogBorderColor;
+			box-sizing: border-box;
+			
+			.imgCol {
+				float: left;
+				width: 59px;
+				height: 59px;
+				line-height: 59px;
+				margin-top: 3px;
+				padding: 3px;
+				border: 1px solid @cartPreveiwBorder;
+				border-radius: 4px;
+				text-align: center;
+				box-sizing: border-box;
+				
+				img {
+					max-height: 100%;
+					max-width: 100%;
+				}
+			}
+			.textCol {
+				width: auto;
+				margin-left: 69px;
+				
+				.title {
+					line-height: 14px;
+					padding-right: 15px;
+					font-size: 12px;
+					font-weight: bold;
+					text-decoration: underline;
+				}
+				.countHolder {
+					margin-top: 9px;
+					
+					.countBtn {
+						display: inline-block;
+						position: relative;
+						background: @green;
+						width: 30px;
+						height: 30px;
+						width: 18px;
+						height: 18px;
+						border-radius: 3px;
+						color: #FFF;
+						vertical-align: top;
+						cursor: pointer;
+					}
+					.lessBtn {
+						.minus {
+							display: inline-block;
+							width: 12px;
+							height: 5px;
+							border-top: 2px solid;
+							margin-top: 8px;
+							margin-left: 3px;
+						}
+					}
+					.count {
+						position: relative;
+						vertical-align: top;
+						left: 3px;
+						width: 30px;
+						height: 18px;
+						margin-right: 5px;
+						padding: 1px 0;
+						border: 1px solid @cartPreveiwBorder;
+						border-radius: 3px;
+						font-size: 14px;
+						font-weight: bold;
+						text-align: center;
+						box-sizing: border-box;
+					}
+					.moreBtn {
+						.plusHor {
+							display: inline-block;
+							width: 12px;
+							height: 5px;
+							border-top: 2px solid;
+							margin-top: 8px;
+							margin-left: 3px;
+						}
+						.plusVer {
+							width: 4px;
+							height: 12px;
+							border-left: 2px solid;
+							margin-top: 8px;
+							margin-left: 3px;
+							position: absolute;
+							top: -5px;
+							left: 5px;
+						}
+					}
+				}
+				.bottomLine {
+					margin-top: 8px;
+					
+					.price {
+						float: left;
+						width: 120px;
+						color: @catalogPriceColor;
+						font-size: 18px;
+						font-weight: bold;
+						
+						&:after {
+							content: "q";
+							font-family: @rouble;
+							margin-left: 5px;
+						}
+					}
+					.deleteBtn {
+						position: relative;
+						float: right;
+						color: #B6B6B6;
+						font-size: 12px;
+						padding: 2px 0 2px 15px;
+						margin-right: -6px;
+						cursor: pointer;
+						
+						&:before {
+							content: " ";
+							position: absolute;
+							left: 0px;
+							top: 8px;
+							display: inline-block;
+							height: 2px;
+							border-radius: 3px;
+							width: 11px;
+							background: #b7b7b7;
+							transform: rotate(45deg);
+						}
+						&:after {
+							content: " ";
+							position: absolute;
+							left: 0px;
+							top: 8px;
+							display: inline-block;
+							height: 2px;
+							border-radius: 3px;
+							width: 11px;
+							background: #b7b7b7;
+							transform: rotate(-45deg);
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.summary {
+		display: table;
+		width: 100%;
+		margin-bottom: 25px;
+		padding: 0 1.5%;
+		box-shadow: 0px 0px 10px #C2C2C2;
+		box-sizing: border-box;
+		font-weight: bold;
+		font-size: 14px;
+			
+		.row {
+			display: table-row;
+			
+			.title {
+				display: table-cell;
+				width: 60%;
+				border-bottom: 1px solid @catalogBorderColor;
+				padding: 11px 0px 12px 0;
+				text-align: left;
+			}
+			.value {
+				display: table-cell;
+				width: 40%;
+				border-bottom: 1px solid @catalogBorderColor;
+				padding: 11px 0px 12px 0;
+				text-align: right;
+			}
+			.greenText {
+				color: @green;
+			}
+			.redText {
+				color: @basketRedText;
+			}
+			.price {
+				&:after {
+					content: "q";
+					font-family: @rouble;
+					margin-left: 5px;
+				}
+				&.result {
+					font-size: 24px;
+				}
+			}
+			.result {
+				border: none;
+			}
+		}
+	}
+
+	.buyBtnHolder {
+		padding: 0 1.5%;
+		
+		.buyBtn {
+			display: block;
+			height: 30px;
+			line-height: 30px;
+			color: #FFF;
+			font-size: 14px;
+			font-weight: bold;
+			text-transform: uppercase;
+			text-align: center;
+			background: @green;
+			border-bottom: 3px solid @buttonColorBorder;
+			border-radius: 6px;
+			cursor: pointer;
+		}
+	}
+
+	.fastBuyBtnHolder {
+		padding: 0 1.5%;
+		margin-top: 7px;
+		margin-bottom: 36px;
+		
+		.fastBuyBtn {
+			display: block;
+			height: 30px;
+			line-height: 30px;
+			color: #FFF;
+			font-size: 14px;
+			font-weight: bold;
+			text-transform: uppercase;
+			text-align: center;
+			background: @orange;
+			border-bottom: 3px solid @buttonOrangeColorBorder;
+			border-radius: 6px;
+			cursor: pointer;
+		}
+	}
+}

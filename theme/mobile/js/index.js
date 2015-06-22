@@ -1,4 +1,5 @@
 $(function(){
+	var debug = true;
 	var html = $('html');
 	var body = $('body');
 	var page = $('#page');
@@ -26,7 +27,7 @@ $(function(){
 
 	// --- кнопка наверх ---
 	$(document).on('scroll', function(){
-		if (body.scrollTop() > 500) {
+		if (body.scrollTop() > 580) {
 			backToTopBtn.show();
 		} else {
 			backToTopBtn.hide();
@@ -65,9 +66,9 @@ $(function(){
 
 
 	// --- таймер обратного отсчета для акции ---
-	if ($.fn.devouCountdown != undefined){
-		$('#countdown14088').devouCountdown({
-			id: 'countdown14088',
+	if ($.fn.devouCoundivown != undefined){
+		$('#coundivown14088').devouCoundivown({
+			id: 'coundivown14088',
 			end_date: new Date("30 Jun 2015, 23:59:59"), // format 00 Jule 0000, 00:00:00
 			digit_height: '22'
 		});
@@ -123,7 +124,7 @@ $(function(){
 	// --- /табы в карточке товара ---
 
 	// --- тач ивенты ---
-	if ($.fn.swipe != undefined) {
+	if ($.fn.swipe != undefined && !debug) {
 		// --- левое меню ---
 		body.swipe({
 			allowPageScroll:"vertical",
@@ -198,4 +199,28 @@ $(function(){
 		form.find('input').eq(1).addClass('error');
 	});
 	// --- кнопка "Отправить отзыв" при добавлении отзыва ---
+
+	// --- изменение количества в корзине ---
+	$('.moreBtn').on('click', function(){
+		var input = $(this).closest('.countHolder').find('.count');
+		var val = parseInt(input.val());
+		val++;
+		input.val(val);
+	});
+
+	$('.lessBtn').on('click', function(){
+		var input = $(this).closest('.countHolder').find('.count');
+		var val = parseInt(input.val());
+		if (--val == 0) {
+			val = 1;
+		}
+		input.val(val);
+	});
+	// --- /изменение количества в корзине ---
+
+	$('.deleteBtn').on('click', function(){
+		if (confirm("Удалить товар?")) {
+			$(this).closest('.elem').remove();
+		}
+	});
 });
