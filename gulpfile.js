@@ -16,5 +16,5 @@ gulp.task('less', function() {
 
 gulp.task('watch', function() {
 	livereload.listen();
-	gulp.watch('theme/mobile/less/*.less', ['less']);
+	gulp.watch(['theme/mobile/less/*.less','theme/mobile/less/*/*.less'], ['less']);
 });

@@ -4,7 +4,8 @@
 @import "variables.less";
 
 body {
-	width: 320px;
+	// width: 320px;
+	position: relative;
 }
 
 .leftMenu {
@@ -307,7 +308,7 @@ body {
 					border-radius: 22px;
 					font-family: @segoe;
 					font-size: 10px;
-					background: #f52539;
+					background: @red;
 					color: #FFF;
 				}
 			}
@@ -363,14 +364,14 @@ body {
 		padding: 16px 0 0 0;
 		font-family: @segoe;
 
-		@import "index-page.less";
-		@import "category.less";
-		@import "catalog.less";
-		@import "productCart.less";
-		@import "deliveryWidget.less";
-		@import "callBtn.less";
-		@import "listing.less";
-		@import "moreProductsBtn.less";
+		@import "./index-page.less";
+		@import "./category.less";
+		@import "./catalog.less";
+		@import "./productCart.less";
+		@import "./deliveryWidget.less";
+		@import "./components/callBtn.less";
+		@import "./listing.less";
+		@import "./components/moreProductsBtn.less";
 
 		
 	}
@@ -399,7 +400,7 @@ body {
 		}
 	}
 
-	@import "footer.less";
+	@import "./footer.less";
 
 	.breadcrumbs {
 		background: @breadcrumbsBg;
@@ -478,6 +479,7 @@ html {
 	}
 }
 
-@import "countdownPlugin.less";
-@import "slick.less";
-@import "slick-theme.less";
+@import "./plugins/countdownPlugin.less";
+@import "./plugins/slick.less";
+@import "./plugins/slick-theme.less";
+@import "./components/backToTopBtn.less";
