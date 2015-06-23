@@ -1,5 +1,5 @@
 $(function(){
-	var debug = true;
+	var debug = false;
 	var html = $('html');
 	var body = $('body');
 	var page = $('#page');
