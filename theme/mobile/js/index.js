@@ -135,6 +135,7 @@ $(function(){
 					menuBtn.click();
 				}
 			},
+			excludedElements: "button, input, select, textarea, .noSwipe, #mapHolder",
 			swipeStatus:function(event, phase) {},
 			threshold: 100
 		});
