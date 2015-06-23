@@ -4,7 +4,7 @@
 @import "variables.less";
 
 body {
-	// width: 320px;
+	width: @pageWidth;
 	position: relative;
 }
 
@@ -126,7 +126,6 @@ body {
 }
 
 .page {
-	
 	position: relative;
 	background: #FFF;
 	left: 0%;
@@ -139,6 +138,7 @@ body {
 	transition: @menuAnimProperty @menuAnimTime @menuAnimFunction @menuAnimDelay;
 		
 	.blockTitle {
+		color: #494C51;
 		text-align: center;
 		
 		.text {
@@ -339,7 +339,7 @@ body {
 				box-sizing: border-box;
 				padding: 1px 74px 1px 7px;
 				word-spacing: 2px;
-				border: 1px solid #cecdcd;
+				border: 1px solid @inputBorderColor;
 				border-radius: 4px;
 			}
 			.searchBtn {

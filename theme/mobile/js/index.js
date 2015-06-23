@@ -231,4 +231,15 @@ $(function(){
 		$('input[type="tel"]').mask("+9 (999)999-99-99");
 	}
 	// --- /маска инпуту для телефона ---
+
+	// --- яндекс карты в пунктах самовывоза ---
+	ymaps.ready(init);
+	var myMap;
+	function init() {
+		myMap = new ymaps.Map("mapHolder", {
+			center: [55.76, 37.64],
+			zoom: 7
+		});
+	}
+	// --- /яндекс карты в пунктах самовывоза ---
 });

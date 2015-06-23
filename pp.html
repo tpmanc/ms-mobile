@@ -77,9 +77,59 @@
 
 			<div class="pickupPoints">
 
-				<h1 class="title">Доставка товара</h1>
+				<h1 class="title">Пункты самовывоза</h1>
 
-				
+				<h3 class="green">Выберите свой город</h3>
+				<div class="selectHolder">
+					<select name="" id="">
+						<option value="1">Москва</option>
+						<option value="2">Питер</option>
+						<option value="3">Крым</option>
+					</select>
+					<div class="arrow"></div>
+				</div>
+
+				<h3 class="green">Выберите станцию метро</h3>
+				<div class="selectHolder">
+					<select name="" id="">
+						<option value="1">Москва</option>
+						<option value="2">Питер</option>
+						<option value="3">Крым</option>
+					</select>
+					<div class="arrow"></div>
+				</div>
+
+				<ul class="pickupPointsList">
+					<li>Санкт-Петербург, Богатырский пр-кт, д.13 (901044)(метро Комедиантский Проспект)</li>
+					<li>Санкт-Петербург, Богатырский пр-кт, д.13 (901044)(метро Комедиантский Проспект)</li>
+				</ul>
+
+				<div class="mapHolder" id="mapHolder"></div>
+
+				<div class="paymentTypes">
+					<div class="blockTitle">
+						<div class="text">Принимаем к оплате</div>
+						<div class="dottedLine"></div>
+					</div>
+
+					<div class="paymentHolder">
+						<div class="imgHolder">
+							<img src="theme/mobile/img/index/mastercart.jpg" alt="" />
+							<img src="theme/mobile/img/index/visa.jpg" alt="" class="visa" />
+							<img src="theme/mobile/img/index/yandex-money.jpg" alt="" />
+							<img src="theme/mobile/img/index/sberbank.jpg" alt="" />
+						</div>
+					</div>
+			</div>
+
+				<div class="callBtnHolder">
+					<a href="tel:8-800-555-62-50" class="callBtn">
+						<span class="btnContent">
+							<span class="phone">8(800)555-62-50</span>
+							<span class="text">Звонок по России бесплатный</span>
+						</span>
+					</a>
+				</div>
 
 			</div>
 
@@ -118,6 +168,7 @@
 	<script src="theme/mobile/js/slick.min.js"></script>
 	<script src="theme/mobile/js/jquery.touchSwipe.min.js"></script>
 	<script src="theme/mobile/js/jquery.maskedinput.min.js"></script>
+	<script src="http://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
 	<script src="theme/mobile/js/index.js"></script>
 </body>
 </html>
