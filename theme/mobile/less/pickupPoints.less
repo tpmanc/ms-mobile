@@ -31,13 +31,23 @@
 		box-sizing: border-box;
 		
 		li {
+			display: table;
+			width: 100%;
 			color: #444;
 			font-size: 12px;
 			line-height: 18px;
+			min-height: 52px;
 			font-weight: bold;
 			padding: 5px 47px 5px @lrOffset;
 			border-bottom: 1px solid @catalogBorderColor;
 			background: url(@pathToSprite) 100% -223px no-repeat;
+			box-sizing: border-box;
+			
+			span {
+				display: table-cell;
+				width: 100%;
+				vertical-align: middle;
+			}
 		}
 	}
 
