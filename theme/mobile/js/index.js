@@ -238,8 +238,10 @@ $(function(){
 	function init() {
 		myMap = new ymaps.Map("mapHolder", {
 			center: [55.76, 37.64],
-			zoom: 7
+			zoom: 7,
+			controls: ['smallMapDefaultSet']
 		});
+		myMap.behaviors.disable('scrollZoom');
 	}
 	// --- /яндекс карты в пунктах самовывоза ---
 });
