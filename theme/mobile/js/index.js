@@ -66,9 +66,9 @@ $(function(){
 
 
 	// --- таймер обратного отсчета для акции ---
-	if ($.fn.devouCoundivown != undefined){
-		$('#coundivown14088').devouCoundivown({
-			id: 'coundivown14088',
+	if ($.fn.devouCountdown != undefined){
+		$('#countdown14088').devouCountdown({
+			id: 'countdown14088',
 			end_date: new Date("30 Jun 2015, 23:59:59"), // format 00 Jule 0000, 00:00:00
 			digit_height: '22'
 		});
@@ -234,15 +234,17 @@ $(function(){
 	// --- /маска инпуту для телефона ---
 
 	// --- яндекс карты в пунктах самовывоза ---
-	ymaps.ready(init);
-	var myMap;
-	function init() {
-		myMap = new ymaps.Map("mapHolder", {
-			center: [55.76, 37.64],
-			zoom: 7,
-			controls: ['smallMapDefaultSet']
-		});
-		myMap.behaviors.disable('scrollZoom');
+	if (window.ymaps != undefined) {
+		ymaps.ready(init);
+		var myMap;
+		function init() {
+			myMap = new ymaps.Map("mapHolder", {
+				center: [55.76, 37.64],
+				zoom: 7,
+				controls: ['smallMapDefaultSet']
+			});
+			myMap.behaviors.disable('scrollZoom');
+		}
 	}
 	// --- /яндекс карты в пунктах самовывоза ---
 });
