@@ -86,12 +86,12 @@
 				<div class="contactData shadowBlock">
 					<div class="inputHolder">
 						<div class="inputTitle">Имя:<span class="required">*</span></div>
-						<input type="text" placeholder="Ваше имя:" value=""/>
+						<input type="text" required placeholder="Ваше имя:" value=""/>
 					</div>
 
 					<div class="inputHolder">
 						<div class="inputTitle">Телефон:<span class="required">*</span></div>
-						<input type="text" value=""/>
+						<input type="tel" required value=""/>
 					</div>
 
 					<div class="inputHolder">
@@ -102,8 +102,94 @@
 
 				<h3 class="green">Адрес доставки</h3>
 
-				<div class="adress shadowBlock"></div>
+				<div class="adress shadowBlock">
+					<div class="inputHolder">
+						<div class="inputTitle">Город:<span class="required">*</span></div>
+						<input type="text" required placeholder="Название города" value=""/>
+					</div>
+
+					<div class="inputHolder">
+						<div class="inputTitle">Улица:<span class="required">*</span></div>
+						<input type="text" required placeholder="Название улицы" value=""/>
+					</div>
+
+					<div class="smallInputs">
+						<div class="elem">
+							<div class="inputTitle">Дом</div>
+							<input type="text" value="" />
+						</div>
+						<div class="elem">
+							<div class="inputTitle">Корпус</div>
+							<input type="text" value="" />
+						</div>
+						<div class="elem">
+							<div class="inputTitle">Строение</div>
+							<input type="text" value="" />
+						</div>
+						<div class="elem wide">
+							<div class="inputTitle">Квартира или офис</div>
+							<input type="text" value="" />
+						</div>
+
+						<div class="elem">
+							<div class="inputTitle">Этаж</div>
+							<input type="text" value="" />
+						</div>
+						<div class="elem">
+							<div class="inputTitle">Подъезд</div>
+							<input type="text" value="" />
+						</div>
+					</div>
+				</div>
+
+				<h3 class="green">Способ доставки</h3>
+
+				<div class="deliveryType">
+					<div class="elem">
+						<input type="radio" checked="checked" name="delivery_type" id="dt1" value="1" />
+						<label for="dt1">Курьером по Москве</label>
+						<div class="help">(Базовая доставка по Москве) Бесплатно + 30 руб. за каждый километр от МКАД;
+Рассчитывается индивидуально в зависимости от дальности пункта назначения от МКАД.</div>
+					</div>
+					<div class="elem">
+						<input type="radio" name="delivery_type" id="dt2" value="2" />
+						<label for="dt2">Курьером по Московской области</label>
+						<div class="help">(Базовая доставка по Москве) Бесплатно + 30 руб. за каждый километр от МКАД;
+Рассчитывается индивидуально в зависимости от дальности пункта назначения от МКАД.</div>
+					</div>
+					<div class="elem">
+						<input type="radio" name="delivery_type" id="dt3" value="3" />
+						<label for="dt3">Почтой</label>
+						<div class="help">Почтой</div>
+					</div>
+				</div>
 				
+				<h3 class="green">Способ оплаты</h3>
+
+				<div class="paymentType">
+					<div class="elem">
+						<input type="radio" checked="checked" name="payment_type" id="pt1" value="1" />
+						<label for="pt1"><span>Наличными</span></label>
+					</div>
+					<div class="elem">
+						<input type="radio" name="payment_type" id="pt2" value="2" />
+						<label for="pt2"><span>Банковские карты / Yandex Деньги</span></label>
+					</div>
+					<div class="elem">
+						<input type="radio" name="payment_type" id="pt3" value="3" />
+						<label for="pt3"><span>Тинькофф/Купить в кредит</span></label>
+					</div>
+				</div>
+
+				<div class="offer">
+					<input type="checkbox" name="offer" id="of1" value="1" />
+					<label for="of1">Я прочитал и согласен с <span class="boldText">Публичной офертой</span></label>
+				</div>
+
+				<div class="finishBtnHolder">
+					<div class="finishBtn">Оформить заказ</div>
+				</div>
+
 			</div>
 
 			<!-- /MAIN -->
@@ -138,9 +224,9 @@
 
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 	<script type="text/javascript" src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-	<script src="theme/mobile/js/devou-coundivown.js"></script>
 	<script src="theme/mobile/js/slick.min.js"></script>
 	<script src="theme/mobile/js/jquery.touchSwipe.min.js"></script>
+	<script src="theme/mobile/js/jquery.maskedinput.min.js"></script>
 	<script src="theme/mobile/js/index.js"></script>
 </body>
 </html>
