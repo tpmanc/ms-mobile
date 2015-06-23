@@ -4,7 +4,7 @@
 @import "variables.less";
 
 body {
-	width: 320px;
+	// width: 320px;
 	position: relative;
 }
 
@@ -374,6 +374,7 @@ body {
 		@import "./basket.less";
 		@import "./finish.less";
 		@import "./staticPage.less";
+		@import "./pickupPoints.less";
 		@import "./listing.less";
 		
 		// components
@@ -460,14 +461,14 @@ body {
 		color: @titleColor;
 		text-transform: uppercase;
 		font-weight: bold;
-		padding: 16px 4px 5px 4px;
+		padding: 16px @lrOffset 5px @lrOffset;
 	}
 	h3 {
 		&.green {
 			color: @green;
 			font-size: 14px;
 			font-weight: bold;
-			padding-left: 5px;
+			padding-left: @lrOffset;
 			margin-top: 20px;
 		}
 	}

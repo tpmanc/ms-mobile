@@ -104,7 +104,9 @@
 		width: 100%;
 		margin-top: 12px;
 		padding-top: 21px;
+		padding-left: @lrOffset;
 		border-top: 1px solid @catalogBorderColor;
+		box-sizing: border-box;
 
 		.leftCol {
 			float: left;
@@ -180,7 +182,7 @@
 	}
 
 	.buyBtnHolder {
-		padding: 0 1.5%;
+		padding: 0 @lrOffset;
 		margin-top: 35px;
 		
 		.buyBtn {
@@ -200,7 +202,7 @@
 	}
 
 	.fastBuyBtnHolder {
-		padding: 0 1.5%;
+		padding: 0 @lrOffset;
 		margin-top: 7px;
 		
 		.fastBuyBtn {
@@ -222,7 +224,7 @@
 	.productInfo {
 		margin-top: -29px;
 		margin-bottom: 40px;
-		padding: 0 1.5%;
+		padding: 0 @lrOffset;
 		
 		.tabs {
 			.tabsNav {
@@ -405,7 +407,7 @@
 		.prevProduct {
 			padding: 14px 4px 14px 27px;
 			float: left;
-			margin-left: 1.5%;
+			margin-left: @lrOffset;
 			color: @catalogGreenText;
 			background: url(@pathToSprite) -1px -427px no-repeat;
 			font-size: 10px;
@@ -420,7 +422,7 @@
 		.nextProduct {
 			padding: 14px 30px 14px 8px;
 			float: right;
-			margin-right: 1.5%;
+			margin-right: @lrOffset;
 			color: @catalogGreenText;
 			background: url(@pathToSprite) 116px -390px  no-repeat;
 			font-size: 10px;
