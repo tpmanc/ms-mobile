@@ -3,6 +3,10 @@
 
 @import "variables.less";
 
+html {
+	-webkit-text-size-adjust: 100%;
+}
+
 body {
 	width: @pageWidth;
 	position: relative;
@@ -338,12 +342,13 @@ body {
 			
 			.search {
 				height: 100%;
-				width: 100%;
+				width: 98%;
 				box-sizing: border-box;
 				padding: 1px 74px 1px 7px;
 				word-spacing: 2px;
 				border: 1px solid @inputBorderColor;
 				border-radius: 4px;
+				outline-style: none;
 			}
 			.searchBtn {
 				position: absolute;
@@ -361,6 +366,9 @@ body {
 				padding: 5px 8px;
 				border-radius: 4px;
 				cursor: pointer;
+				-webkit-appearance: none;
+				   -moz-appearance: none;
+				        appearance: none;
 			}
 		}
 	}
