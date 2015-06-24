@@ -118,4 +118,60 @@
 			       appearance: none;
 		}
 	}
+
+	.lineWithBorder {
+		border-bottom: 1px solid @catalogBorderColor;
+		
+		.contactLine {
+			width: 100%;
+			padding-left: 5px;
+			margin-bottom: 12px;
+			display: inline-block;
+			
+			img {
+				float: left;
+			}
+			.text {
+				float: left;
+				margin-left: 17px;
+				margin-top: 5px;
+				word-spacing: 1px;
+				
+				.greenText {
+					font-size: 18px;
+					font-weight: bold;
+					color: @green;
+				}
+				.note {
+					font-size: 12px;
+					color: #494C51;
+				}
+			}
+		}
+
+		.contactText {
+			color: #494c51;
+			font-size: 12px;
+			line-height: 22px;
+			font-weight: bold;
+			padding: 0 @lrOffset;
+		}
+		&.adress {
+			margin-top: 14px;
+			
+			#moscowMap {
+				height: 160px;
+				background: #000;
+				margin: 17px @lrOffset;
+				box-sizing: border-box;
+			}
+
+			#spbMap {
+				height: 160px;
+				background: #000;
+				margin: 17px @lrOffset;
+				box-sizing: border-box;
+			}
+		}
+	}
 }
