@@ -126,19 +126,19 @@ $(function(){
 	// --- тач ивенты ---
 	if ($.fn.swipe != undefined && !debug) {
 		// --- левое меню ---
-		body.swipe({
-			allowPageScroll:"vertical",
-			swipe:function(event, direction) {
-				if (!html.hasClass('menuActive') && direction == 'right') {
-					menuBtn.click();
-				} else if (html.hasClass('menuActive') && direction == 'left') {
-					menuBtn.click();
-				}
-			},
-			excludedElements: "button, input, select, textarea, .noSwipe, #mapHolder",
-			swipeStatus:function(event, phase) {},
-			threshold: 100
-		});
+		// body.swipe({
+		// 	allowPageScroll:"vertical",
+		// 	swipe:function(event, direction) {
+		// 		if (!html.hasClass('menuActive') && direction == 'right') {
+		// 			menuBtn.click();
+		// 		} else if (html.hasClass('menuActive') && direction == 'left') {
+		// 			menuBtn.click();
+		// 		}
+		// 	},
+		// 	excludedElements: "button, input, select, textarea, .noSwipe, #mapHolder",
+		// 	swipeStatus:function(event, phase) {},
+		// 	threshold: 100
+		// });
 		// --- /левое меню ---
 
 		// --- предыдущий товар ---
