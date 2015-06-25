@@ -18,6 +18,7 @@ $(function(){
 		}
 	});
 	$(menu).find('span').on('click', function(){
+		body.animate({scrollTop: 0}, 400);
 		$(this).closest('li').find('.submenu').addClass('showSubmenu');
 	});
 	$(menu).find('.back').on('click', function(){

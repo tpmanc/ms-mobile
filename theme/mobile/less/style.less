@@ -81,7 +81,9 @@ body {
 			}
 		}
 		.submenu {
+			height: 100%;
 			width: 100%;
+			background: #FFF;
 			position: absolute;
 			z-index: 5;
 			left: 100%;
@@ -197,42 +199,33 @@ body {
 		.yourCity {
 			position: relative;
 			top: 3px;
-			width: 138px;
 			float: left;
 			font-size: 12px;
 			color: #D3FF98;
 			overflow: hidden;
-			
-			.selectHolder {
-				position: absolute;
-				top: -2px;
-				display: inline-block;
-				width: 75px;
+		}
+		.selectHolder {
+			position: relative;
+			top: 3px;
+			display: inline-block;
+			width: 75px;
+			height: 12px;
 
-				.citySelect {
-					-webkit-appearance: none;
-					   -moz-appearance: none;
-					        appearance: none;
-					font-size: 12px;
-					width: 90px;
-					color: #FFF;
-					border: none;
+			.citySelect {
+				-webkit-appearance: none;
+				   -moz-appearance: none;
+				        appearance: none;
+				font-size: 12px;
+				width: 90px;
+				height: 12px;
+				color: #FFF;
+				line-height: 1;
+				border: none;
+				background: @green;
+				outline-style: none;
+				
+				option {
 					background: @green;
-					outline-style: none;
-					
-					option {
-						background: @green;
-					}
-				}
-				.selectBtn {
-					position: absolute;
-					top: 4px;
-					right: 0;
-					display: inline-block;
-					height: 8px;
-					width: 9px;
-					background: url(@pathToSprite) -2px -23px no-repeat;
-					cursor: pointer;
 				}
 			}
 		}
