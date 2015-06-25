@@ -14,7 +14,7 @@ body {
 	position: absolute;
 	left: 0;
 	top: 0;
-	background: #fff;
+	background: @darknessGreen;
 	width: 80%;
 	height: 100%;
 	overflow: hidden;
@@ -59,6 +59,20 @@ body {
 		box-sizing: border-box;
 		padding-left: 5px;
 		border-bottom: 1px solid @leftMenuGray;
+
+		&.footerLink {
+			background: @darknessGreen;
+			border-bottom: 1px solid #294700;
+			
+			a {
+				color: #FFF;
+			}
+		}
+
+		a {
+			display: block;
+			text-decoration: none;
+		}
 		
 		span {
 			position: relative;
@@ -83,7 +97,7 @@ body {
 		.submenu {
 			height: 100%;
 			width: 100%;
-			background: #FFF;
+			background: @darknessGreen;
 			position: absolute;
 			z-index: 5;
 			left: 100%;
@@ -132,7 +146,7 @@ body {
 	background: #FFF;
 	left: 0%;
 	top: 0%;
-	box-shadow: 6px 0px 40px #ABABAB;
+	box-shadow: 8px 0px 40px #000;
 	will-change: transform;
 	-webkit-transition: @menuAnimProperty @menuAnimTime @menuAnimFunction @menuAnimDelay;
 	-moz-transition: @menuAnimProperty @menuAnimTime @menuAnimFunction @menuAnimDelay;
