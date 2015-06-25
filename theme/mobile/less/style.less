@@ -3,10 +3,6 @@
 
 @import "variables.less";
 
-html {
-	-webkit-text-size-adjust: 100%;
-}
-
 body {
 	width: @pageWidth;
 	position: relative;
@@ -15,7 +11,7 @@ body {
 .leftMenu {
 	will-change: transform;
 	display: none;
-	position: fixed;
+	position: absolute;
 	left: 0;
 	top: 0;
 	background: #fff;
@@ -487,9 +483,11 @@ body {
 
 
 html {
+	-webkit-text-size-adjust: 100%;
+
 	&.menuActive {
 		position: relative;
-		overflow: hidden;
+		overflow-x: hidden;
 		
 		body {
 			overflow-x: hidden;
