@@ -8,20 +8,26 @@ $(function(){
 	var backToTopBtn = $('#backToTopBtn');
 
 	// --- левое меню ---
-	$(menuBtn).on('click', function(){
+	menuBtn.on('click', function(){
 		if( html.hasClass('menuActive') ){
-			$(html).removeClass('menuActive');
-			setTimeout(function(){$(menu).removeClass('menuActive');}, 250);
+			// закрываем меню
+			html.removeClass('menuActive');
+			setTimeout(function(){
+				menu.removeClass('menuActive');
+				// закрываем подменю
+				menu.find('.showSubmenu').removeClass('showSubmenu');
+			}, 250);
 		}else{
-			$(html).addClass('menuActive');
-			$(menu).addClass('menuActive');
+			html.addClass('menuActive');
+			menu.addClass('menuActive');
 		}
 	});
-	$(menu).find('.menuItemBtn').on('click', function(){
+	menu.find('.menuItemBtn').on('click', function(){
 		body.animate({scrollTop: 0}, 400);
+		menu.find('.showSubmenu').removeClass('showSubmenu');
 		$(this).closest('li').find('.submenu').addClass('showSubmenu');
 	});
-	$(menu).find('.back').on('click', function(){
+	menu.find('.back').on('click', function(){
 		$(this).closest('.submenu').removeClass('showSubmenu');
 	});
 	// --- /левое меню ---
