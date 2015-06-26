@@ -74,12 +74,9 @@ $(function(){
 	// --- /кнопка еще в листинге ---
 
 	// --- теги в каталоге ---
-	if ($('.subCategoriesHoler .subCategories li') .length > 0) {
-		var heightSumm = 0;
-		$('.subCategoriesHoler .subCategories li').each(function(i, e){
-			heightSumm += $(e).height();
-		});
-		if (heightSumm > $('.subCategoriesHoler .subCategories').height()) {
+	if ($('.subCategoriesHoler .subCategories') .length > 0) {
+		if ($('.subCategoriesHoler .subCategories').height() > 144) {
+			$('.subCategoriesHoler .subCategories').addClass('needMoreBtn');
 			$('.subCategoriesHoler .moreBtnHolder').show();
 		}
 	}

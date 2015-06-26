@@ -69,18 +69,21 @@
 						background: url(@pathToSprite) -44px -163px no-repeat;
 					}
 				}
-				.oldPrice {
+				.oldPriceHolder {
 					height: 13px;
-					text-decoration: line-through;
 					margin-top: 8px;
-					color: @catalogOldPriceColor;
-					
-					&:after {
-						content: "q";
-						font-family: @rouble;
-						margin-left: 7px;
+
+					.oldPrice {
+						text-decoration: line-through;
+						color: @catalogOldPriceColor;
+						
+						&:after {
+							content: "q";
+							font-family: @rouble;
+							margin-left: 7px;
+						}
+						
 					}
-					
 				}
 				.priceLine {
 					position: relative;
