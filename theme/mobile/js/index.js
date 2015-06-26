@@ -49,11 +49,9 @@ $(function(){
 	$('#moreCategories').on('click', function(){
 		$this = $(this);
 		if( $this.hasClass('opened') ){
-			// $('#categoriesList .hiddenCategories').slideUp(400);
 			$('#categoriesList').removeClass('opened');
 			$this.removeClass('opened');
 		}else{
-			// $('#categoriesList .hiddenCategories').slideDown(400);
 			$('#categoriesList').addClass('opened');
 			$this.addClass('opened');
 		}
@@ -65,13 +63,27 @@ $(function(){
 		$this = $(this);
 		if( $this.hasClass('opened') ){
 			$(this).closest('.subCategoriesHoler').find('.hiddenCategories').slideUp(400);
+			$('.subCategoriesHoler .subCategories').removeClass('opened');
 			$this.removeClass('opened');
 		}else{
 			$(this).closest('.subCategoriesHoler').find('.hiddenCategories').slideDown(400);
+			$('.subCategoriesHoler .subCategories').addClass('opened');
 			$this.addClass('opened');
 		}
 	});
 	// --- /кнопка еще в листинге ---
+
+	// --- теги в каталоге ---
+	if ($('.subCategoriesHoler .subCategories li') .length > 0) {
+		var heightSumm = 0;
+		$('.subCategoriesHoler .subCategories li').each(function(i, e){
+			heightSumm += $(e).height();
+		});
+		if (heightSumm > $('.subCategoriesHoler .subCategories').height()) {
+			$('.subCategoriesHoler .moreBtnHolder').show();
+		}
+	}
+	// --- /теги в каталоге ---
 
 
 	// --- таймер обратного отсчета для акции ---
@@ -256,4 +268,5 @@ $(function(){
 		}
 	}
 	// --- /яндекс карты в пунктах самовывоза ---
+
 });
