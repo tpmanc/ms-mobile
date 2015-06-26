@@ -50,9 +50,8 @@ body {
 	}
 
 	li {
+		display: table;
 		width: 100%;
-		height: 40px;
-		line-height: 40px;
 		background: #FFF;
 		font-family: @segoe;
 		font-size: 14px;
@@ -72,6 +71,7 @@ body {
 		a {
 			display: block;
 			text-decoration: none;
+			padding: 13px 15px 13px 0;
 		}
 		
 		span {
@@ -80,18 +80,21 @@ body {
 			font-size: 14px;
 			display: block;
 			cursor: pointer;
+			padding: 13px 15px 13px 0;
 			
-			&:after {
-				content: " ";
-				position: absolute;
-				display: block;
-				right: 8px;
-				top: 17px;
-				width: 5px;
-				height: 5px;
-				border-top: 2px solid #808080;
-				border-right: 2px solid #808080;
-				transform: rotate(45deg);
+			&.menuItemBtn{
+				&:after {
+					content: " ";
+					position: absolute;
+					display: block;
+					right: 8px;
+					top: 17px;
+					width: 5px;
+					height: 5px;
+					border-top: 2px solid #808080;
+					border-right: 2px solid #808080;
+					transform: rotate(45deg);
+				}
 			}
 		}
 		.submenu {
@@ -113,6 +116,12 @@ body {
 					color: #000;
 				}
 				
+				&.footerLink {
+					a {
+						color: #FFF;
+					}
+				}
+
 				&.back {
 					cursor: pointer;
 					line-height: 48px;

@@ -17,7 +17,7 @@ $(function(){
 			$(menu).addClass('menuActive');
 		}
 	});
-	$(menu).find('span').on('click', function(){
+	$(menu).find('.menuItemBtn').on('click', function(){
 		body.animate({scrollTop: 0}, 400);
 		$(this).closest('li').find('.submenu').addClass('showSubmenu');
 	});
