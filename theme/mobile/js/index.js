@@ -49,10 +49,12 @@ $(function(){
 	$('#moreCategories').on('click', function(){
 		$this = $(this);
 		if( $this.hasClass('opened') ){
-			$('#categoriesList .hiddenCategories').slideUp(400);
+			// $('#categoriesList .hiddenCategories').slideUp(400);
+			$('#categoriesList').removeClass('opened');
 			$this.removeClass('opened');
 		}else{
-			$('#categoriesList .hiddenCategories').slideDown(400);
+			// $('#categoriesList .hiddenCategories').slideDown(400);
+			$('#categoriesList').addClass('opened');
 			$this.addClass('opened');
 		}
 	});
