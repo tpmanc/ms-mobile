@@ -85,10 +85,12 @@ $(function(){
 
 	// --- таймер обратного отсчета для акции ---
 	if ($.fn.devouCountdown != undefined){
-		$('#countdown14088').devouCountdown({
-			id: 'countdown14088',
-			end_date: new Date("30 Jun 2015, 23:59:59"), // format 00 Jule 0000, 00:00:00
-			digit_height: '22'
+		$('.timers .countdown').each(function(i, e){
+			$(e).devouCountdown({
+				id: $(e).attr('id'),
+				end_date: new Date($(e).data('time')),
+				digit_height: '22'
+			});
 		});
 	}
 	// --- /таймер обратного отсчета для акции ---
@@ -266,4 +268,41 @@ $(function(){
 	}
 	// --- /яндекс карты в пунктах самовывоза ---
 
+	/**
+	 * Аякс запрос на получение страницы товаров в категории и количества оставшихся товаров 
+	 */
+	function productsRequest(page, catId, sort) {
+		$.ajax({
+			type: "POST",
+			dataType: 'json',
+			url: "/ajax/mobile.php?method=getMoreProducts",
+			data: "page=" + page + "&id=" + catId + "&sort=" + sort,
+			success: function(data){
+				$('ul.listing').append(data.html);
+				if (parseInt(data.count) > 0 ) {
+					$('#moreProductsBtn').show().find('.count').text(data.count);
+				} else {
+					$('#moreProductsBtn').hide();
+				}
+			}
+		});
+	}
+	// --- кнопка загузки товаров в каталоге ---
+	$('#moreProductsBtn').on('click', function(){
+		var prodPage = $('ul.listing li').length / 10; // 10 - количество товаров на странице
+		var sort = $('#catalogSort').find('.active').data('sort');
+		productsRequest(prodPage, $(this).data('cat_id'), sort);
+	});
+	// --- /кнопка загузки товаров в каталоге ---
+
+	// --- кнопки сортировки каталога ---
+	$('#catalogSort a').on('click', function(){
+		var sortHolder = $('#catalogSort');
+		sortHolder.find('a').removeClass('active');
+		var sort = $(this).addClass('active').data('sort');
+		$('ul.listing').empty(); // очищаем список товаров, чтобы далее получилась нулевая страница
+		var prodPage = $('ul.listing li').length / 10; // 10 - количество товаров на странице
+		productsRequest(prodPage, sortHolder.data('cat_id'), sort);
+	});
+	// --- /кнопки сортировки каталога ---
 });
