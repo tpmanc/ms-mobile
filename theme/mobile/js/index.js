@@ -271,12 +271,12 @@ $(function(){
 	/**
 	 * Аякс запрос на получение страницы товаров в категории и количества оставшихся товаров 
 	 */
-	function productsRequest(page, catId, sort) {
+	function productsRequest(page, catId, sort, isTag) {
 		$.ajax({
 			type: "POST",
 			dataType: 'json',
 			url: "/ajax/mobile.php?method=getMoreProducts",
-			data: "page=" + page + "&id=" + catId + "&sort=" + sort,
+			data: "page=" + page + "&id=" + catId + "&sort=" + sort + "&isTag=" + isTag,
 			success: function(data){
 				$('ul.listing').append(data.html);
 				if (parseInt(data.count) > 0 ) {
@@ -291,7 +291,7 @@ $(function(){
 	$('#moreProductsBtn').on('click', function(){
 		var prodPage = $('ul.listing li').length / 10; // 10 - количество товаров на странице
 		var sort = $('#catalogSort').find('.active').data('sort');
-		productsRequest(prodPage, $(this).data('cat_id'), sort);
+		productsRequest(prodPage, $(this).data('cat_id'), sort, $(this).data('is_tag'));
 	});
 	// --- /кнопка загузки товаров в каталоге ---
 
@@ -302,7 +302,7 @@ $(function(){
 		var sort = $(this).addClass('active').data('sort');
 		$('ul.listing').empty(); // очищаем список товаров, чтобы далее получилась нулевая страница
 		var prodPage = $('ul.listing li').length / 10; // 10 - количество товаров на странице
-		productsRequest(prodPage, sortHolder.data('cat_id'), sort);
+		productsRequest(prodPage, sortHolder.data('cat_id'), sort, sortHolder.data('is_tag'));
 	});
 	// --- /кнопки сортировки каталога ---
 });
