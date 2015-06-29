@@ -112,15 +112,21 @@
 					}
 					.buyBtn {
 						position: relative;
-						background: @green;
+						background: @orange;
 						padding: 1px 21px 3px 21px;
 						margin-left: 12px;
 						color: #FFF;
 						font-weight: bold;
+						text-decoration: none;
 						top: -4px;
 						border-radius: 5px;
-						border-bottom: 2px solid @buttonColorBorder;
+						border-bottom: 2px solid @buttonOrangeColorBorder;
 						cursor: pointer;
+						
+						&.activeBtn {
+							background: @green;
+							border-color: @buttonColorBorder;
+						}
 					}
 				}
 			}

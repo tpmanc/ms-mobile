@@ -1,3 +1,134 @@
+function moneyFormat(nStr) {
+	nStr += '';
+	x = nStr.split('.');
+	x1 = x[0];
+	x2 = x.length > 1 ? '.' + x[1] : '';
+	var rgx = /(\d+)(\d{3})/;
+	while (rgx.test(x1)) {
+		x1 = x1.replace(rgx, '$1' + ' ' + '$2');
+	}
+	return x1 + x2;
+}
+function setCookie(name, value, expires, path, domain, secure) {
+
+	var exdate = new Date();
+	exdate.setDate(exdate.getDate() + 30);
+
+	document.cookie = name + "=" + escape(value) +
+		((expires) ? "; expires=" + exdate.toGMTString() : "; expires=" + exdate.toGMTString()) +
+		((path) ? "; path=" + path : "") +
+		((domain) ? "; domain=" + domain : "") +
+		((secure) ? "; secure" : "");
+}
+function getCookie(c_name) {
+	if (document.cookie.length > 0) {
+		c_start = document.cookie.indexOf(c_name + "=");
+		if (c_start != -1) {
+			c_start = c_start + c_name.length + 1;
+			c_end = document.cookie.indexOf(";", c_start);
+			if (c_end == -1) c_end = document.cookie.length;
+			return unescape(document.cookie.substring(c_start, c_end));
+		}
+	}
+	return "";
+}
+
+function parseProductsString(string) {
+	var returnArray = [];
+
+	if (string.length > 0) {
+		var products = string.split('|');
+		for (var i in products) {
+			var temp = products[i].split(':');
+
+			returnArray.push({
+				'id': parseInt(temp[0]),
+				'amount': parseInt(temp[1])
+			});
+		}
+	}
+	return returnArray;
+}
+function generateProductsString(products) {
+	var tempArray = [];
+	for (var i in products) {
+		tempArray.push(products[i].id + ':' + products[i].amount);
+	}
+	return tempArray.join('|');
+}
+function addProductToBasket(productId, price) {
+	//получим данные из кук
+	var products = parseProductsString(getCookie('cart_products'));
+	console.log(products);
+	var totalAmount = parseInt(getCookie('total_amount'));
+	if (!isNaN(totalAmount)) {
+		totalAmount += price;
+	} else {
+		totalAmount = price;
+	}
+
+	//Если товар уже есть в куках, добавляем ему количество
+	//Заодно подсчитаем количество всех товаров
+	var foundSame = false;
+	for (var i in products) {
+		if (products[i].id == productId) {
+			products[i].amount++;
+			foundSame = true;
+		}
+	}
+	if (!foundSame) {
+		products.push({
+			"id": productId,
+			"amount": 1
+		});
+	}
+
+
+	setCookie('cart_products', generateProductsString(products), '', '/');
+	setCookie('total_amount', totalAmount, '', '/');
+	//Изменить оформление
+	refreshBasketInfo();
+}
+
+function deleteProductToBasket(productId, price) {
+	var products = parseProductsString(getCookie('cart_products'));
+	var newProducts = [];
+	var totalAmount = parseInt(getCookie('total_amount'));
+
+	if (isNaN(totalAmount)) {
+		totalAmount = 0;
+	}
+	for (var i in products) {
+		if (products[i].id == productId) {
+			totalAmount -= price*products[i].amount;
+		}else{
+			newProducts.push({
+					"id": products[i].id,
+					"amount": products[i].amount
+				});
+		}
+	}
+	setCookie('cart_products', generateProductsString(newProducts), '', '/');
+	setCookie('total_amount', totalAmount, '', '/');
+	//Изменить оформление
+	refreshBasketInfo(); 
+}
+function refreshBasketInfo() {
+	//получим данные из кук
+	var products = parseProductsString(getCookie('cart_products'));
+	var totalAmount = parseInt(getCookie('total_amount'));
+	if (isNaN(totalAmount)) {
+		totalAmount = 0;
+	}
+	var productsCount = 0;
+	for (var i in products) {
+		productsCount += products[i].amount;
+	}
+
+	$('#basket .productCount').text(productsCount);
+	$('#basketPrice').html(moneyFormat(totalAmount));
+}
+
 $(function(){
 	var debug = false;
 	var html = $('html');
@@ -305,4 +436,15 @@ $(function(){
 		productsRequest(prodPage, sortHolder.data('cat_id'), sort, sortHolder.data('is_tag'));
 	});
 	// --- /кнопки сортировки каталога ---
+
+	// --- кнопка купить ---
+	body.on('click', '.buyBtn.activeBtn', function(){
+		$this = $(this);
+		var id = $this.data('id');
+		var price = $this.data('price');
+		addProductToBasket(id, price);
+		$this.removeClass('activeBtn').text('В корзине');
+		return false;
+	});
+	// --- /кнопка купить ---
 });
