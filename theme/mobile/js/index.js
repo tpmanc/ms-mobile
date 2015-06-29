@@ -240,9 +240,9 @@ $(function(){
 	// --- кнопка наверх ---
 	$(document).on('scroll', function(){
 		if (body.scrollTop() > 580) {
-			backToTopBtn.show();
+			backToTopBtn.addClass('showBtn');
 		} else {
-			backToTopBtn.hide();
+			backToTopBtn.removeClass('showBtn');
 		}
 	});
 	backToTopBtn.on('click', function(){
