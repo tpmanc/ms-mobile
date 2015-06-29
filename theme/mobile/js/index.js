@@ -127,7 +127,81 @@ function refreshBasketInfo() {
 
 	$('#basket .productCount').text(productsCount);
 	$('#basketPrice').html(moneyFormat(totalAmount));
+	$('#basketProductSumm').html(moneyFormat(totalAmount));
 }
+function recalculateBasket() {
+	var productsCount = 0;
+	var priceSumm = 0;
+	var products = [];
+	var amount, price, pid;
+
+	var _break = false;
+	//Блокируем изменение инпутов до завершения аякса
+	$('.countHolder input').attr('disabled', 'disabled');
+
+	$('.productList .elem').each(function (index, element) {
+		if (_break == false) {
+			amount = $(element).find('input.count').val();
+			price = $(element).data('price');
+			pid = $(element).data('id');
+
+			if (parseInt(amount) <= 0 || amount == '') {
+				$(element).find('input.count').val(1);
+				amount = '1';
+			}
+
+			if (amount.match(/^[0-9]{1,3}$/)) {
+				amount = parseInt(amount);
+				productsCount += amount;
+				priceSumm += parseInt(price) * amount;
+
+				products.push({
+					"id": pid,
+					"amount": amount
+				});
+			} else {
+				productsCount = '-';
+				priceSumm = '-';
+				_break = true;
+			}
+		}
+	});
+
+	//Если ошибок не было
+	if (_break == false) {
+		//Записываем куки
+		setCookie('cart_products', generateProductsString(products), '', '/');
+		setCookie('total_amount', priceSumm, '', '/');
+
+		//Запрос на стоимость доставкаи и размер скидки
+		$.ajax({
+			url: '/ajax/basket.php?method=get_delivery_and_discount',
+			type: 'POST',
+			dataType: 'json',
+			data: {"products": products},
+			beforeSend: function () {},
+			success: function (data) {
+				if (parseInt(data.deliveryPrice) > 0) {
+					$('#basketDeliveryPrice').text(data.deliveryPrice + ' руб.');
+				} else {
+					$('#basketDeliveryPrice').text('Бесплатно');
+				}
+				$('#basketProductCount').text(productsCount);
+				$('#basketDiscount').text(data.discount + '%');
+				var total = parseInt(priceSumm * (100 - parseInt(data.discount)) / 100) + parseInt(data.deliveryPrice);
+				$('#basketTotalPrice').html(moneyFormat(total));
+				refreshBasketInfo();
+			},
+			complete: function () {
+				//Разблокируем инпуты для ввода
+				$('.countHolder input').removeAttr('disabled');
+			},
+		});
+
+	}
+}
+
+
 
 $(function(){
 	var debug = false;
@@ -358,6 +432,11 @@ $(function(){
 		var val = parseInt(input.val());
 		val++;
 		input.val(val);
+		recalculateBasket();
+	});
+
+	$('.countHolder input.count').on('change', function(){
+		recalculateBasket();
 	});
 
 	$('.lessBtn').on('click', function(){
@@ -367,6 +446,7 @@ $(function(){
 			val = 1;
 		}
 		input.val(val);
+		recalculateBasket();
 	});
 	// --- /изменение количества в корзине ---
 
@@ -374,6 +454,7 @@ $(function(){
 	$('.deleteBtn').on('click', function(){
 		if (confirm("Удалить товар?")) {
 			$(this).closest('.elem').remove();
+			recalculateBasket();
 		}
 	});
 	// --- /удалить из корзины ---
