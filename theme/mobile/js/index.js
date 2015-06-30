@@ -528,4 +528,18 @@ $(function(){
 		return false;
 	});
 	// --- /кнопка купить ---
+
+	// --- оформить заказ в корзине ---
+	$('#finishBtn').on('click', function(){
+		var form = $(this).closest('form');
+		return false;
+	});
+	// --- /оформить заказ в корзине ---
+
+	// --- выбор способа доставки при оформлении ---
+	$('.deliveryType input[name="delivery_type"]').on('change', function(){
+		$('.deliveryType .help').hide();
+		$(this).closest('.elem').find('.help').show();
+	});
+	// --- /выбор способа доставки при оформлении ---
 });
