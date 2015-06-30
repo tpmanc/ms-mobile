@@ -186,6 +186,11 @@ function recalculateBasket() {
 				} else {
 					$('#basketDeliveryPrice').text('Бесплатно');
 				}
+				if (productsCount == 0) {
+					$('.productList').hide();
+					$('.summaryHolder').hide();
+					$('.empty').show();
+				}
 				$('#basketProductCount').text(productsCount);
 				$('#basketDiscount').text(data.discount + '%');
 				var total = parseInt(priceSumm * (100 - parseInt(data.discount)) / 100) + parseInt(data.deliveryPrice);

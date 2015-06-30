@@ -6,6 +6,10 @@
 		margin-top: 11px;
 		margin-bottom: 25px;
 		
+		&.hide {
+			display: none;
+		}
+		
 		.elem {
 			display: table;
 			width: 100%;
@@ -162,51 +166,57 @@
 		}
 	}
 
-	.summary {
-		display: table;
-		width: 100%;
-		margin-bottom: 25px;
-		padding: 0 @lrOffset;
-		box-shadow: 0px 0px 10px #C2C2C2;
-		box-sizing: border-box;
-		font-weight: bold;
-		font-size: 14px;
-			
-		.row {
-			display: table-row;
-			
-			.title {
-				display: table-cell;
-				width: 60%;
-				border-bottom: 1px solid @catalogBorderColor;
-				padding: 11px 0px 12px 0;
-				text-align: left;
-			}
-			.value {
-				display: table-cell;
-				width: 40%;
-				border-bottom: 1px solid @catalogBorderColor;
-				padding: 11px 0px 12px 0;
-				text-align: right;
-			}
-			.greenText {
-				color: @green;
-			}
-			.redText {
-				color: @basketRedText;
-			}
-			.price {
-				&:after {
-					content: "q";
-					font-family: @rouble;
-					margin-left: 5px;
+	.summaryHolder {
+		&.hide {
+			display: none;
+		}
+
+		.summary {
+			display: table;
+			width: 100%;
+			margin-bottom: 25px;
+			padding: 0 @lrOffset;
+			box-shadow: 0px 0px 10px #C2C2C2;
+			box-sizing: border-box;
+			font-weight: bold;
+			font-size: 14px;
+				
+			.row {
+				display: table-row;
+				
+				.title {
+					display: table-cell;
+					width: 60%;
+					border-bottom: 1px solid @catalogBorderColor;
+					padding: 11px 0px 12px 0;
+					text-align: left;
 				}
-				&.result {
-					font-size: 18px;
+				.value {
+					display: table-cell;
+					width: 40%;
+					border-bottom: 1px solid @catalogBorderColor;
+					padding: 11px 0px 12px 0;
+					text-align: right;
 				}
-			}
-			.result {
-				border: none;
+				.greenText {
+					color: @green;
+				}
+				.redText {
+					color: @basketRedText;
+				}
+				.price {
+					&:after {
+						content: "q";
+						font-family: @rouble;
+						margin-left: 5px;
+					}
+					&.result {
+						font-size: 18px;
+					}
+				}
+				.result {
+					border: none;
+				}
 			}
 		}
 	}
@@ -254,6 +264,12 @@
 	}
 
 	.empty {
+		display: none;
+		
+		&.show {
+			display: block;
+		}
+
 		p {
 			margin-top: 10px;
 			margin-bottom: 10px;
@@ -265,5 +281,12 @@
 				color: #494c51;
 			}
 		}
+	}
+
+	hr {
+		margin-top: 60px;
+		margin-bottom: 60px;
+		border: none;
+		border-bottom: 1px solid @catalogBorderColor;
 	}
 }
