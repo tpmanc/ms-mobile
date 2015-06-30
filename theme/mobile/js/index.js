@@ -223,22 +223,35 @@ $(function(){
 			// закрываем меню
 			html.removeClass('menuActive');
 			setTimeout(function(){
+				body.scrollTop(0);
 				menu.removeClass('menuActive');
+				page.removeClass('menuActive');
 				// закрываем подменю
 				menu.find('.showSubmenu').removeClass('showSubmenu');
-			}, 250);
+			}, 400);
 		}else{
 			html.addClass('menuActive');
 			menu.addClass('menuActive');
+			page.addClass('menuActive');
 		}
 	});
+	// перешли в подкатегории в меню
 	menu.find('.menuItemBtn').on('click', function(){
 		body.animate({scrollTop: 0}, 400);
 		menu.find('.showSubmenu').removeClass('showSubmenu');
 		$(this).closest('li').find('.submenu').addClass('showSubmenu');
+		var newHeight = 0;
+		var border = 1;
+		$('.submenu.showSubmenu li').each(function(i, e){
+			newHeight += $(e).height() + border;
+		});
+		newHeight += 40; // - высота кнопки "наверх"
+		body.css('height', newHeight);
 	});
+	// кнопка назад в меню
 	menu.find('.back').on('click', function(){
 		$(this).closest('.submenu').removeClass('showSubmenu');
+		body.css('height', '');
 	});
 	// --- /левое меню ---
 
