@@ -531,7 +531,154 @@ $(function(){
 
 	// --- оформить заказ в корзине ---
 	$('#finishBtn').on('click', function(){
+		var params = {};
+		var error = false;
+		var fastOrder = false;
+		var el, attr, value;
 		var form = $(this).closest('form');
+		form.find('.inputError').removeClass('inputError');
+		form.find('input').each(function(i, e){
+			el = $(e);
+			if (el.attr('type') != 'radio' && el.attr('type') != 'checkbox' && el.attr('type') != 'submit') {
+				attr = el.attr('required');
+				if (el.attr('name') == 'fast_order' && parseInt(el.val()) == 1) {
+					fastOrder = true;
+				}
+				if (typeof attr !== typeof undefined && attr !== false) {
+					value = el.val();
+					if (value != '') {
+						params[el.attr('name')] = value;
+					} else {
+						error = true;
+						el.addClass('inputError');
+					}
+				} else {
+					params[el.attr('name')] = el.val();
+				}
+			}
+		});
+		// способ доставки
+		var deliveryType = form.find('input[name="delivery_type"]:checked');
+		if (deliveryType.length > 0 || fastOrder) {
+			params['delivery_type'] = deliveryType.val();
+		} else {
+			error = true;
+			form.find('.deliveryType').addClass('inputError');
+		}
+		// способ оплаты
+		var paymentType = form.find('input[name="payment_type"]:checked');
+		if (paymentType.length > 0 || fastOrder) {
+			params['payment_type'] = paymentType.val();
+		} else {
+			error = true;
+			form.find('.paymentType').addClass('inputError');
+		}
+		// согласие с офертой
+		var offer = form.find('input[name="offer"]:checked');
+		if (offer.length > 0 || fastOrder) {
+			params['offer'] = offer.val();
+		} else {
+			error = true;
+			form.find('.offer').addClass('inputError');
+		}
+
+		// если все обязательные поля были заполнены
+		if (error) {
+			if ($('input.inputError').length > 0) {
+				var off = $('input.inputError').eq(0).offset().top - 30;
+				body.animate({scrollTop: off}, 400);
+			}
+		} else {
+			// формируем адрес
+			var adress = '';
+			if (params.city != '') {
+				adress += 'г. ' + params.city;
+			}
+			if (params.street != '') {
+				adress += ' ул. ' + params.street;
+			}
+			if (params.house != '') {
+				adress += ' д. ' + params.house;
+			}
+			if (params.housing != '') {
+				adress += ' корпус ' + params.housing;
+			}
+			if (params.building != '') {
+				adress += ' строение ' + params.building;
+			}
+			if (params.apartment != '') {
+				adress += ' кв. ' + params.apartment;
+			}
+			if (params.floor != '') {
+				adress += ' этаж ' + params.floor;
+			}
+			if (params.porch != '') {
+				adress += ' подъезд ' + params.porch;
+			}
+			params['adress'] = adress;
+
+			//собираем все параметры в url строку
+			var urlStr = Object.keys(params).map(function(key){ 
+				return encodeURIComponent(key) + '=' + encodeURIComponent(params[key]); 
+			}).join('&');
+			$.ajax({
+				url: '/ajax/basket.php?method=make_order',
+				type: 'POST',
+				dataType: 'json',
+				data: urlStr,
+				beforeSend: function () {
+					form.find('input').attr('disabled', 'disabled');
+				},
+				success: function (data) {
+					$('.main').empty();
+					var htmlStr = '
+						<div class="finishResponse">
+							<h1 class="title">Ваш заказ принят</h1>
+							<p>Здравствуйте, <b>'+params['name']+'</b>.</p>
+							<p>Вашему заказу присвоен номер <b>'+data.order_code+'</b>.</p> 
+							<p>Наш менеджер перезвонит Вам на номер <b>'+params['phone']+'</b> в течение нескольких 
+							часов (в рабочее время) для согласования времени доставки и 
+							уточнения деталей комплектации заказа.</p>
+							<p>Пожалуйста, не отключайте телефон.</p>
+
+							<h3 class="green">Вы заказали:</h3>
+							<div class="productList">';
+					$(data.products).each(function(i, e){
+						htmlStr += '
+							<div class="elem">
+								<div class="imgCol">
+									<img src="/upload/small/'+e.id+'.jpg" alt="'+e.title+'">
+								</div>
+								<div class="textCol">
+									<div class="title"><a>'+e.title+'</a></div>
+									<div class="bottomLine">
+										<div class="price">'+moneyFormat(e.price_after_discount)+'</div>
+									</div>
+								</div>
+								<div class="clearfix"></div>
+							</div>
+						';
+					});
+					htmlStr += '</div>
+						<div class="callBtnHolder">
+							<a href="tel:8(800)555-62-50" class="callBtn">
+								<span class="btnContent">
+									<span class="phone">8(800)555-62-50</span>
+									<span class="text">Звонок по России бесплатный</span>
+								</span>
+							</a>
+						</div>
+					</div>';
+					$('.main').html(htmlStr);
+					body.scrollTop(0);
+				},
+				complete: function () {
+				},
+				error: function () {
+					form.find('input').removeAttr('disabled');
+				}
+			});
+		}
 		return false;
 	});
 	// --- /оформить заказ в корзине ---
