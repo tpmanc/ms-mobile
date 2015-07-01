@@ -222,6 +222,7 @@ $(function(){
 		if( html.hasClass('menuActive') ){
 			// закрываем меню
 			html.removeClass('menuActive');
+			body.css('height', '');
 			setTimeout(function(){
 				body.scrollTop(0);
 				menu.removeClass('menuActive');

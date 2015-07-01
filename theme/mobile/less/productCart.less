@@ -25,6 +25,14 @@
 				margin-right: 4px;
 				background: url(@pathToSprite) -27px -163px no-repeat;
 			}
+
+			&.notAvailable {
+				color: @catalogGrayText;
+				
+				&:before {
+					background: url(@pathToSprite) -27px -177px no-repeat;
+				}
+			}
 		}
 		.delivery {
 			float: right;
@@ -70,6 +78,7 @@
 				max-width: 300px;
 				display: inline;
 				vertical-align: middle;
+				line-height: 1;
 			}
 		}
 
@@ -158,7 +167,8 @@
 			padding-left: 23px;
 			background: url(@pathToSprite) -2px -363px no-repeat;
 			
-			span {
+			a {
+				color: #888b90;
 				text-decoration: underline;
 				font-weight: bold;
 			}
@@ -174,7 +184,8 @@
 			padding-left: 23px;
 			background: url(@pathToSprite) -2px -336px no-repeat;
 			
-			span {
+			a {
+				color: #f39c11;
 				text-decoration: underline;
 				font-weight: bold;
 			}
@@ -194,10 +205,15 @@
 			font-weight: bold;
 			text-transform: uppercase;
 			text-align: center;
-			background: @green;
-			border-bottom: 3px solid @buttonColorBorder;
+			background: @buttonColorBorder;
+			border-bottom: 3px solid @buttonOrangeColorBorder;
 			border-radius: 6px;
 			cursor: pointer;
+			
+			&.activeBtn {
+				background: @green;
+				// border-color: @buttonColorBorder;
+			}
 		}
 	}
 
@@ -233,7 +249,7 @@
 				
 				li {
 					display: inline-block;
-					padding: 11px 13px 9px 13px;
+					padding: 11px 9px 9px 13px;
 					color: @cartPriceColor;
 					font-weight: bold;
 					font-size: 12px;
