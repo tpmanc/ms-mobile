@@ -33,6 +33,11 @@ function getCookie(c_name) {
 	return "";
 }
 
+function isValidEmail(emailAddress) {
+	var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
+	return pattern.test(emailAddress);
+}
+
 function parseProductsString(string) {
 	var returnArray = [];
 
@@ -426,6 +431,8 @@ $(function(){
 						.find('.newFeedback')
 						.height() 
 			);
+		var off = $('#closeNewFeedback').offset().top;
+		body.animate({scrollTop: off}, 400);
 	});
 	// --- /кнопка "оставить отзыв" в карточке ---
 
@@ -441,7 +448,40 @@ $(function(){
 	// --- кнопка "Отправить отзыв" при добавлении отзыва ---
 	$('#sendNewFeedback').on('click', function(){
 		var form = $(this).closest('.newFeedback');
-		form.find('input').eq(1).addClass('error');
+		var error = false;
+		var productId = form.data('id');
+		var name = form.find('input[name="name"]');
+		var email = form.find('input[name="email"]');
+		var text = form.find('textarea');
+		form.find('.error').removeClass('error');
+
+		if (name.val().length < 3) {
+			name.addClass('error');
+			error = true;
+		}
+		if (!isValidEmail(email.val())) {
+			email.addClass('error');
+			error = true;
+		}
+		if (text.val().length < 3) {
+			text.addClass('error');
+			error = true;
+		}
+
+		var str = 'product_id='+productId+'&name='+name.val()+'&email='+email.val()+'&comment='+text.val()+'&add_product_feedback=1';
+
+		if (!error) {
+			$.ajax({
+				url: '/ajax/system.php?method=addfeedback',
+				type: 'post',
+				data: str,
+				dataType: 'json',
+				success: function (data) {
+					form.empty().html('<div class="response"><h3>Благодарим за ваше мнение!</h3><br />
+						Ваш отзыв появится после проверки модератором</div>');
+				}
+			});
+		}
 	});
 	// --- кнопка "Отправить отзыв" при добавлении отзыва ---
 
