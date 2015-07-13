@@ -1,0 +1,32 @@
+<div class="deliveryWidget" id="deliveryWidget">
+	<div class="city">Доставка в 
+		<select class="cityName userCitySelector">
+			{% for city in deliveryInfo.cities %}
+				<option
+					{% if city.title == deliveryInfo.deliveryWidget.city %}
+						{{ 'selected="selected"' }}
+					{% endif %} 
+					data-region="{{ city.region }}"
+					value="{{ city.title }}">{{ city.title }}</option>
+			{%  endfor %}
+		</select></div>
+	<div class="deliveryPrice">{{ deliveryInfo.deliveryWidget.deliveryTypeText }}: <span class="blackText">{{ deliveryInfo.deliveryWidget.deliveryPrice }}</span></div>
+	<div class="pickupPoints">
+		<div class="price">Пункты самовывоза <span class="blackText">{{ deliveryInfo.deliveryWidget.pickupPoints.price }}</span></div>
+		<a href="/page/punkty-samovyvoza.html" class="showPointsBtn
+						{% if deliveryInfo.deliveryWidget.pickupPoints.isHidden %}
+							{{ 'hidden' }}
+						{% endif %}
+					">{{ deliveryInfo.deliveryWidget.pickupPoints.count }} пунктов</a>
+	</div>
+	<div class="deliveryTime">Срок доставки: <span class="blackText">{{ deliveryInfo.deliveryWidget.deliveryTime }}</span></div>
+	<div class="deliveryNote">* точный срок и стоимость доставки - уточняйте у менеджера</div>
+
+	{% if deliveryInfo.deliveryWidget.catId is defined %}
+		<input type='hidden' id='catId' value='{{ deliveryInfo.deliveryWidget.catId }}'>
+	{% endif %}
+
+	{% if product.id is defined %}
+		<input type='hidden' id='prodId' value='{{ product.id }}'>
+	{% endif %}
+</div>

@@ -18,7 +18,7 @@ gulp.task('less', function() {
 });
 
 gulp.task('img', function() {
-	gulp.src(['./images/*.jpg', './theme/mobile/img/*.*', './theme/mobile/img/*/*.*'])
+	gulp.src(['./theme/mobile/img/*.*', './theme/mobile/img/*/*.*'])
 		.pipe(imageop({
 			optimizationLevel: 5,
 			progressive: true,
@@ -36,10 +36,17 @@ gulp.task('js', function() {
 			'./theme/mobile/js/jquery.touchSwipe.min.js',
 			'./theme/mobile/js/jquery.maskedinput.min.js',
 			'./theme/mobile/js/index.js',
+			'./theme/mobile/js/pickup-points.js',
 		])
 		.pipe(concat('main.min.js'))
 		.pipe(uglify())
 		.pipe(gulp.dest('./theme/mobile/production/'));
+
+	// gulp.src([
+	// 		'./theme/mobile/js/pickup-points.js',
+	// 	])
+	// 	.pipe(uglify())
+	// 	.pipe(gulp.dest('./theme/mobile/production/'));
 });
 
 gulp.task('watch', function() {

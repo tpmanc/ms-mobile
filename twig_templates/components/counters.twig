@@ -1,0 +1,87 @@
+{# Yandex.Metrika counter #}
+<script type="text/javascript">
+	(function (d, w, c) {
+		(w[c] = w[c] || []).push(function () {
+			try {
+				w.yaCounter10746907 = new Ya.Metrika({
+					id: 10746907,
+					webvisor: true,
+					clickmap: true,
+					trackLinks: true,
+					accurateTrackBounce: true,
+					trackHash: true,
+					ut: "noindex"
+				});
+			} catch (e) {
+			}
+		});
+
+		var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () {
+			n.parentNode.insertBefore(s, n);
+		};
+		s.type = "text/javascript";
+		s.async = true;
+		s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+		if (w.opera == "[object Opera]") {
+			d.addEventListener("DOMContentLoaded", f, false);
+		} else {
+			f();
+		}
+	})(document, window, "yandex_metrika_callbacks");
+
+	var client_id;
+	var humanize;
+
+	(function (i, s, o, g, r, a, m) {
+		i['GoogleAnalyticsObject'] = r;
+		i[r] = i[r] ||
+		function () {
+			(i[r].q = i[r].q || []).push(arguments)
+		}, i[r].l = 1 * new Date();
+		a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+		a.async = 1;
+		a.src = g;
+		m.parentNode.insertBefore(a, m)
+	})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+	
+	ga('create', 'UA-51034626-1', 'med-serdce.ru');
+	ga('send', 'pageview');
+
+	// ga(function(tracker) { 
+	//     client_id = tracker.get('clientId'); 
+	//     $.get( "/ajax/ga_assign.php", { client_id: client_id } )
+	//         .done(function( data ) {
+	//         $(".roi_stat").text(data);
+	//     });
+	// });
+</script>
+<noscript>
+	<div><img src="//mc.yandex.ru/watch/10746907?ut=noindex" style="position:absolute; left:-9999px;" alt=""/></div>
+</noscript>
+{# /Yandex.Metrika counter #}
+
+{# Код тега ремаркетинга Google #}
+<script type="text/javascript">
+	var google_tag_params = {
+		ecomm_prodid: {{ metrics.google.prodid | raw }},
+		ecomm_pagetype: '{{ metrics.google.pagetype | raw }}',
+		ecomm_totalvalue: {{ metrics.google.totalvalue | raw }}
+	};
+</script>
+<script type="text/javascript">
+	/* <![CDATA[ */
+	var google_conversion_id = 976078884;
+	var google_custom_params = window.google_tag_params;
+	var google_remarketing_only = true;
+	/* ]]> */
+</script>
+<div style="display: none;">
+	<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js"></script>
+	<noscript>
+		<div style="display:inline;">
+			<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/976078884/?value=0&amp;guid=ON&amp;script=0"/>
+		</div>
+	</noscript>
+</div>

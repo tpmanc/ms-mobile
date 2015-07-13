@@ -1,0 +1,48 @@
+<form method="POST" action="#" class="finish">
+
+	<input type="hidden" name="fast_order" value="1" />
+
+	{% if fastProductId > 0 %}
+		<input type="hidden" name="fastProductId" value="{{ fastProductId }}" />
+	{% endif %}
+
+	<a href="/pay/korzina.html" class="backToBasket">Вернуться обратно в корзину</a>
+
+	<h1 class="title">Оформление заказа</h1>
+
+	{% if product is not empty %}
+		<div class="productList ">
+			<div class="elem">
+				<div class="imgCol">
+					<img src="{{ product.imgUrl }}" alt="{{ product.title }}">
+				</div>
+				<div class="textCol">
+					<div class="title"><a href="{{ product.url }}">{{ product.title }}</a></div>
+					<div class="bottomLine">
+						<div class="price">{{ product.price_after_discount|number_format(0, '.', ' ') }}</div>
+					</div>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+	{% endif %}
+
+	<h3 class="green">Контактные данные</h3>
+
+	<div class="contactData shadowBlock">
+		<div class="inputHolder">
+			<div class="inputTitle">Имя:<span class="required">*</span></div>
+			<input type="text" name="name" required placeholder="Ваше имя:" value=""/>
+		</div>
+
+		<div class="inputHolder">
+			<div class="inputTitle">Телефон:<span class="required">*</span></div>
+			<input type="tel" name="phone" required placeholder="+_ (___)___-__-__" value=""/>
+		</div>
+	</div>
+
+	<div class="finishBtnHolder">
+		<input type="submit" class="finishBtn" id="finishBtn" value="Оформить заказ" />
+	</div>
+
+</form>

@@ -6,7 +6,7 @@
 	top: 0;
 	background: @darknessGreen;
 	width: 80%;
-	height: 100%;
+	min-height: 100vh;
 	overflow: hidden;
 	z-index: 0;
 	-webkit-transition: @menuAnimPropertyMenu @menuAnimTime @menuAnimFunction @menuAnimDelay;
@@ -19,123 +19,127 @@
 		position: relative;
 	}
 
-	.title {
-		position: relative;
-		font-family: @segoe;
-		font-family: @segoe;
-		font-size: 14px;
-		font-weight: bold;
-		background: @leftMenuGray;
-		
-		&:before {
-			content: " ";
-			position: absolute;
-			display: block;
-			left: 7px;
-			top: 38px;
-			height: 5px;
-			width: 5px;
-			background: @leftMenuGray;
-			transform: rotate(45deg);
-		}
-	}
+	ul {
+		background: @darknessGreen;
 
-	li {
-		display: table;
-		width: 100%;
-		background: #FFF;
-		font-family: @segoe;
-		font-size: 14px;
-		box-sizing: border-box;
-		padding-left: 5px;
-		border-bottom: 1px solid @leftMenuGray;
-
-		&.footerLink {
-			background: @darknessGreen;
-			border-bottom: 1px solid #294700;
-			
-			a {
-				color: #FFF;
-			}
-		}
-
-		a {
-			display: block;
-			text-decoration: none;
-			padding: 13px 15px 13px 0;
-		}
-		
-		span {
+		.title {
 			position: relative;
 			font-family: @segoe;
+			font-family: @segoe;
 			font-size: 14px;
-			display: block;
-			cursor: pointer;
-			padding: 13px 15px 13px 0;
+			font-weight: bold;
+			background: @leftMenuGray;
 			
-			&.menuItemBtn{
-				&:after {
-					content: " ";
-					position: absolute;
-					display: block;
-					right: 8px;
-					top: 17px;
-					width: 5px;
-					height: 5px;
-					border-top: 2px solid #808080;
-					border-right: 2px solid #808080;
-					transform: rotate(45deg);
-				}
+			&:before {
+				content: " ";
+				position: absolute;
+				display: block;
+				left: 7px;
+				top: 38px;
+				height: 5px;
+				width: 5px;
+				background: @leftMenuGray;
+				transform: rotate(45deg);
 			}
 		}
-		.submenu {
-			height: 100%;
+
+		li {
+			display: table;
 			width: 100%;
-			background: @darknessGreen;
-			position: absolute;
-			z-index: 5;
-			left: 100%;
-			top: 0px;
-			transition: left 0.3s ease-out 0s;
-			
-			li {
-				cursor: pointer;
+			background: #FFF;
+			font-family: @segoe;
+			font-size: 14px;
+			box-sizing: border-box;
+			padding-left: 5px;
+			border-bottom: 1px solid @leftMenuGray;
+
+			&.footerLink {
+				background: @darknessGreen;
+				border-bottom: 1px solid #294700;
 				
 				a {
-					display: block;
-					text-decoration: none;
-					color: #000;
+					color: #FFF;
 				}
-				
-				&.footerLink {
-					a {
-						color: #FFF;
-					}
-				}
+			}
 
-				&.back {
-					cursor: pointer;
-					line-height: 48px;
-					height: 50px;
-					padding-left: 19px;
-					
-					&:before {
+			a {
+				display: block;
+				text-decoration: none;
+				padding: 13px 15px 13px 0;
+			}
+			
+			span {
+				position: relative;
+				font-family: @segoe;
+				font-size: 14px;
+				display: block;
+				cursor: pointer;
+				padding: 13px 15px 13px 0;
+				
+				&.menuItemBtn{
+					&:after {
 						content: " ";
 						position: absolute;
 						display: block;
-						left: 6px;
-						top: 20px;
+						right: 8px;
+						top: 17px;
 						width: 5px;
 						height: 5px;
-						border-bottom: 2px solid #808080;
-						border-left: 2px solid #808080;
+						border-top: 2px solid #808080;
+						border-right: 2px solid #808080;
 						transform: rotate(45deg);
 					}
 				}
 			}
+			.submenu {
+				height: 100%;
+				width: 100%;
+				background: @darknessGreen;
+				position: absolute;
+				z-index: 5;
+				left: 100%;
+				top: 0px;
+				transition: left 0.3s ease-out 0s;
+				
+				li {
+					cursor: pointer;
+					
+					a {
+						display: block;
+						text-decoration: none;
+						color: #000;
+					}
+					
+					&.footerLink {
+						a {
+							color: #FFF;
+						}
+					}
 
-			&.showSubmenu {
-				left: 0;
+					&.back {
+						cursor: pointer;
+						line-height: 48px;
+						height: 50px;
+						padding-left: 19px;
+						
+						&:before {
+							content: " ";
+							position: absolute;
+							display: block;
+							left: 6px;
+							top: 20px;
+							width: 5px;
+							height: 5px;
+							border-bottom: 2px solid #808080;
+							border-left: 2px solid #808080;
+							transform: rotate(45deg);
+						}
+					}
+				}
+
+				&.showSubmenu {
+					left: 0;
+				}
 			}
 		}
 	}

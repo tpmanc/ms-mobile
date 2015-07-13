@@ -358,66 +358,66 @@
 		margin-top: 10px;
 		margin-bottom: 5px;
 	}
+}
 
-	.productList {
-		border-top: 1px solid @catalogBorderColor;
-		margin-top: 11px;
-		margin-bottom: 25px;
+.productList {
+	border-top: 1px solid @catalogBorderColor;
+	margin-top: 11px;
+	margin-bottom: 25px;
+	
+	.elem {
+		display: table;
+		width: 100%;
+		padding: 10px 10px 10px 9px;
+		border-bottom: 1px solid @catalogBorderColor;
+		box-sizing: border-box;
 		
-		.elem {
-			display: table;
-			width: 100%;
-			padding: 10px 10px 10px 9px;
-			border-bottom: 1px solid @catalogBorderColor;
+		.imgCol {
+			float: left;
+			width: 59px;
+			height: 59px;
+			line-height: 59px;
+			margin-top: 3px;
+			padding: 3px;
+			border: 1px solid @cartPreveiwBorder;
+			border-radius: 4px;
+			text-align: center;
 			box-sizing: border-box;
 			
-			.imgCol {
-				float: left;
-				width: 59px;
-				height: 59px;
-				line-height: 59px;
-				margin-top: 3px;
-				padding: 3px;
-				border: 1px solid @cartPreveiwBorder;
-				border-radius: 4px;
-				text-align: center;
-				box-sizing: border-box;
+			img {
+				max-height: 100%;
+				max-width: 100%;
+			}
+		}
+		.textCol {
+			width: auto;
+			margin-left: 69px;
+			
+			.title {
+				line-height: 14px;
+				padding-right: 15px;
+				font-size: 12px;
+				font-weight: bold;
+				text-decoration: underline;
 				
-				img {
-					max-height: 100%;
-					max-width: 100%;
+				a {
+					color: #000;
 				}
 			}
-			.textCol {
-				width: auto;
-				margin-left: 69px;
+			.bottomLine {
+				margin-top: 8px;
 				
-				.title {
-					line-height: 14px;
-					padding-right: 15px;
-					font-size: 12px;
+				.price {
+					float: left;
+					width: 120px;
+					color: @catalogPriceColor;
+					font-size: 18px;
 					font-weight: bold;
-					text-decoration: underline;
 					
-					a {
-						color: #000;
-					}
-				}
-				.bottomLine {
-					margin-top: 8px;
-					
-					.price {
-						float: left;
-						width: 120px;
-						color: @catalogPriceColor;
-						font-size: 18px;
-						font-weight: bold;
-						
-						&:after {
-							content: "q";
-							font-family: @rouble;
-							margin-left: 5px;
-						}
+					&:after {
+						content: "q";
+						font-family: @rouble;
+						margin-left: 5px;
 					}
 				}
 			}

@@ -8,12 +8,12 @@
 			float: left;
 		}
 		.rests {
-			float: right;
+			float: left;
 			font-size: 10px;
 			color: @catalogGreenText;
 			position: relative;
-			top: -7px;
-			margin-right: 6px;
+			top: -6px;
+			margin-left: 22px;
 			
 			&:before {
 				content: " ";
@@ -57,10 +57,18 @@
 	}
 
 	.images {
+		position: relative;
 		text-align: center;
 		
+		.loader {
+			position: absolute;
+			left: 44%;
+			top: 35%;
+		}
+
 		.activePhotoSlider {
 			width: 100%;
+			// min-height: 300px;
 			line-height: 175px;
 			margin: 0 auto;
 			margin-top: 9px;
@@ -74,8 +82,8 @@
 			}
 
 			img {
-				max-height: 100%;
-				max-width: 300px;
+				max-height: 60vw;
+				max-width: 90%;
 				display: inline;
 				vertical-align: middle;
 				line-height: 1;
@@ -102,8 +110,9 @@
 			}
 			
 			img {
-				width: 100%;
+				max-width: 100%;
 				height: 100%;
+				margin: 0 auto;
 			}
 		}
 	}
@@ -163,9 +172,10 @@
 			font-weight: 400;
 			color: #888b90;
 			margin-left: 3px;
-			margin-top: 21px;
+			margin-top: 22px;
+			padding-top: 2px;
 			padding-left: 23px;
-			background: url(@pathToSprite) -2px -363px no-repeat;
+			background: url(@pathToSprite) -2px -362px no-repeat;
 			
 			a {
 				color: #888b90;
@@ -176,13 +186,14 @@
 
 		.compensaion {
 			width: 100px;
-			height: 24px;
+			height: 21px;
 			font-size: 10px;
 			font-weight: 400;
 			color: #f39c11;
 			margin-top: 25px;
 			padding-left: 23px;
-			background: url(@pathToSprite) -2px -336px no-repeat;
+			padding-top: 1px;
+			background: url(@pathToSprite) -2px -338px no-repeat;
 			
 			a {
 				color: #f39c11;
@@ -204,15 +215,16 @@
 			font-size: 14px;
 			font-weight: bold;
 			text-transform: uppercase;
+			text-decoration: none;
 			text-align: center;
 			background: @buttonColorBorder;
-			border-bottom: 3px solid @buttonOrangeColorBorder;
+			border-bottom: 3px solid @catalogActiveBtnBorder;
 			border-radius: 6px;
 			cursor: pointer;
 			
 			&.activeBtn {
 				background: @green;
-				// border-color: @buttonColorBorder;
+				border-color: @buttonColorBorder;
 			}
 		}
 	}
@@ -229,6 +241,7 @@
 			font-size: 14px;
 			font-weight: bold;
 			text-transform: uppercase;
+			text-decoration: none;
 			text-align: center;
 			background: @orange;
 			border-bottom: 3px solid @buttonOrangeColorBorder;
@@ -289,6 +302,7 @@
 							li {
 								position: relative;
 								padding-left: 20px;
+								line-height: 18px;
 								
 								&:before {
 									content: "\2022  ";
@@ -296,6 +310,20 @@
 									left: 5px;
 								}
 							}
+						}
+
+						strong {
+							font-weight: bold;
+						}
+
+						a {
+							color: #000;
+						}
+
+						p {
+							padding: 7px 0;
+							font-size: 12px;
+							line-height: 18px;
 						}
 					}
 					
@@ -308,6 +336,13 @@
 					position: relative;
 					overflow: hidden;
 					padding: 5px;
+					
+					.noFeedbacks {
+						font-size: 12px;
+						color: #313131;
+						margin: 22px 0 0 0;
+						text-align: center;
+					}
 										
 					.feedback {
 						border-bottom: 1px solid @catalogBorderColor;
@@ -325,6 +360,7 @@
 						}
 						.comment {
 							font-size: 12px;
+							line-height: 18px;
 							color: #313131;
 						}
 					}

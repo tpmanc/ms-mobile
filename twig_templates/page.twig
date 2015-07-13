@@ -1,0 +1,15 @@
+<div class="staticPage">
+
+	{% if staticPage == 'punkty-samovyvoza-mobile' %}
+		{% include 'pickup-points.twig' %}
+	{% else %}
+		{{ pageText | raw }}
+	{% endif %}
+
+	{% if (staticPage == 'oplata-mobile') or (staticPage == 'punkty-samovyvoza-mobile') %}
+		{% include 'components/paymentsTypes.twig' %}
+	{% endif %}
+
+	{% include 'components/callBtn.twig' %}
+
+</div>

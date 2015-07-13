@@ -17,6 +17,9 @@
 			text-decoration: underline;
 			color: @catalogGreenText;
 			cursor: pointer;
+			appearance: none;
+			background: #fff;
+			border: none;
 		}
 	}
 
@@ -50,11 +53,16 @@
 			color: #FFF;
 			font-weight: normal;
 			font-size: 10px;
+			text-decoration: none;
 			margin-top: 7px;
 			margin-left: 9px;
 			padding: 1px 17px 3px 18px;
 			border-radius: 10px;
 			cursor: pointer;
+			
+			&.hidden {
+				display: none;
+			}
 		}
 	}
 

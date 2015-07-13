@@ -1,0 +1,62 @@
+<li>
+	<div class="imageCol">
+		<img src="{{ imagePath.product.small ~ product.id }}.jpg" alt="{{ product.title }}">
+	</div>
+	<div class="textCol">
+		<div class="title"><a href="/catalog/{{product.chpu}}.html">{{ product.title }}</a></div>
+		<div class="line">
+			{% if ( ((product.rests_main.summ > 0) or (product.fake_in_stock == "1")) and product.fake_in_stock_selector == "0") %}
+				<span class="rests">В наличии</span>
+			{% else %}
+				<span class="rests notAvailable">На заказ</span>
+			{% endif %}
+			{% if (product.delivery_cost == "0") or (product.delivery_cost == "") %}
+				<span class="delivery">Бесплатно</span>
+			{% else %}
+				<span class="delivery">{{ product.delivery_cost }} руб.</span>
+			{% endif %}
+		</div>
+		<div class="line">
+			<div class="oldPriceHolder">
+				{% if (product.price != product.price_after_discount) %}
+					<div class="oldPrice">{{ product.price|number_format(0, '.', ' ') }}</div>
+				{% endif %}
+			</div>
+			<div class="priceLine">
+				<span class="price">{{ product.price_after_discount|number_format(0, '.', ' ') }}</span>
+				<a href="/pay/korzina.html" 
+					class="buyBtn activeBtn" 
+					data-id="{{ product.id }}" 
+					data-price="{{ product.price_after_discount }}">В корзину</a>
+			</div>
+		</div>
+		{% if (product.actia is defined) and (product.actia != "") %}
+			<div class="timers">
+				<div class="timerText">Акция осталось</div>
+				<div id="countdown{{product.id}}" data-time="{{ product.actia }}" class="countdown">
+					<div class="cnt-dwn-d">
+						<div class="cnt-dwn-digit"><span>1</span></div>
+						<span class="bottomText days">дней</span>
+					</div>
+					<div class="cnt-dwn-sep">:</div>
+					<div class="cnt-dwn-h">
+						<div class="cnt-dwn-digit"><span>22</span></div>
+						<span class="bottomText">часов</span>
+					</div>
+					<div class="cnt-dwn-sep">:</div>
+					<div class="cnt-dwn-m">
+						<div class="cnt-dwn-digit"><span>31</span></div>
+						<span class="bottomText">минут</span>
+					</div>
+					<div class="cnt-dwn-sep">:</div>
+					<div class="cnt-dwn-s">
+						<div class="cnt-dwn-digit"><span>59</span></div>
+						<span class="bottomText">секунд</span>
+					</div>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		{% endif %}
+	</div>
+	<div class="clearfix"></div>
+</li>

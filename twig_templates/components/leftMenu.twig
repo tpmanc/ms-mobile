@@ -1,0 +1,41 @@
+{% macro footerLinks(footerLinksArr) %}
+	<li class="footerLink"><a href="{{ footerLinksArr.actions }}">Акции</a></li>
+	<li class="footerLink"><a href="{{ footerLinksArr.delivery }}">Доставка</a></li>
+	<li class="footerLink"><a href="{{ footerLinksArr.payment }}">Оплата</a></li>
+	<li class="footerLink"><a href="{{ footerLinksArr.pickupPoints }}">Пункты самовывоза</a></li>
+	<li class="footerLink"><a href="{{ footerLinksArr.warranty }}">Гарантия</a></li>
+	<li class="footerLink"><a href="{{ footerLinksArr.courier }}">Персональный курьер</a></li>
+	<li class="footerLink"><a href="{{ footerLinksArr.contacts }}">Контакты</a></li>
+	<li class="footerLink"><a href="{{ footerLinksArr.about }}">О компании</a></li>
+	<li class="footerLink"><a href="{{ footerLinksArr.credit }}">Покупка в кредит</a></li>
+	<li class="footerLink"><a href="{{ footerLinksArr.compensation }}">Компенсации инвалидам</a></li>
+{% endmacro %}
+
+{% import _self as menuMacros %}
+
+<nav id="leftMenu" class="leftMenu">
+	<ul>
+		<li class="title"><span>Каталог товаров</span></li>
+		{% for item in menu %}
+			{% if (item.pod == "0") and (item.menu_disabled == "0") %}
+				<li>
+					<span class="menuItemBtn">{{ item.title }}</span>
+					
+					<ul class="submenu">
+						<li class="back">Обратно в каталог товаров</li>
+						<li class="title"><a href="{{ item.url }}">{{ item.title }}</a></li>
+						{% for subItem in menu %}
+							{% if (subItem.pod == item.id) %}
+							<li><a href="{{ subItem.url }}">{{ subItem.title }}</a></li>
+							{% endif %}
+						{% endfor %}
+
+						{{ menuMacros.footerLinks() }}
+					</ul>
+				</li>
+			{% endif %}
+		{% endfor %}
+		
+		{{ menuMacros.footerLinks(footerLinksArr) }}
+	</ul>
+</nav>

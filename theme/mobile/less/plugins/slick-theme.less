@@ -38,7 +38,33 @@
     border: none;
     outline: none;
     background: transparent;
+    cursor: pointer;
 }
+.activePhotoSlider {
+    .slick-next {
+        top: 30%;
+        right: 8px;
+        height: 100px;
+        
+        &:before {
+            height: 15px;
+            width: 15px;
+            top: 40%;
+        }
+    }
+    .slick-prev {
+        top: 30%;
+        left: 22px;
+        height: 100px;
+
+        &:before {
+            height: 15px;
+            width: 15px;
+            top: 40%;
+        }
+    }
+}
+
 .slick-prev:hover,
 .slick-prev:focus,
 .slick-next:hover,

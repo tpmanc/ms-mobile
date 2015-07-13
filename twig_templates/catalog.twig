@@ -1,0 +1,48 @@
+{% include 'components/breadcrumbs.twig' %}
+
+<div class="catalog">
+	<h1 class="title">{{ currentCategory.title }}</h1>
+
+	{% if (tags is defined) and (tags is not empty) %}
+		<div class="subCategoriesHoler">
+			<ul class="subCategories">
+				{% for item in tags %}
+					<li><a href="{{ item.url }}">{{ item.title }}</a></li>
+				{% endfor %}
+			</ul>
+			<div class="moreBtnHolder">
+				<div class="moreBtn" id="moreSub">Еще</div>
+			</div>
+		</div>
+	{% endif %}
+
+	<div class="sorting" id="catalogSort" data-cat_id="{{ currentCategory.id }}" data-is_tag="{{ isTag }}">
+		<a data-sort="" class="active">По популярности</a>
+		<a data-sort="price_desc">Сначала дорогие</a>
+		<a data-sort="price_asc">Сначала дешевые</a>
+	</div>
+
+	<div class="filter">
+		{#<div class="openBtn">Подбор по параметрам</div>#}
+	</div>
+
+	<ul class="listing">
+		{% for product in products %}
+			{% include 'components/listItem.twig' %}
+		{% endfor %}
+	</ul>
+	<div class="clearfix"></div>
+
+	{% if (productsLeft > 0) %}
+		<div class="moreProductsBtn" id="moreProductsBtn" data-cat_id="{{ currentCategory.id }}" data-is_tag="{{ isTag }}">
+			Еще <span class="count">{{ productsLeft }}</span> моделей
+		</div>
+	{% endif %}
+
+	{% if deliveryInfo.deliveryWidget is not empty %}
+		{% include 'components/deliveryWidget.twig' %}
+	{% endif %}
+
+</div>
+
+{% include 'components/paymentsTypes.twig' %}

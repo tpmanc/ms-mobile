@@ -1,0 +1,100 @@
+<form method="POST" action="#" class="finish">
+
+	<a href="/pay/korzina.html" class="backToBasket">Вернуться обратно в корзину</a>
+
+	<h1 class="title">Оформление заказа</h1>
+
+	<h3 class="green">Контактные данные</h3>
+
+	<div class="contactData shadowBlock">
+		<div class="inputHolder">
+			<div class="inputTitle">Имя:<span class="required">*</span></div>
+			<input type="text" name="name" required placeholder="Ваше имя:" value=""/>
+		</div>
+
+		<div class="inputHolder">
+			<div class="inputTitle">Телефон:<span class="required">*</span></div>
+			<input type="tel" name="phone" required placeholder="+_ (___)___-__-__" value=""/>
+		</div>
+
+		<div class="inputHolder">
+			<div class="inputTitle">Электронная почта:</div>
+			<input type="email" name="email" placeholder="Ваш email:" value=""/>
+		</div>
+	</div>
+
+	<h3 class="green">Адрес доставки</h3>
+
+	<div class="adress shadowBlock">
+		<div class="inputHolder">
+			<div class="inputTitle">Город:</div>
+			<input type="text" name="city" placeholder="Название города" value=""/>
+		</div>
+
+		<div class="inputHolder">
+			<div class="inputTitle">Улица:</div>
+			<input type="text" name="street" placeholder="Название улицы" value=""/>
+		</div>
+
+		<div class="smallInputs">
+			<div class="elem">
+				<div class="inputTitle">Дом</div>
+				<input type="text" name="house" value="" />
+			</div>
+			<div class="elem">
+				<div class="inputTitle">Корпус</div>
+				<input type="text" name="housing" value="" />
+			</div>
+			<div class="elem">
+				<div class="inputTitle">Строение</div>
+				<input type="text" name="building" value="" />
+			</div>
+			<div class="elem wide">
+				<div class="inputTitle">Квартира или офис</div>
+				<input type="text" name="apartment" value="" />
+			</div>
+
+			<div class="elem">
+				<div class="inputTitle">Этаж</div>
+				<input type="text" name="floor" value="" />
+			</div>
+			<div class="elem">
+				<div class="inputTitle">Подъезд</div>
+				<input type="text" name="porch" value="" />
+			</div>
+		</div>
+	</div>
+
+	<h3 class="green">Способ доставки</h3>
+
+	<div class="deliveryType">
+		{% for type in deliveryTypes %}
+			<div class="elem">
+				<input type="radio" required name="delivery_type" id="dt{{ type.id }}" value="{{ type.id }}" />
+				<label for="dt{{ type.id }}">{{ type.title }}</label>
+				<div class="help">{{ type.comment }}</div>
+			</div>
+		{% endfor %}
+	</div>
+	
+	<h3 class="green">Способ оплаты</h3>
+
+	<div class="paymentType">
+		{% for type in paymentTypes %}
+			<div class="elem">
+				<input type="radio" required name="payment_type" id="pt{{ type.id }}" value="{{ type.id }}" />
+				<label for="pt{{ type.id }}"><span>{{ type.title }}</span></label>
+			</div>
+		{% endfor %}
+	</div>
+
+	<div class="offer">
+		<input type="checkbox" checked="checked" name="offer" id="of1" value="1" />
+		<label for="of1">Я прочитал и согласен с <span class="boldText">Публичной офертой</span></label>
+	</div>
+
+	<div class="finishBtnHolder">
+		<input type="submit" class="finishBtn" id="finishBtn" value="Оформить заказ" />
+	</div>
+
+</form>

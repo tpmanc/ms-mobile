@@ -1,0 +1,21 @@
+{% include 'components/breadcrumbs.twig' %}
+
+<div class="catalog">
+	<h1 class="title">Поиск: {{ searchText }}</h1>
+
+	<ul class="listing">
+		{% for product in products %}
+			{% include 'components/listItem.twig' %}
+		{% endfor %}
+	</ul>
+	<div class="clearfix"></div>
+
+	{% if (productsLeft > 0) %}
+		<div class="moreProductsBtn" id="moreSearchBtn" data-search_text="{{ searchText }}">
+			Еще <span class="count">{{ productsLeft }}</span> моделей
+		</div>
+	{% endif %}
+
+</div>
+
+{% include 'components/paymentsTypes.twig' %}

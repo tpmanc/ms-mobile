@@ -1,0 +1,44 @@
+{% if hideSiteVersionBtn == false %}
+	<div class="fullVersion">
+		<div class="fullLink">Полная версия сайта</div>
+		<div class="closeFullBtn" id="hideSiteVersionBtn"></div>
+	</div>
+{% endif %}
+
+<div class="topLine">
+	<div class="yourCity">Ваш город:</div>
+	<div class="selectHolder">
+		<select class="citySelect userCitySelector">
+			{% for city in deliveryInfo.cities %}
+				<option 
+					{% if city.title == deliveryInfo.selectedCity %}
+						{{ 'selected="selected"' }}
+					{% endif %}
+					data-region="{{ city.region }}"
+					value="{{ city.title }}">{{ city.title }}</option>
+			{% endfor %}
+		</select>
+	</div>
+	<div class="phone"><a href="tel:{{ siteData.sitePhone }}">{{ siteData.sitePhone }}</a></div>
+</div>
+
+<header>
+	<div class="leftCol">
+		<div class="menuBtn" id="menuBtn"></div>
+		<div class="logo">
+			<a href="/"><img src="/theme/mobile/img/logo.jpg" alt="Интернет магазин Сердце"></a>
+		</div>
+	</div>
+	<div class="rightCol">
+		<div class="price" id="basketPrice">{{ basketData.price|number_format(0, '.', ' ') }}</div>
+		<a href="/pay/korzina.html" id="basket" class="basketBtn"><span class="productCount">{{ basketData.count|e }}</span></a>
+		{# <div class="favoriteBtn"></div> #}
+	</div>
+</header>
+
+<div class="searchBlock">
+	<form action="/search" method="POST" class="searchHolder">
+		<input type="text" name="searchText" placeholder="Поиск по 4875 товарам ..." class="search" />
+		<button class="searchBtn">Найти</button>
+	</form>
+</div>

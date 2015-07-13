@@ -1,0 +1,12 @@
+{% if (breadcrumbs is defined) %}
+	<ul class="breadcrumbs">
+		<li class="mainPage"><a href="/"></a></li>
+		{% for item in breadcrumbs %}
+			{% if (item.url is defined) %}
+				<li><a href="{{ item.url }}">{{ item.title }}</a></li>
+			{% else %}
+				<li>{{ item.title }}</li>
+			{% endif %}
+		{% endfor %}
+	</ul>
+{% endif %}

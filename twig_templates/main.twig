@@ -1,0 +1,115 @@
+<div class="indexPage">
+	<div class="categoriesHolder">
+		<div class="blockTitle">
+			<div class="text">Разделы товаров</div>
+			<div class="dottedLine"></div>
+		</div>
+
+		<ul class="categoriesList" id="categoriesList">
+			{% for item in menu %}
+				{% if (item.pod == 0) and (item.menu_disabled == "0") %}
+					<li><a href="{{ item.url }}">{{ item.title }}</a></li>
+				{% endif %}
+			{% endfor %}
+		</ul>
+		<div class="moreBtnHolder">
+			<div class="moreBtn" id="moreCategories">Еще</div>
+		</div>
+	</div>
+
+	<div class="service">
+		<div class="blockTitle">
+			<div class="text">Наш сервис</div>
+			<div class="dottedLine"></div>
+		</div>
+
+		<div class="blockContent">
+			<div class="serviceBlock">
+				<div class="imgCol">
+					<img src="/theme/mobile/img/index/delivery.jpg" alt="">
+				</div>
+				<div class="textCol">
+					<div class="title">Экспресс доставка</div>
+					<div class="text">Быстрая доставка за 2 часа<br />По Москве и области</div>
+				</div>
+			</div>
+
+			<div class="serviceBlock">
+				<div class="imgCol">
+					<img src="/theme/mobile/img/index/credit.jpg" alt="">
+				</div>
+				<div class="textCol">
+					<div class="title">Кредит от 3000 р.</div>
+					<div class="text">Не выходя из дома. 95% случаев одобряется за 2 минуты</div>
+				</div>
+			</div>
+
+			<div class="serviceBlock">
+				<div class="imgCol">
+					<img src="/theme/mobile/img/index/call-center.jpg" alt="">
+				</div>
+				<div class="textCol">
+					<div class="title">Call center</div>
+					<div class="text">Грамотное консультирование по всем вопросам</div>
+				</div>
+			</div>
+
+			<div class="serviceBlock">
+				<div class="imgCol">
+					<img src="/theme/mobile/img/index/return.jpg" alt="">
+				</div>
+				<div class="textCol">
+					<div class="title">Обмен и возврат</div>
+					<div class="text">В течение 21 дня после покупки</div>
+				</div>
+			</div>
+
+			<div class="serviceBlock">
+				<div class="imgCol">
+					<img src="/theme/mobile/img/index/market.jpg" alt="">
+				</div>
+				<div class="textCol">
+					<div class="title">Яндекс маркет</div>
+					<div class="text">Качество<br>обслуживания проверенное<br>Яндекс-Маркетом</div>
+				</div>
+			</div>
+
+			<div class="serviceBlock">
+				<div class="imgCol">
+					<img src="/theme/mobile/img/index/help.jpg" alt="">
+				</div>
+				<div class="textCol">
+					<div class="title">Помощь</div>
+					<div class="text">Наши специалисты ответят на все ваши вопросы</div>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+</div>
+
+<div class="bottomBlock">
+	<ul class="pagesHolder">
+		<li><a href="{{ footerLinksArr.delivery }}" class="delivery">Доставка</a></li><li><a href="{{ footerLinksArr.payment }}" class="payment">Оплата</a></li><li><a href="{{ footerLinksArr.pickupPoints }}" class="pickupPoints">Пункты Самовывоза</a></li><li><a href="{{ footerLinksArr.contacts }}" class="contacts">Контакты</a></li>
+	</ul>
+
+	<div class="offset">
+		<div class="bottomText">
+			<div class="imgCol"><img src="theme/mobile/img/index/courier.jpg" alt=""></div>
+			<div class="textCol">
+				<div class="title">Персональные курьеры</div>
+				<div class="text">Бесплатная услуга при заказе<br />от 30 000 рублей.<br />Доставка в день заказа.</div>
+			</div>
+		</div>
+		<br />
+		<div class="bottomText compensation">
+			<div class="imgCol"><img src="theme/mobile/img/index/compensation.jpg" alt=""></div>
+			<div class="textCol">
+				<div class="title">Компенсация инвалидам</div>
+				<div class="text">Вы можете получить денежное возмещение за самостоятельно приобретенное изделие.</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% include 'components/paymentsTypes.twig' %}

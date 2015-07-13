@@ -1,0 +1,17 @@
+{% include 'components/breadcrumbs.twig' %}
+
+<div class="categories">
+	<h1 class="title">{{ currentCategory.title }}</h1>
+	<ul class="subCategories">
+		{% for item in menu %}
+			{% if (item.pod == currentCategory.id) %}
+				<li><a href="{{ item.url }}">{{ item.title }}</a></li>
+			{% endif %}
+		{% endfor %}
+	<ul>
+</div>
+
+{% include 'components/paymentsTypes.twig' %}
+
+{% include 'components/callBtn.twig' %}
+<div class="clearfix"></div>

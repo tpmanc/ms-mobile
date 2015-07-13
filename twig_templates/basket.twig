@@ -1,0 +1,72 @@
+<div class="basket">
+
+	<h1 class="title">Корзина товаров</h1>
+
+	<div class="empty {% if basketInfo.products is empty %} {{ 'show' }} {% endif %}">
+		<p>Ваша корзина пуста.</p>
+		<p>Вы можете воспользоваться поиском на сайте, 
+		если ищите что-то конкретное, либо перейти на <a href="/">главную страницу</a>.</p>
+
+		<hr />
+
+		{% include 'components/paymentsTypes.twig' %}
+
+		{% include 'components/callBtn.twig' %}
+	</div>
+	<div class="productList {% if basketInfo.products is empty %} {{ 'hide' }} {% endif %}">
+		{% for product in basketInfo.products %}
+			<div class="elem" data-id="{{ product.id }}" data-price="{{ product.price }}">
+				<div class="imgCol">
+					<img src="{{ product.imgUrl }}" alt="{{ product.title }}">
+				</div>
+				<div class="textCol">
+					<div class="title"><a href="{{ product.url }}">{{ product.title }}</a></div>
+					<div class="countHolder">
+						<div class="countBtn lessBtn"><div class="minus"></div></div>
+						<input type="number" min="1" class="count" value="{{ product.amount }}">
+						<div class="countBtn moreBtn"><div class="plusHor"></div><div class="plusVer"></div></div>
+					</div>
+					<div class="bottomLine">
+						<div class="price">{{ product.price|number_format(0, '.', ' ') }}</div>
+						<div class="deleteBtn" data-id="{{ product.id }}">Удалить товар</div>
+					</div>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		{% endfor %}
+	</div>
+
+	<div class="summaryHolder {% if basketInfo.products is empty %} {{ 'hide' }} {% endif %}">
+		<div class="summary">
+			<div class="row">
+				<div class="title">Кол-во товаров (<span id="basketProductCount">{{ basketInfo.productsCount }}</span>)</div>
+				<div class="value price" id="basketProductSumm">{{ basketInfo.productsPriceSumm|number_format(0, '.', ' ') }}</div>
+			</div>
+			<div class="row">
+				<div class="title">Доставка</div>
+				<div class="value greenText" id="basketDeliveryPrice">
+					{{ basketInfo.deliveryPrice != "0" ? basketInfo.deliveryPrice ~ " руб." : "Бесплатно" }}
+				</div>
+			</div>
+			<div class="row">
+				<div class="title">Скидка</div>
+				<div class="value redText">
+					<span id="basketDiscount">{{ basketInfo.discount }}%</span>
+				</div>
+			</div>
+			<div class="row">
+				<div class="title result">Итого к оплате:</div>
+				<div class="value result price" id="basketTotalPrice">{{ basketInfo.totalPrice|number_format(0, '.', ' ') }}</div>
+			</div>
+		</div>
+
+		<div class="buyBtnHolder">
+			<a href="/pay/finish.html" class="buyBtn">Оформить заказ</a>
+		</div>
+
+		<div class="fastBuyBtnHolder">
+			<a href="/pay/fast-finish.html" class="fastBuyBtn">Быстрый заказ</a>
+		</div>
+	</div>
+
+</div>

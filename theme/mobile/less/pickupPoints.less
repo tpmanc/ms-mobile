@@ -6,6 +6,12 @@
 		font-weight: normal;
 	}
 
+	.metroHolder {
+		&.hidden {
+			display: none;
+		}
+	}
+
 	.selectHolder {
 		position: relative;
 		padding: 0 @lrOffset;
@@ -20,7 +26,7 @@
 			border-radius: 3px;
 			-webkit-appearance: none;
 			   -moz-appearance: none;
-			        appearance: none;
+					appearance: none;
 		}
 	}
 
@@ -43,6 +49,14 @@
 			background: url(@pathToSprite) 100% -223px no-repeat;
 			box-sizing: border-box;
 			
+			&.activePoint {
+				background-color: #ECECEC;
+			}
+
+			&.disabled {
+				background: #FFF;
+			}
+			
 			span {
 				display: table-cell;
 				width: 100%;
@@ -55,6 +69,11 @@
 		width: 100%;
 		height: 225px;
 		margin-top: 45px;
+
+		background: url("../../img/loader.gif");
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: 32px;
 	}
 
 	.paymentTypes {

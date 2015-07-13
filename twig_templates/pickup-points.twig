@@ -1,0 +1,38 @@
+<div class="pickupPoints">
+
+	<h1 class="title">Пункты самовывоза</h1>
+	
+	<h3 class="green">Выберите свой город</h3>
+	<div class="selectHolder">
+		<select name="" class="userCitySelector" id="pickupPointsCitySelector">
+			{% for city in citiesArr %}
+				<option 
+					{% if city.title == deliveryInfo.selectedCity %}
+						{{ 'selected="selected"' }}
+					{% endif %}
+					data-center="{{ city.center }}" 
+					data-zoom="{{ city.zoom }}" 
+					data-adresses="{{ city.adresses }}" 
+					value="{{ city.title }}">{{ city.title }}</option>
+			{%  endfor %}
+		</select>
+		<div class="arrow"></div>
+	</div>
+
+	<div class="metroHolder hidden {% if citiesArr is empty %} {{ 'hidden' }} {% endif %}">
+		<h3 class="green">Выберите станцию метро</h3>
+		<div class="selectHolder">
+			<select name="" id="metroSelector">
+				<option></option>
+			</select>
+			<div class="arrow"></div>
+		</div>
+	</div>
+
+	<ul class="pickupPointsList" id="pickupPointsList"></ul>
+
+	<div class="mapHolder" id="mapHolder"></div>
+
+</div>
+
+<script src="http://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>

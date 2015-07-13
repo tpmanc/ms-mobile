@@ -15,6 +15,7 @@ body {
 	background: #FFF;
 	left: 0%;
 	top: 0%;
+	min-height: 100vh;
 	box-shadow: 8px 0px 40px #000;
 	will-change: transform;
 	-webkit-transition: @menuAnimProperty @menuAnimTime @menuAnimFunction @menuAnimDelay;
@@ -52,26 +53,39 @@ body {
 		position: relative;
 		display: block;
 		width: 100%;
+		height: 27px;
+		max-height: 27px;
 		background: @orange;
 		text-align: center;
 		font-size: 12px;
 		font-family: @segoe;
-		padding: 4px 0 8px 0;
+		color: #fff;
 		text-decoration: underline;
 		word-spacing: 1px;
+		box-sizing: border-box;
+		z-index: -1;
+		-webkit-transition: max-height @menuAnimTime @menuAnimFunction @menuAnimDelay;
+		   -moz-transition: max-height @menuAnimTime @menuAnimFunction @menuAnimDelay;
+		     -o-transition: max-height @menuAnimTime @menuAnimFunction @menuAnimDelay;
+		        transition: max-height @menuAnimTime @menuAnimFunction @menuAnimDelay;
+		
+		&.hidden {
+			max-height: 0;
+		}
 		
 		.fullLink {
-			color: #fff;
-			padding: 5px 10px;
+			display: block;
+			padding: 6px 10px 9px 10px;
+			color: #FFF;
 		}
 		.closeFullBtn {
 			position: absolute;
-			top: 3px;
-			right: 1.11%;
+			top: 0;
+			right: 0;
 			float: right;
-			width: 18px;
-			height: 18px;
-			background: url(@pathToSprite) 0 0px no-repeat;
+			width: 40px;
+			height: 27px;
+			background: url(@pathToSprite) 11px 4px no-repeat;
 		}
 	}
 
@@ -104,7 +118,7 @@ body {
 				   -moz-appearance: none;
 				        appearance: none;
 				font-size: 12px;
-				width: 90px;
+				width: 136px;
 				height: 12px;
 				color: #FFF;
 				line-height: 1;
@@ -252,6 +266,7 @@ body {
 	}
 
 	.main {
+		min-height: calc(~"100vh - 438px");
 		padding: 16px 0 0 0;
 		font-family: @segoe;
 
@@ -302,17 +317,17 @@ body {
 		background: @breadcrumbsBg;
 		width: 100%;
 		font-size: 12px;
-		padding: 10px 30px 20px 30px;
+		padding: 10px 30px;
 		box-sizing: border-box;
 		color: #494c51;
 		
 		li {
 			display: inline;
 			font-size: 12px;
+			line-height: 24px;
 
 			&:not(.mainPage){
 				a {
-					line-height: 24px;
 					color: #494c51;
 					
 					&:after {

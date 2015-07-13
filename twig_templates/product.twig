@@ -1,0 +1,139 @@
+{% include 'components/breadcrumbs.twig' %}
+
+<div class="productCart">
+	{% if nearProducts is not empty %}
+		<div class="nearProducts">
+			<a href="{{ nearProducts.prev.url }}" class="prevProduct" id="prevProduct">Предыдущий товар</a>
+			<a href="{{ nearProducts.next.url }}" class="nextProduct" id="nextProduct">Следующий товар</a>
+			<div class="clearfix"></div>
+		</div>
+	{% endif %}
+
+	<h1 class="title">{{ product.title }}</h1>
+	
+	<div class="topInfo">
+		{% if (product.art is not null) and (product.art != "") %}
+			<div class="art">Артикул: {{ product.art }}</div>
+		{% endif %}
+
+		{# <div class="delivery">Бесплатно</div> #}
+
+		{% if product.rests == 0 %}
+			<div class="rests notAvailable">На заказ</div>
+		{% else %}
+			<div class="rests">В наличии</div>
+		{% endif %}
+	</div>
+	<div class="clearfix"></div>
+
+	<div class="images noSwipe">
+		<div class="activePhotoSlider" id="activePhotoSlider">
+			<div><img src="{{ imagePath.product.big ~ product.id }}.jpg" alt="{{ product.title }}"></div>
+			{% for image in extraImages %}
+				<div><img data-lazy="{{ imagePath.product.extra.medium ~ image }}.jpg" alt=""></div>
+			{% endfor %}
+		</div>
+
+		<div class="previewsSlider" id="previewsSlider">
+			<div class="activeSlide"><img data-lazy="/upload/small/{{ product.id }}.jpg" alt=""></div>
+			{% for image in extraImages %}
+				<div><img data-lazy="{{ imagePath.product.extra.small ~ image }}.jpg" alt=""></div>
+			{% endfor %}
+		</div>
+	</div>
+
+	<div class="buyInfo">
+		<div class="leftCol">
+			<div class="priceHolder">Цена: <span class="price">{{ product.price_after_discount|number_format(0, '.', ' ') }}</span></div>
+			<div class="return"><a href="">Обмен и возврат</a> в течении 21 дня</div>
+		</div>
+		<div class="rightCol">
+			<div class="credit"><span>В кредит</span> от {{ product.creditPrice }} рублей в месяц</div>
+			<div class="compensaion"><a href="">Компенсация для</a> социальной защиты</div>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+
+	<div class="buyBtnHolder">
+		<a href="/pay/korzina.html" class="buyBtn activeBtn" 
+			data-id="{{ product.id }}" 
+			data-price="{{ product.price_after_discount }}">Положить в корзину</a>
+	</div>
+	<div class="fastBuyBtnHolder">
+		<a href="/pay/fast-finish.html" class="fastBuyBtn" id="fastBuyBtn" data-product_id="{{ product.id }}">Быстрый заказ</a>
+	</div>
+
+	{% include 'components/deliveryWidget.twig' %}
+
+	{% include 'components/paymentsTypes.twig' %}
+
+	<div class="productInfo">
+		<div class="tabs" id="tabs">
+			<ul class="tabsNav">
+				<li class="active">Описание</li>{% if tabs.specifications is not empty %}<li>Характеристики</li>{% endif %}<li>Отзывы</li>
+			</ul>
+			<div class="tabsContent">
+				<div class="textTab active">{{ tabs.description | raw }}</div>
+				{% if tabs.specifications is not empty %}
+					<div class="textTab">{{ tabs.specifications | raw }}</div>
+				{% endif %}
+				<div>
+					<div class="feedbacks">
+						{% if feedbacks is empty %}
+							<div class="noFeedbacks">Отзывов пока нет, станьте первым.</div>
+						{% else %}
+							{% for feedback in feedbacks %}
+								<div class="feedback">
+									<div class="name">{{ feedback.name }}</div>
+									<div class="comment">{{ feedback.comment | raw }}</div>
+								</div>
+							{% endfor %}
+						{% endif %}
+						
+						<div class="newFeedback" data-id="{{ product.id }}">
+							<div class="backBtn" id="closeNewFeedback">Вернуться к отзывам</div>
+							<input type="text" name="name" placeholder="Ваше имя:">
+							<input type="email" name="email" placeholder="Ваше email:">
+							<textarea placeholder="Ваш отзыв:"></textarea>
+
+							<div class="sendNewFeedback" id="sendNewFeedback">Отправить отзыв</div>
+						</div>
+
+						<div class="newFeedbackBtn" id="newFeedbackBtn">Оставить отзыв</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	{% include 'components/callBtn.twig' %}
+
+	{% if recommendations is not empty %}
+		<div class="recommendations">
+			<div class="blockTitle">С этим товаром покупают</div>
+			<ul class="listing">
+				{% for product in recommendations %}
+					{% include 'components/listItem.twig' %}
+				{% endfor %}
+			</ul>
+			<div class="clearfix"></div>
+
+			{# <div class="moreProductsBtn">Показать еще</div> #}
+		</div>
+	{% endif %}
+
+	{% if lookedProducts is not empty %}
+		<div class="watched">
+			<div class="blockTitle">Вы смотрели</div>
+			<ul class="listing">
+				{% for product in lookedProducts %}
+					{% include 'components/listItem.twig' %}
+				{% endfor %}
+			</ul>
+			<div class="clearfix"></div>
+
+			{# <div class="moreProductsBtn">Показать еще</div> #}
+		</div>
+	{% endif %}
+
+</div>

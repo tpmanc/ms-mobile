@@ -64,7 +64,6 @@ function generateProductsString(products) {
 function addProductToBasket(productId, price) {
 	//получим данные из кук
 	var products = parseProductsString(getCookie('cart_products'));
-	console.log(products);
 	var totalAmount = parseInt(getCookie('total_amount'));
 	if (!isNaN(totalAmount)) {
 		totalAmount += price;
@@ -332,15 +331,17 @@ $(function(){
 			slidesToShow: 1,
 			slidesToScroll: 1,
 			infinite: false,
-			arrows: false,
+			arrows: true,
 			fade: false,
+			lazyLoad: 'ondemand',
 		});
 		sliderNav.slick({
 			slidesToShow: 5,
 			slidesToScroll: 5,
 			infinite: false,
 			dots: false,
-			centerMode: false
+			centerMode: false,
+			lazyLoad: 'ondemand',
 		});
 		sliderNav.find('.slick-slide').on('click', function(){
 			var slideNum = $(this).data('slick-index');
@@ -349,6 +350,7 @@ $(function(){
 		$('.activePhotoSlider .slick-track').css('line-height', $('.activePhotoSlider .slick-track').height() + 'px');
 
 		slider.on('beforeChange', function(event, slick, currentSlide, nextSlide){
+			$('#canvasloader-container').show();
 			if (nextSlide % 5 == 0 && currentSlide % 5 == 4) {
 				sliderNav.slick('slickNext');
 			} else if (currentSlide % 5 == 0 && nextSlide % 5 == 4) {
@@ -358,6 +360,9 @@ $(function(){
 			}
 			sliderNav.find('.slick-slide').eq(currentSlide).removeClass('activeSlide');
 			sliderNav.find('.slick-slide').eq(nextSlide).addClass('activeSlide');
+		});
+		slider.on('afterChange', function(event, slick, currentSlide, nextSlide){
+			$('#canvasloader-container').hide();
 		});
 	}
 	// --- /слайдеры фото в карточке товара ---
@@ -524,21 +529,6 @@ $(function(){
 	}
 	// --- /маска инпуту для телефона ---
 
-	// --- яндекс карты в пунктах самовывоза ---
-	if (window.ymaps != undefined) {
-		ymaps.ready(init);
-		var myMap;
-		function init() {
-			myMap = new ymaps.Map("mapHolder", {
-				center: [55.76, 37.64],
-				zoom: 7,
-				controls: ['smallMapDefaultSet']
-			});
-			myMap.behaviors.disable('scrollZoom');
-		}
-	}
-	// --- /яндекс карты в пунктах самовывоза ---
-
 	/**
 	 * Аякс запрос на получение страницы товаров в категории и количества оставшихся товаров 
 	 */
@@ -563,6 +553,32 @@ $(function(){
 		var prodPage = $('ul.listing li').length / 10; // 10 - количество товаров на странице
 		var sort = $('#catalogSort').find('.active').data('sort');
 		productsRequest(prodPage, $(this).data('cat_id'), sort, $(this).data('is_tag'));
+	});
+	// --- /кнопка загузки товаров в каталоге ---
+
+	/**
+	 * Аякс запрос на получение товаров в поиске
+	 */
+	function productsSearchRequest(page, searchText) {
+		$.ajax({
+			type: "POST",
+			dataType: 'json',
+			url: "/ajax/mobile.php?method=getMoreSearchProducts",
+			data: "page=" + page + "&searchText=" + searchText,
+			success: function(data){
+				$('ul.listing').append(data.html);
+				if (parseInt(data.count) > 0 ) {
+					$('#moreSearchBtn').show().find('.count').text(data.count);
+				} else {
+					$('#moreSearchBtn').hide();
+				}
+			}
+		});
+	}
+	// --- кнопка загузки товаров в поиске ---
+	$('#moreSearchBtn').on('click', function(){
+		var prodPage = $('ul.listing li').length / 10; // 10 - количество товаров на странице
+		productsSearchRequest(prodPage, $(this).data('search_text'));
 	});
 	// --- /кнопка загузки товаров в каталоге ---
 
@@ -616,25 +632,34 @@ $(function(){
 				}
 			}
 		});
+
 		// способ доставки
 		var deliveryType = form.find('input[name="delivery_type"]:checked');
-		if (deliveryType.length > 0 || fastOrder) {
+		if (fastOrder) {
+			params['delivery_type'] = 1;
+		} else if (deliveryType.length > 0) {
 			params['delivery_type'] = deliveryType.val();
 		} else {
 			error = true;
 			form.find('.deliveryType').addClass('inputError');
 		}
+
 		// способ оплаты
 		var paymentType = form.find('input[name="payment_type"]:checked');
-		if (paymentType.length > 0 || fastOrder) {
+		if (fastOrder) {
+			params['payment_type'] = 1;
+		} else if (paymentType.length > 0) {
 			params['payment_type'] = paymentType.val();
 		} else {
 			error = true;
 			form.find('.paymentType').addClass('inputError');
 		}
+
 		// согласие с офертой
 		var offer = form.find('input[name="offer"]:checked');
-		if (offer.length > 0 || fastOrder) {
+		if (fastOrder) {
+			params['offer'] = 1;
+		} else if (offer.length > 0) {
 			params['offer'] = offer.val();
 		} else {
 			error = true;
@@ -648,31 +673,33 @@ $(function(){
 				body.animate({scrollTop: off}, 400);
 			}
 		} else {
-			// формируем адрес
+			// формируем адрес, если это не быстрый заказ
 			var adress = '';
-			if (params.city != '') {
-				adress += 'г. ' + params.city;
-			}
-			if (params.street != '') {
-				adress += ' ул. ' + params.street;
-			}
-			if (params.house != '') {
-				adress += ' д. ' + params.house;
-			}
-			if (params.housing != '') {
-				adress += ' корпус ' + params.housing;
-			}
-			if (params.building != '') {
-				adress += ' строение ' + params.building;
-			}
-			if (params.apartment != '') {
-				adress += ' кв. ' + params.apartment;
-			}
-			if (params.floor != '') {
-				adress += ' этаж ' + params.floor;
-			}
-			if (params.porch != '') {
-				adress += ' подъезд ' + params.porch;
+			if (!fastOrder) {
+				if (params.city != '') {
+					adress += 'г. ' + params.city;
+				}
+				if (params.street != '') {
+					adress += ' ул. ' + params.street;
+				}
+				if (params.house != '') {
+					adress += ' д. ' + params.house;
+				}
+				if (params.housing != '') {
+					adress += ' корпус ' + params.housing;
+				}
+				if (params.building != '') {
+					adress += ' строение ' + params.building;
+				}
+				if (params.apartment != '') {
+					adress += ' кв. ' + params.apartment;
+				}
+				if (params.floor != '') {
+					adress += ' этаж ' + params.floor;
+				}
+				if (params.porch != '') {
+					adress += ' подъезд ' + params.porch;
+				}
 			}
 			params['adress'] = adress;
 
@@ -742,10 +769,139 @@ $(function(){
 	});
 	// --- /оформить заказ в корзине ---
 
+	// --- быстрый заказ в карточке ---
+	$('#fastBuyBtn').on('click', function(){
+		var id = $(this).data('product_id');
+		setCookie('fastProductId', id, '', '/');
+	});
+	// --- /быстрый заказ в карточке ---
+
 	// --- выбор способа доставки при оформлении ---
 	$('.deliveryType input[name="delivery_type"]').on('change', function(){
 		$('.deliveryType .help').hide();
 		$(this).closest('.elem').find('.help').show();
 	});
 	// --- /выбор способа доставки при оформлении ---
+
+	// --- выбор города ---
+	if ($('#pickupPointsList').length == 0 && $('#pickupPointsCitySelector').length == 0) { // если это не пункты самовывоза
+		$('select.userCitySelector').on('change', function(){
+			var $this = $(this);
+			$('select.userCitySelector').val($this.val());
+			var cityName = $this.find('option:selected').text();
+			var regionName = $this.find('option:selected').data('region');
+			var prodId = 0;
+			if ($('#prodId').length == 1) {
+				prodId = $('#prodId').val();
+			}
+			setCookie('selectedCity', encodeURI(cityName)+'|'+encodeURI(regionName), '', '/');
+			var deliveryWidget = $('#deliveryWidget');
+
+			if (deliveryWidget.length > 0) {
+				var catId = deliveryWidget.find('#catId').val();
+				$.ajax({
+					url: '/ajax/mobile.php?method=getDeliveryWidgetInfo',
+					type: 'POST',
+					dataType: 'json',
+					data: 'catId='+catId+'&cityName='+cityName+'&regionName='+regionName+'&prodId='+prodId,
+					beforeSend: function () {
+					},
+					success: function (data) {
+						changeDeliveryWidgetText(
+							data.cityTitle,
+							data.regionTitle,
+							data.minTime,
+							data.maxTime,
+							data.minPrice,
+							data.maxPrice,
+							data.pointsCount,
+							data.pointPrice
+						);
+					}
+				});
+			}
+		});
+	}
+	// --- /выбор города ---
+
+	// --- кнопки полной версии ---
+	$('.fullVersionBottom, .fullLink').on('click', function(){
+		setCookie('fullVersion', '1', '', '/');
+		setCookie('mobileVersion', '', '', '/');
+		setCookie('hideSiteVersionBtn', '', '', '/');
+		location.href = location.href;
+	});
+	// --- /кнопки полной версии ---
+
+
+	// --- спрятать кнопку полной версии ---
+	$('#hideSiteVersionBtn').on('click', function(){
+		setCookie('hideSiteVersionBtn', '1', '', '/');
+		$('.fullVersion').addClass('hidden');
+	});
+	// --- /спрятать кнопку полной версии ---
 });
+
+function changeDeliveryWidgetText(cityName, regionName, minTime, maxTime, minPrice, maxPrice, pointsCount, pointPrice) {
+	var deliveryText = '';
+	if (cityName == 'Москва' || cityName == 'Санкт-Петербург' || regionName == 'Московская область') {
+		deliveryText = 'Курьерской службой';
+	} else {
+		deliveryText = 'Транспортной компанией';
+	}
+
+	var deliveryTime = '';
+	if (minTime == "0" || minTime == null) {
+		deliveryTime = 'неизвестно';
+	} else {
+		deliveryTime = minTime + '-' + maxTime + ' дня.';
+	}
+
+	var deliveryPrice = '';
+	if (cityName == '' || minPrice == null) {
+		deliveryPrice = 'неизвестно';
+	} else {
+		if (minPrice == "0") {
+			deliveryPrice = 'бесплатно';
+		} else if (minPrice == "-1") {
+			deliveryPrice = 'уточняйте у менеджера';
+		} else {
+			if(cityName == 'Москва'){
+				deliveryPrice = '';
+			}else{
+				deliveryPrice = 'от ';
+			}
+			deliveryPrice += minPrice + ' рублей.';
+		}
+	}
+
+	var isHidden = false;
+	if (pointsCount == 0) {
+		isHidden = true;
+	}
+
+	var pointPriceText = '';
+	if (cityName == 'Москва') {
+		pointPriceText = '(временно не работают)';
+		isHidden = true;
+	} else {
+		if (pointPrice == null) {
+			pointPriceText = 'неизвестно';
+		} else if (pointPrice == "0") {
+			pointPriceText = 'бесплатно';
+		} else {
+			pointPriceText = pointPrice + ' руб.';
+		}
+	}
+
+	var deliveryWidget = $('#deliveryWidget');
+	deliveryWidget.find('.deliveryPrice').html(deliveryText + ': <span class="blackText">' + deliveryPrice + '</span>');
+	deliveryWidget.find('.pickupPoints .blackText').text(pointPriceText);
+	deliveryWidget.find('.deliveryTime .blackText').text(deliveryTime);
+	deliveryWidget.find('.showPointsBtn').text(pointsCount + ' пунктов');
+	if (isHidden) {
+		deliveryWidget.find('.showPointsBtn').hide();
+	} else {
+		deliveryWidget.find('.showPointsBtn').css('display', 'inline-block');
+	}
+}
